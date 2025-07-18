@@ -26,12 +26,12 @@ const Skills = () => {
     {
       title: "Methodologies",
       icon: <Users className="text-purple-600" size={24} />,
-      skills: ["Agile", "Scrum", "DevOps", "CI/CD", "Test-Driven Development", "Behavior-Driven Development"]
+      skills: ["Agile", "Scrum", "CI/CD", "Test-Driven Development", "Behavior-Driven Development"]
     },
     {
       title: "Platforms",
       icon: <Globe className="text-indigo-600" size={24} />,
-      skills: ["Web Applications", "Mobile Apps", "REST APIs", "Cloud Testing", "Cross-browser Testing", "Database Testing"]
+      skills: ["Web Applications", "Mobile Apps", "REST APIs", "Cross-browser Testing", "Database Testing"]
     }
   ];
 

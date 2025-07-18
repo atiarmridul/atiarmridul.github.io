@@ -8,8 +8,8 @@ const Experience = () => {
       company: "Portonics Limited",
       location: "Dhaka, Bangladesh",
       duration: "2024 - Present",
-      description: "Lead quality assurance initiatives for enterprise software products serving 1M+ users. Manage testing team of 5 engineers and establish QA best practices.",
-      achievements: [
+      //description: "Lead quality assurance initiatives for enterprise software products serving 1M+ users. Manage testing team of 5 engineers and establish QA best practices.",
+      responsibilities: [
         "Conducted detailed requirement analysis and story reviews to understand feature scope before test case design.",
         "Develop and maintain well-structured test cases,collaborating with product managers and developers to refine them and improve test planning",
         "Conducted functional, integration, regression, UI/UX, and UAT testing",
@@ -25,9 +25,9 @@ const Experience = () => {
       company: "Audacity IT Solutions Limited",
       location: "Dhaka, Bangladesh",
       duration: "2021 - 2024",
-      description: "Designed and executed comprehensive testing strategies for web and mobile applications in fast-paced startup environment.",
-      achievements: [
-     "Working on multiple projects in parallel from requirement analysis to product release phase.",
+      //description: "Designed and executed comprehensive testing strategies for web and mobile applications in fast-paced startup environment.",
+      responsibilities: [
+        "Working on multiple projects in parallel from requirement analysis to product release phase.",
         "Conducted UI automation testing for web and mobile apps with Playwright, WebdriverIO, and Appium.",
         "Used Git, GitHub, and GitHub Actions for version control and CI.",
         "Performed API testing and automation with Postman, Newman, and RestAssured.",
@@ -38,16 +38,29 @@ const Experience = () => {
       ]
     },
     {
-      title: "Junior QA Analyst",
+      title: "Junior SQA Engineer ",
       company: "Audacity IT Solutions Limited",
       location: "Dhaka, Bangladesh",
       duration: "2020 - 2021",
-      description: "Performed manual and automated testing for various client projects, focusing on functional and regression testing.",
-      achievements: [
-        "• Regularly communicate with stakeholders about requirements and discuss doubts/queries.",
+      //description: "Performed manual and automated testing for various client projects, focusing on functional and regression testing.",
+      responsibilities: [
+        "Regularly communicate with stakeholders about requirements and discuss doubts/queries.",
         "Authored technical documentation (SRS).",
         "Work under the supervision of a Project manager on Small-scale product design.",
         "Validating that client expectations are achieved during the design phase. Worked with Figma and Adobe XD."
+      ]
+    },
+    {
+      title: "Intern SQA Engineer ",
+      company: "Audacity IT Solutions Limited",
+      location: "Dhaka, Bangladesh",
+      duration: "2019 - 2020",
+      //description: "Performed manual and automated testing for various client projects, focusing on functional and regression testing.",
+      responsibilities: [
+        "Requirement collection & analysis.",
+        "Conduct Functional, Integration, Regression, Exploratory, UI/UX, Cross-Browser, and UAT testing",
+        "Bug posting and tracking using JIRA"
+      
       ]
     }
   ];
@@ -106,17 +119,17 @@ const Experience = () => {
                       </div>
                     </div>
 
-                    <p className="text-gray-700 mb-4 leading-relaxed">
+                    {/* <p className="text-gray-700 mb-4 leading-relaxed">
                       {exp.description}
-                    </p>
+                    </p> */}
 
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-2">Key Achievements:</h4>
+                      <h4 className="font-semibold text-gray-900 mb-2">Key Responsibilities:</h4>
                       <ul className="space-y-2">
-                        {exp.achievements.map((achievement, achIndex) => (
+                        {exp.responsibilities.map((responsibilities, achIndex) => (
                           <li key={achIndex} className="flex items-start">
                             <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                            <span className="text-gray-700 text-sm">{achievement}</span>
+                            <span className="text-gray-700 text-sm">{responsibilities}</span>
                           </li>
                         ))}
                       </ul>
