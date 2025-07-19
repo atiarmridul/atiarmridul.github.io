@@ -25,14 +25,14 @@ const Footer = () => {
                   Skills
                 </button>
               </li>
-              <li>
+              {/* <li>
                 <button 
                   onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   Projects
                 </button>
-              </li>
+              </li> */}
               <li>
                 <button 
                   onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
@@ -55,11 +55,12 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Specializations</h4>
             <ul className="space-y-2 text-gray-400">
-              <li>Test Automation</li>
-              <li>Performance Testing</li>
+              <li>Automation Testing</li>
+              <li>Manual Testing</li>
               <li>API Testing</li>
-              <li>Mobile Testing</li>
-              <li>CI/CD Integration</li>
+              <li>Performance Testing</li>
+              <li>Technical Documentation</li>
+              <li>Project Management</li>
             </ul>
           </div>
         </div>
