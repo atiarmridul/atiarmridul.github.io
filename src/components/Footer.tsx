@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-2xl font-bold mb-4">SQA Portfolio</h3>
+            <h3 className="text-2xl font-bold mb-4">Md. Atiar Rahman Chowdhury</h3>
             <p className="text-gray-400 leading-relaxed">
               Dedicated to delivering exceptional software quality through 
               comprehensive testing strategies and automation expertise.
@@ -69,7 +69,7 @@ const Footer = () => {
             Made with <Heart className="text-red-500 mx-2" size={16} /> by a passionate SQA Engineer
           </p>
           <p className="text-gray-500 text-sm mt-2">
-            © 2025 SQA Portfolio. All rights reserved.
+            © 2025 All rights reserved.
           </p>
         </div>
       </div>

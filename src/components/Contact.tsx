@@ -1,47 +1,42 @@
-import React, { useState } from 'react';
-import emailjs from 'emailjs-com';
-import { Mail, Phone, MapPin, Linkedin, Github, Send } from 'lucide-react';
+import { useState, FormEvent, ChangeEvent } from "react";
+import emailjs from "emailjs-com";
+import { Mail, Phone, MapPin, Linkedin, Github, Send } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
-const handleSubmit = (e: React.FormEvent) => {
-  e.preventDefault();
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
- const templateParams = {
-  name: formData.name,
-  email: formData.email,
-  subject: formData.subject,
-  message: formData.message,
-  time: new Date().toLocaleString() // Add this manually
-};
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
 
+    try {
+      await emailjs.send(
+        "service_btdlks9",
+        "template_6g4f9jq",
+        {
+          ...formData,
+          time: new Date().toLocaleString(),
+        },
+        "4pQMNQFnQL-koPcxW"
+      );
 
-  emailjs.send(
-    'service_btdlks9',       // e.g., 'service_123abc'
-    'template_6g4f9jq',      // e.g., 'template_xyz456'
-    templateParams,
-    '4pQMNQFnQL-koPcxW'        // e.g., 'g2H************0R'
-  ).then(() => {
-    alert("✅ Thank you! Your message has been sent.");
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  }).catch((error) => {
-    console.error('EmailJS Error:', error);
-    alert("❌ Failed to send message. Please try again later.");
-  });
-};
-
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+      alert("✅ Thank you! Your message has been sent.");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      alert("❌ Failed to send message. Please try again later.");
+    }
   };
 
   return (
@@ -52,60 +47,67 @@ const handleSubmit = (e: React.FormEvent) => {
             Let's Connect
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to discuss quality assurance strategies or explore collaboration opportunities? 
-            I'd love to hear from you.
+            Ready to discuss quality assurance strategies or explore
+            collaboration opportunities? I'd love to hear from you.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Info */}
           <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-8">Get In Touch</h3>
-            
-            <div className="space-y-6">
-              <div className="flex items-center">
-                <div className="bg-blue-100 p-3 rounded-full mr-4">
-                  <Mail className="text-blue-600" size={24} />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900">Email</h4>
-                  <p className="text-gray-600">atiarmridul@email.com</p>
-                </div>
-              </div>
-
-              <div className="flex items-center">
-                <div className="bg-green-100 p-3 rounded-full mr-4">
-                  <Phone className="text-green-600" size={24} />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900">Phone</h4>
-                  <p className="text-gray-600">+880 1916204614</p>
-                </div>
-              </div>
-
-              <div className="flex items-center">
-                <div className="bg-purple-100 p-3 rounded-full mr-4">
-                  <MapPin className="text-purple-600" size={24} />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900">Location</h4>
-                  <p className="text-gray-600">Dhaka, Bangladesh</p>
-                </div>
-              </div>
-            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-8">
+              Get In Touch
+            </h3>
+            <ul className="space-y-6">
+              {[
+                {
+                  icon: <Mail className="text-blue-600" size={24} />,
+                  label: "Email",
+                  value: "atiarmridul@gmail.com",
+                },
+                {
+                  icon: <Phone className="text-green-600" size={24} />,
+                  label: "Phone",
+                  value: "+880 1916204614",
+                },
+                {
+                  icon: <MapPin className="text-purple-600" size={24} />,
+                  label: "Location",
+                  value: "Dhaka, Bangladesh",
+                },
+              ].map(({ icon, label, value }) => (
+                <li key={label} className="flex items-center">
+                  <div className="bg-gray-100 p-3 rounded-full mr-4">
+                    {icon}
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900">{label}</h4>
+                    <p className="text-gray-600">{value}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
 
             <div className="mt-8">
-              <h4 className="font-semibold text-gray-900 mb-4">Connect with me</h4>
+              <h4 className="font-semibold text-gray-900 mb-4">
+                Connect with me
+              </h4>
               <div className="flex space-x-4">
-                <a 
-                  href="https://www.linkedin.com/in/atiarmridul/" 
-                  className="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-colors duration-200"
+                <a
+                  href="https://www.linkedin.com/in/atiarmridul/"
+                  className="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
                 >
                   <Linkedin size={20} />
                 </a>
-                <a 
-                  href="https://github.com/atiarmridul" 
-                  className="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-900 transition-colors duration-200"
+                <a
+                  href="https://github.com/atiarmridul"
+                  className="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-900 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
                 >
                   <Github size={20} />
                 </a>
@@ -114,80 +116,80 @@ const handleSubmit = (e: React.FormEvent) => {
           </div>
 
           {/* Contact Form */}
-          <div>
-            <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Send Message</h3>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Name
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white rounded-xl shadow-lg p-8 space-y-6"
+          >
+            <h3 className="text-2xl font-bold text-gray-900">Send Message</h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { id: "name", label: "Name", type: "text" },
+                { id: "email", label: "Email", type: "email" },
+              ].map(({ id, label, type }) => (
+                <div key={id}>
+                  <label
+                    htmlFor={id}
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
+                    {label}
                   </label>
+                  <input
+                    type={type}
+                    id={id}
+                    name={id}
+                    value={formData[id as keyof typeof formData]}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {[
+              { id: "subject", label: "Subject" },
+              { id: "message", label: "Message", textarea: true },
+            ].map(({ id, label, textarea }) => (
+              <div key={id}>
+                <label
+                  htmlFor={id}
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  {label}
+                </label>
+                {textarea ? (
+                  <textarea
+                    id={id}
+                    name={id}
+                    rows={6}
+                    value={formData[id as keyof typeof formData]}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
+                  />
+                ) : (
                   <input
                     type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
+                    id={id}
+                    name={id}
+                    value={formData[id as keyof typeof formData]}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                   />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  />
-                </div>
+                )}
               </div>
+            ))}
 
-              <div className="mb-6">
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                />
-              </div>
-
-              <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-blue-800 text-white py-3 px-6 rounded-lg hover:bg-blue-900 transition-all duration-200 flex items-center justify-center space-x-2 font-medium"
-              >
-                <Send size={18} />
-                <span>Send Message</span>
-              </button>
-            </form>
-          </div>
+            <button
+              type="submit"
+              className="w-full bg-blue-800 text-white py-3 px-6 rounded-lg hover:bg-blue-900 transition-colors flex items-center justify-center space-x-2"
+            >
+              <Send size={18} />
+              <span>Send Message</span>
+            </button>
+          </form>
         </div>
       </div>
     </section>

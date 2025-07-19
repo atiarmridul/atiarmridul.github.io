@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Download } from 'lucide-react';
+import { Menu, X} from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,10 +13,10 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleDownloadResume = () => {
-    // In a real app, this would download the actual resume file
-    alert('Resume download would be implemented here');
-  };
+ const handleDownloadResume = () => {
+  window.open('https://flowcv.com/resume/vwl1uu59wg', '_blank');
+};
+
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -70,7 +70,7 @@ const Header = () => {
               onClick={handleDownloadResume}
               className="bg-blue-800 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors duration-200 flex items-center space-x-2"
             >
-              <Download size={18} />
+              
               <span>Resume</span>
             </button>
           </nav>
@@ -122,7 +122,6 @@ const Header = () => {
                 onClick={handleDownloadResume}
                 className="bg-blue-800 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors duration-200 flex items-center space-x-2 w-fit"
               >
-                <Download size={18} />
                 <span>Resume</span>
               </button>
             </div>
