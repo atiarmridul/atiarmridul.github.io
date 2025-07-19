@@ -59,7 +59,6 @@ const Footer = () => {
               <li>Performance Testing</li>
               <li>API Testing</li>
               <li>Mobile Testing</li>
-              <li>Security Testing</li>
               <li>CI/CD Integration</li>
             </ul>
           </div>

@@ -16,8 +16,7 @@ const Hero = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
-            Ensuring quality through comprehensive testing strategies, 
-            automation frameworks, and meticulous attention to detail
+            ISTQB® Certified Software QA Engineer with 6 years of experience ensuring the quality and reliability of web and mobile applications. I focus on thorough manual testing and have successfully reviewed requirements, created test strategies, and executed full testing cycles in Agile environments. I’ve worked closely with developers, designers, and product managers to catch bugs early, improve coverage, and support high-quality releases. Along the way, I’ve gained hands-on experience in automation and API testing and continuously look for ways to grow and add value to every project.
           </p>
           
           <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-12">

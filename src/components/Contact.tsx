@@ -48,7 +48,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">Email</h4>
-                  <p className="text-gray-600">sqa.engineer@email.com</p>
+                  <p className="text-gray-600">atiarmridul@email.com</p>
                 </div>
               </div>
 
@@ -58,7 +58,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">Phone</h4>
-                  <p className="text-gray-600">+1 (555) 123-4567</p>
+                  <p className="text-gray-600">+880 1916204614</p>
                 </div>
               </div>
 
@@ -68,7 +68,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">Location</h4>
-                  <p className="text-gray-600">San Francisco, CA</p>
+                  <p className="text-gray-600">Dhaka, Bangladesh</p>
                 </div>
               </div>
             </div>
@@ -77,13 +77,13 @@ const Contact = () => {
               <h4 className="font-semibold text-gray-900 mb-4">Connect with me</h4>
               <div className="flex space-x-4">
                 <a 
-                  href="#" 
+                  href="https://www.linkedin.com/in/atiarmridul/" 
                   className="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-colors duration-200"
                 >
                   <Linkedin size={20} />
                 </a>
                 <a 
-                  href="#" 
+                  href="https://github.com/atiarmridul" 
                   className="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-900 transition-colors duration-200"
                 >
                   <Github size={20} />
