@@ -42,19 +42,11 @@ const About = () => {
             
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p>
-                With over 6 years of experience in software quality assurance, I've dedicated my career to ensuring that software not only works but excels. My journey began as an intern at Audacity IT Solutions Limited, where I discovered my passion for finding the perfect balance between functionality and user experience.
-              </p>
-              
-              <p>
-                Throughout my career, I've evolved from manual testing to becoming a specialist in test automation, API testing, and performance optimization. I've worked on diverse projects ranging from e-commerce platforms to mobile banking applications, each presenting unique challenges that have shaped my expertise.
+                With over 6 years of experience in software quality assurance, I've evolved from manual testing to specializing in test automation, API testing, and performance optimization across diverse projects from e-commerce platforms to mobile banking applications.
               </p>
               
               <p>
                 What drives me is the satisfaction of delivering bug-free, high-performance software that users can rely on. I believe that quality assurance is not just about finding defects—it's about understanding user needs, collaborating with development teams, and implementing robust testing strategies that prevent issues before they occur.
-              </p>
-              
-              <p>
-                When I'm not testing software, I enjoy exploring new automation frameworks, contributing to the QA community, and mentoring junior testers who are just beginning their journey in quality assurance.
               </p>
             </div>
           </div>
