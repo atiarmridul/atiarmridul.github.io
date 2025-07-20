@@ -1,161 +1,109 @@
-import React from 'react';
-import { GraduationCap, Calendar, MapPin, Award, BookOpen, Star } from 'lucide-react';
+import React from "react";
+import { MapPin, Star } from "lucide-react"; // GraduationCap removed
 
-const educationData = [
+type ColorKey = "blue" | "purple";
+
+type EducationType = {
+  degree: string;
+  institution: string;
+  location: string;
+  duration: string;
+  gpa: string;
+  color: ColorKey;
+};
+
+const colorStyles: Record<ColorKey, Record<string, string>> = {
+  blue: {
+    bg: "bg-blue-50",
+    border: "border-blue-200",
+    icon: "text-blue-600",
+    accent: "bg-blue-600",
+    text: "text-blue-700",
+  },
+  purple: {
+    bg: "bg-purple-50",
+    border: "border-purple-200",
+    icon: "text-purple-600",
+    accent: "bg-purple-600",
+    text: "text-purple-700",
+  },
+};
+
+const educationData: EducationType[] = [
   {
-    degree: 'Bachelor of Science in Computer Science and Engineering',
-    institution: 'Daffodil International University',
-    location: 'Dhaka, Bangladesh',
-    duration: '2016 - 2020',
-    gpa: 'CGPA: 3.42/4.00',
-    description: 'Comprehensive study of computer science fundamentals including software engineering, algorithms, data structures, and database management systems.',
-    highlights: [
-      'Software Engineering & Testing Methodologies',
-      'Database Design & Management',
-      'Web Development & Programming',
-      'Project Management & Team Leadership'
-    ],
-    color: 'blue'
+    degree: "Master of Business Administration (MBA)",
+    institution: "University of Dhaka",
+    location: "Bangladesh",
+    duration: "2018 - 2020",
+    gpa: "CGPA: 3.89 / 4.00",
+    color: "purple",
   },
   {
-    degree: 'Higher Secondary Certificate (HSC)',
-    institution: 'Govt. Shaheed Bulbul College',
-    location: 'Pabna, Bangladesh',
-    duration: '2013 - 2015',
-    gpa: 'GPA: 4.42/5.00',
-    description: 'Science background with focus on Mathematics, Physics, and Chemistry, building strong analytical and problem-solving foundations.',
-    highlights: [
-      'Mathematics & Analytical Thinking',
-      'Physics & Logical Reasoning',
-      'Chemistry & Scientific Method',
-      'Research & Documentation Skills'
-    ],
-    color: 'green'
+    degree: "BSc in Information Technology",
+    institution: "University of Information Technology & Sciences",
+    location: "Bangladesh",
+    duration: "2010 - 2015",
+    gpa: "CGPA: 4.96 / 5.00",
+    color: "blue",
   },
-  {
-    degree: 'Secondary School Certificate (SSC)',
-    institution: 'Pabna Zilla School',
-    location: 'Pabna, Bangladesh',
-    duration: '2011 - 2013',
-    gpa: 'GPA: 5.00/5.00',
-    description: 'Excellent academic performance with perfect GPA, demonstrating strong foundational knowledge and dedication to learning.',
-    highlights: [
-      'Perfect Academic Record',
-      'Strong Foundation in Sciences',
-      'Leadership & Communication Skills',
-      'Time Management & Discipline'
-    ],
-    color: 'purple'
-  }
 ];
 
-const getColorClasses = (color: string) => {
-  const colors = {
-    blue: {
-      bg: 'bg-blue-50',
-      border: 'border-blue-200',
-      icon: 'text-blue-600',
-      accent: 'bg-blue-600',
-      text: 'text-blue-700'
-    },
-    green: {
-      bg: 'bg-green-50',
-      border: 'border-green-200',
-      icon: 'text-green-600',
-      accent: 'bg-green-600',
-      text: 'text-green-700'
-    },
-    purple: {
-      bg: 'bg-purple-50',
-      border: 'border-purple-200',
-      icon: 'text-purple-600',
-      accent: 'bg-purple-600',
-      text: 'text-purple-700'
-    }
-  };
-  return colors[color as keyof typeof colors];
-};
+const EducationCard: React.FC<{ edu: EducationType }> = ({ edu }) => {
+  const colors = colorStyles[edu.color];
 
-const Education = () => {
   return (
-    <section id="education" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Education
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Strong academic foundation in computer science and engineering, complemented by continuous professional development.
-          </p>
-        </div>
+    <div
+      className={`${colors.bg} ${colors.border} border-2 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden w-full md:max-w-[450px] flex-1`}
+    >
+      {/* Decorative corner */}
+      <div
+        aria-hidden="true"
+        className={`absolute top-0 right-0 w-20 h-20 ${colors.accent} opacity-10 rounded-full -mr-10 -mt-10`}
+      />
 
-        {/* Cards Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {educationData.map((edu, index) => {
-            const colors = getColorClasses(edu.color);
-            return (
-              <div
-                key={index}
-                className={`${colors.bg} ${colors.border} border-2 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 transform hover:scale-105 relative overflow-hidden`}
-              >
-                {/* Decorative element */}
-                <div className={`absolute top-0 right-0 w-20 h-20 ${colors.accent} opacity-10 rounded-full -mr-10 -mt-10`}></div>
-                
-                {/* Header */}
-                <div className="flex items-start justify-between mb-4">
-                  <div className={`${colors.accent} p-3 rounded-xl`}>
-                    <GraduationCap className="text-white" size={24} />
-                  </div>
-                  <div className={`${colors.accent} text-white px-3 py-1 rounded-full text-xs font-bold`}>
-                    {edu.gpa.split(': ')[1]}
-                  </div>
-                </div>
+      {/* Degree */}
+      <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center">
+        {edu.degree}
+      </h3>
 
-                {/* Content */}
-                <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight">
-                  {edu.degree}
-                </h3>
-                
-                <p className={`${colors.text} font-semibold mb-3`}>
-                  {edu.institution}
-                </p>
+      {/* Institution */}
+      <p className={`text-lg ${colors.text} font-semibold mb-3 text-center`}>
+        {edu.institution}
+      </p>
 
-                <div className="flex items-center gap-4 mb-4 text-sm text-gray-600">
-                  <span className="flex items-center">
-                    <Calendar size={14} className="mr-1" />
-                    {edu.duration}
-                  </span>
-                  <span className="flex items-center">
-                    <MapPin size={14} className="mr-1" />
-                    {edu.location.split(', ')[0]}
-                  </span>
-                </div>
-
-                <p className="text-gray-700 text-sm mb-4 leading-relaxed">
-                  {edu.description}
-                </p>
-
-                {/* Highlights */}
-                <div className="space-y-2">
-                  {edu.highlights.slice(0, 2).map((highlight, highlightIndex) => (
-                    <div key={highlightIndex} className="flex items-center">
-                      <Star size={12} className={`${colors.icon} mr-2 flex-shrink-0`} />
-                      <span className="text-gray-700 text-xs">{highlight}</span>
-                    </div>
-                  ))}
-                  {edu.highlights.length > 2 && (
-                    <div className="text-xs text-gray-500 mt-2">
-                      +{edu.highlights.length - 2} more areas
-                    </div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
+      {/* Location and CGPA (separate lines) */}
+      <div className="flex flex-col items-center gap-2 text-lg text-gray-600 mb-2">
+        <span className="flex items-center">
+          <MapPin size={20} className="mr-2" />
+          {edu.location}
+        </span>
+        <span className="flex items-center">
+          <Star size={20} className="mr-2" />
+          {edu.gpa}
+        </span>
       </div>
-    </section>
+    </div>
   );
 };
+
+const Education: React.FC = () => (
+  <section id="education" className="py-20 bg-gray-50">
+    <div className="max-w-7xl mx-auto px-6 text-center">
+      <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Education
+      </h2>
+      <p className="text-[1.25rem] text-gray-600 max-w-3xl mx-auto mb-16">
+        Strong academic foundation in computer science and engineering,
+        complemented by continuous professional development.
+      </p>
+
+      <div className="flex flex-col md:flex-row md:flex-wrap justify-center items-start gap-8">
+        {educationData.map((edu, i) => (
+          <EducationCard key={i} edu={edu} />
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
 export default Education;
