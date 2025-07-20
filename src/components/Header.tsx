@@ -62,23 +62,28 @@ const Header = () => {
               Projects
             </button> */}
             <button
-              onClick={() => scrollToSection("education")}
+              onClick={() => scrollToSection("experience")}
               className="text-gray-700 hover:text-blue-800 transition-colors duration-200"
             >
               Experience
             </button>
             <button
-              onClick={() => scrollToSection("contact")}
+              onClick={() => scrollToSection("education")}
               className="text-gray-700 hover:text-blue-800 transition-colors duration-200"
             >
               Education
             </button>
+
+ 
+
             <button
-              onClick={() => scrollToSection("experience")}
+              onClick={() => scrollToSection("contact")}
               className="text-gray-700 hover:text-blue-800 transition-colors duration-200"
             >
               Contact
             </button>
+
+            
             <button
               onClick={handleDownloadResume}
               className="bg-blue-800 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors duration-200 flex items-center space-x-2"

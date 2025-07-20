@@ -68,7 +68,7 @@ const Footer = () => {
                 <button
                   onClick={() =>
                     document
-                      .getElementById("contact")
+                      .getElementById("education")
                       ?.scrollIntoView({ behavior: "smooth" })
                   }
                   className="text-gray-400 hover:text-white transition-colors duration-200"
@@ -80,7 +80,7 @@ const Footer = () => {
                 <button
                   onClick={() =>
                     document
-                      .getElementById("experience")
+                      .getElementById("contact")
                       ?.scrollIntoView({ behavior: "smooth" })
                   }
                   className="text-gray-400 hover:text-white transition-colors duration-200"
