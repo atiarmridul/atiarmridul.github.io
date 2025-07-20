@@ -153,44 +153,6 @@ const Education = () => {
             );
           })}
         </div>
-
-        {/* Academic Journey Summary */}
-        <div className="bg-white rounded-2xl shadow-lg p-8">
-          <div className="text-center mb-8">
-            <BookOpen className="text-blue-600 mx-auto mb-4" size={48} />
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">Academic Journey</h3>
-            <p className="text-gray-600">A progressive path of learning and excellence</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="text-purple-600" size={24} />
-              </div>
-              <h4 className="font-bold text-gray-900 mb-2">Foundation</h4>
-              <p className="text-sm text-gray-600">Perfect SSC score establishing strong academic foundation</p>
-              <div className="text-2xl font-bold text-purple-600 mt-2">5.00/5.00</div>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <BookOpen className="text-green-600" size={24} />
-              </div>
-              <h4 className="font-bold text-gray-900 mb-2">Specialization</h4>
-              <p className="text-sm text-gray-600">Science focus with excellent performance in HSC</p>
-              <div className="text-2xl font-bold text-green-600 mt-2">4.42/5.00</div>
-            </div>
-
-            <div className="text-center">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <GraduationCap className="text-blue-600" size={24} />
-              </div>
-              <h4 className="font-bold text-gray-900 mb-2">Expertise</h4>
-              <p className="text-sm text-gray-600">Computer Science degree with strong technical skills</p>
-              <div className="text-2xl font-bold text-blue-600 mt-2">3.42/4.00</div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
