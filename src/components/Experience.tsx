@@ -123,20 +123,6 @@ const Experience = () => (
           ))}
         </ul>
       </div>
-
-      <section className="mt-16 text-center">
-        <div className="bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl p-8 text-white">
-          <h3 className="text-2xl font-bold mb-4">Career Highlights</h3>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {highlights.map(({ label, value }) => (
-              <div key={label}>
-                <div className="text-3xl font-bold mb-2">{value}</div>
-                <p className="text-sm opacity-90">{label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   </section>
 );
