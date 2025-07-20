@@ -90,15 +90,19 @@ const About = () => {
               <div className="text-3xl font-bold mb-2">20+</div>
               <p className="text-sm opacity-90">Projects Delivered</p>
             </div>
-            <div className="text-3xl font-bold mb-2">2000+</div>
-            <p className="text-sm opacity-90">Bugs Identified & Resolved</p>
+            <div>
+              <div className="text-3xl font-bold mb-2">2000+</div>
+              <p className="text-sm opacity-90">Bugs Identified & Resolved</p>
+            </div>
             <div>
               <div className="text-3xl font-bold mb-2">99.9%</div>
               <p className="text-sm opacity-90">Quality Standard</p>
             </div>
           </div>
         </div>
-
+      </div>
+    </section>
+  );
 };
 
 export default About;
