@@ -1,5 +1,5 @@
 import React from 'react';
-import { GraduationCap, Calendar, MapPin, Award } from 'lucide-react';
+import { GraduationCap, Calendar, MapPin, Award, BookOpen, Star } from 'lucide-react';
 
 const educationData = [
   {
@@ -14,7 +14,8 @@ const educationData = [
       'Database Design & Management',
       'Web Development & Programming',
       'Project Management & Team Leadership'
-    ]
+    ],
+    color: 'blue'
   },
   {
     degree: 'Higher Secondary Certificate (HSC)',
@@ -28,7 +29,8 @@ const educationData = [
       'Physics & Logical Reasoning',
       'Chemistry & Scientific Method',
       'Research & Documentation Skills'
-    ]
+    ],
+    color: 'green'
   },
   {
     degree: 'Secondary School Certificate (SSC)',
@@ -42,13 +44,41 @@ const educationData = [
       'Strong Foundation in Sciences',
       'Leadership & Communication Skills',
       'Time Management & Discipline'
-    ]
+    ],
+    color: 'purple'
   }
 ];
 
+const getColorClasses = (color: string) => {
+  const colors = {
+    blue: {
+      bg: 'bg-blue-50',
+      border: 'border-blue-200',
+      icon: 'text-blue-600',
+      accent: 'bg-blue-600',
+      text: 'text-blue-700'
+    },
+    green: {
+      bg: 'bg-green-50',
+      border: 'border-green-200',
+      icon: 'text-green-600',
+      accent: 'bg-green-600',
+      text: 'text-green-700'
+    },
+    purple: {
+      bg: 'bg-purple-50',
+      border: 'border-purple-200',
+      icon: 'text-purple-600',
+      accent: 'bg-purple-600',
+      text: 'text-purple-700'
+    }
+  };
+  return colors[color as keyof typeof colors];
+};
+
 const Education = () => {
   return (
-    <section id="education" className="py-20 bg-white">
+    <section id="education" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -59,100 +89,105 @@ const Education = () => {
           </p>
         </div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-blue-200" />
-
-          <div className="space-y-12">
-            {educationData.map((edu, index) => (
+        {/* Cards Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {educationData.map((edu, index) => {
+            const colors = getColorClasses(edu.color);
+            return (
               <div
                 key={index}
-                className={`relative flex items-center ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                } flex-col md:space-x-8`}
+                className={`${colors.bg} ${colors.border} border-2 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 transform hover:scale-105 relative overflow-hidden`}
               >
-                {/* Timeline dot */}
-                <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg" />
-
-                {/* Content */}
-                <div className={`w-full md:w-1/2 ml-12 md:ml-0 ${
-                  index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'
-                }`}>
-                  <div className="bg-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex items-center">
-                        <GraduationCap className="text-blue-600 mr-3" size={24} />
-                        <div>
-                          <h3 className="text-xl font-bold text-gray-900 leading-tight">
-                            {edu.degree}
-                          </h3>
-                          <p className="text-blue-600 font-semibold mt-1">
-                            {edu.institution}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-wrap items-center gap-4 mb-4 text-sm text-gray-600">
-                      <span className="flex items-center">
-                        <Calendar size={16} className="mr-1" />
-                        {edu.duration}
-                      </span>
-                      <span className="flex items-center">
-                        <MapPin size={16} className="mr-1" />
-                        {edu.location}
-                      </span>
-                      <span className="flex items-center">
-                        <Award size={16} className="mr-1" />
-                        {edu.gpa}
-                      </span>
-                    </div>
-
-                    <p className="text-gray-700 mb-4 leading-relaxed">
-                      {edu.description}
-                    </p>
-
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-3">Key Areas:</h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                        {edu.highlights.map((highlight, highlightIndex) => (
-                          <div key={highlightIndex} className="flex items-center">
-                            <div className="w-2 h-2 bg-green-500 rounded-full mr-3 flex-shrink-0" />
-                            <span className="text-gray-700 text-sm">{highlight}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                {/* Decorative element */}
+                <div className={`absolute top-0 right-0 w-20 h-20 ${colors.accent} opacity-10 rounded-full -mr-10 -mt-10`}></div>
+                
+                {/* Header */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className={`${colors.accent} p-3 rounded-xl`}>
+                    <GraduationCap className="text-white" size={24} />
+                  </div>
+                  <div className={`${colors.accent} text-white px-3 py-1 rounded-full text-xs font-bold`}>
+                    {edu.gpa.split(': ')[1]}
                   </div>
                 </div>
 
-                {/* Empty space for alternating layout */}
-                <div className="hidden md:block w-1/2" />
+                {/* Content */}
+                <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight">
+                  {edu.degree}
+                </h3>
+                
+                <p className={`${colors.text} font-semibold mb-3`}>
+                  {edu.institution}
+                </p>
+
+                <div className="flex items-center gap-4 mb-4 text-sm text-gray-600">
+                  <span className="flex items-center">
+                    <Calendar size={14} className="mr-1" />
+                    {edu.duration}
+                  </span>
+                  <span className="flex items-center">
+                    <MapPin size={14} className="mr-1" />
+                    {edu.location.split(', ')[0]}
+                  </span>
+                </div>
+
+                <p className="text-gray-700 text-sm mb-4 leading-relaxed">
+                  {edu.description}
+                </p>
+
+                {/* Highlights */}
+                <div className="space-y-2">
+                  {edu.highlights.slice(0, 2).map((highlight, highlightIndex) => (
+                    <div key={highlightIndex} className="flex items-center">
+                      <Star size={12} className={`${colors.icon} mr-2 flex-shrink-0`} />
+                      <span className="text-gray-700 text-xs">{highlight}</span>
+                    </div>
+                  ))}
+                  {edu.highlights.length > 2 && (
+                    <div className="text-xs text-gray-500 mt-2">
+                      +{edu.highlights.length - 2} more areas
+                    </div>
+                  )}
+                </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
 
-        {/* Academic Excellence Section */}
-        <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl p-8 text-white">
-            <h3 className="text-2xl font-bold mb-4">Academic Excellence</h3>
-            <p className="text-lg mb-6 opacity-90">
-              Consistent high performance throughout academic career, demonstrating dedication to learning and excellence.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div>
-                <div className="text-3xl font-bold mb-2">3.42/4.00</div>
-                <p className="text-sm opacity-90">University CGPA</p>
+        {/* Academic Journey Summary */}
+        <div className="bg-white rounded-2xl shadow-lg p-8">
+          <div className="text-center mb-8">
+            <BookOpen className="text-blue-600 mx-auto mb-4" size={48} />
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">Academic Journey</h3>
+            <p className="text-gray-600">A progressive path of learning and excellence</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Award className="text-purple-600" size={24} />
               </div>
-              <div>
-                <div className="text-3xl font-bold mb-2">4.42/5.00</div>
-                <p className="text-sm opacity-90">HSC GPA</p>
+              <h4 className="font-bold text-gray-900 mb-2">Foundation</h4>
+              <p className="text-sm text-gray-600">Perfect SSC score establishing strong academic foundation</p>
+              <div className="text-2xl font-bold text-purple-600 mt-2">5.00/5.00</div>
+            </div>
+
+            <div className="text-center">
+              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BookOpen className="text-green-600" size={24} />
               </div>
-              <div>
-                <div className="text-3xl font-bold mb-2">5.00/5.00</div>
-                <p className="text-sm opacity-90">SSC GPA (Perfect Score)</p>
+              <h4 className="font-bold text-gray-900 mb-2">Specialization</h4>
+              <p className="text-sm text-gray-600">Science focus with excellent performance in HSC</p>
+              <div className="text-2xl font-bold text-green-600 mt-2">4.42/5.00</div>
+            </div>
+
+            <div className="text-center">
+              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <GraduationCap className="text-blue-600" size={24} />
               </div>
+              <h4 className="font-bold text-gray-900 mb-2">Expertise</h4>
+              <p className="text-sm text-gray-600">Computer Science degree with strong technical skills</p>
+              <div className="text-2xl font-bold text-blue-600 mt-2">3.42/4.00</div>
             </div>
           </div>
         </div>
