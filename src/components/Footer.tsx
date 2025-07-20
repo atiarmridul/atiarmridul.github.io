@@ -19,6 +19,14 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <button 
+                  onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  About
+                </button>
+              </li>
+              <li>
+                <button 
                   onClick={() => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' })}
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
@@ -33,6 +41,14 @@ const Footer = () => {
                   Projects
                 </button>
               </li> */}
+              <li>
+                <button 
+                  onClick={() => document.getElementById('education')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  Education
+                </button>
+              </li>
               <li>
                 <button 
                   onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}

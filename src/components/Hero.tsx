@@ -3,7 +3,7 @@ import { ChevronDown, Shield, Target, CheckCircle } from 'lucide-react';
 
 const Hero = () => {
   const scrollToNext = () => {
-    const element = document.getElementById('skills');
+    const element = document.getElementById('about');
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 

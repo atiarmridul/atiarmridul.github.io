@@ -43,6 +43,12 @@ const Header = () => {
               Home
             </button>
             <button 
+              onClick={() => scrollToSection('about')}
+              className="text-gray-700 hover:text-blue-800 transition-colors duration-200"
+            >
+              About
+            </button>
+            <button 
               onClick={() => scrollToSection('skills')}
               className="text-gray-700 hover:text-blue-800 transition-colors duration-200"
             >
@@ -54,6 +60,12 @@ const Header = () => {
             >
               Projects
             </button> */}
+            <button 
+              onClick={() => scrollToSection('education')}
+              className="text-gray-700 hover:text-blue-800 transition-colors duration-200"
+            >
+              Education
+            </button>
             <button 
               onClick={() => scrollToSection('experience')}
               className="text-gray-700 hover:text-blue-800 transition-colors duration-200"
@@ -95,6 +107,12 @@ const Header = () => {
                 Home
               </button>
               <button 
+                onClick={() => scrollToSection('about')}
+                className="text-gray-700 hover:text-blue-800 transition-colors duration-200 text-left"
+              >
+                About
+              </button>
+              <button 
                 onClick={() => scrollToSection('skills')}
                 className="text-gray-700 hover:text-blue-800 transition-colors duration-200 text-left"
               >
@@ -106,6 +124,12 @@ const Header = () => {
               >
                 Projects
               </button> */}
+              <button 
+                onClick={() => scrollToSection('education')}
+                className="text-gray-700 hover:text-blue-800 transition-colors duration-200 text-left"
+              >
+                Education
+              </button>
               <button 
                 onClick={() => scrollToSection('experience')}
                 className="text-gray-700 hover:text-blue-800 transition-colors duration-200 text-left"
