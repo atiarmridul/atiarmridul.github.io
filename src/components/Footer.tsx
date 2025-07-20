@@ -1,5 +1,5 @@
-import React from 'react';
-import { Heart } from 'lucide-react';
+import React from "react";
+import { Heart } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -7,9 +7,11 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="text-2xl font-bold mb-4">Md. Atiar Rahman Chowdhury</h3>
+            <h3 className="text-2xl font-bold mb-4">
+              Md. Atiar Rahman Chowdhury
+            </h3>
             <p className="text-gray-400 leading-relaxed">
-              Dedicated to delivering exceptional software quality through 
+              Dedicated to delivering exceptional software quality through
               comprehensive testing strategies and automation expertise.
             </p>
           </div>
@@ -18,16 +20,24 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <button 
-                  onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+                <button
+                  onClick={() =>
+                    document
+                      .getElementById("about")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   About
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' })}
+                <button
+                  onClick={() =>
+                    document
+                      .getElementById("skills")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   Skills
@@ -41,25 +51,38 @@ const Footer = () => {
                   Projects
                 </button>
               </li> */}
+
               <li>
-                <button 
-                  onClick={() => document.getElementById('education')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="text-gray-400 hover:text-white transition-colors duration-200"
-                >
-                  Education
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
+                <button
+                  onClick={() =>
+                    document
+                      .getElementById("experience")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   Experience
                 </button>
               </li>
               <li>
-                <button 
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                <button
+                  onClick={() =>
+                    document
+                      .getElementById("contact")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  Education
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() =>
+                    document
+                      .getElementById("experience")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   Contact
@@ -83,7 +106,8 @@ const Footer = () => {
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center">
           <p className="text-gray-400 flex items-center justify-center">
-            Made with <Heart className="text-red-500 mx-2" size={16} /> by a passionate SQA Engineer
+            Made with <Heart className="text-red-500 mx-2" size={16} /> by a
+            passionate SQA Engineer
           </p>
           <p className="text-gray-500 text-sm mt-2">
             © 2025 All rights reserved.

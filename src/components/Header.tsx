@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X} from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,25 +9,26 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
- const handleDownloadResume = () => {
-  window.open('https://flowcv.com/resume/vwl1uu59wg', '_blank');
-};
-
+  const handleDownloadResume = () => {
+    window.open("https://flowcv.com/resume/vwl1uu59wg", "_blank");
+  };
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: 'smooth' });
+    element?.scrollIntoView({ behavior: "smooth" });
     setIsMenuOpen(false);
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white shadow-lg backdrop-blur-sm' : 'bg-transparent'
-    }`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white shadow-lg backdrop-blur-sm" : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="text-2xl font-bold text-blue-800">
@@ -36,20 +37,20 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => scrollToSection('hero')}
+            <button
+              onClick={() => scrollToSection("hero")}
               className="text-gray-700 hover:text-blue-800 transition-colors duration-200"
             >
               Home
             </button>
-            <button 
-              onClick={() => scrollToSection('about')}
+            <button
+              onClick={() => scrollToSection("about")}
               className="text-gray-700 hover:text-blue-800 transition-colors duration-200"
             >
               About
             </button>
-            <button 
-              onClick={() => scrollToSection('skills')}
+            <button
+              onClick={() => scrollToSection("skills")}
               className="text-gray-700 hover:text-blue-800 transition-colors duration-200"
             >
               Skills
@@ -60,20 +61,20 @@ const Header = () => {
             >
               Projects
             </button> */}
-            <button 
-              onClick={() => scrollToSection('education')}
-              className="text-gray-700 hover:text-blue-800 transition-colors duration-200"
-            >
-              Education
-            </button>
-            <button 
-              onClick={() => scrollToSection('experience')}
+            <button
+              onClick={() => scrollToSection("education")}
               className="text-gray-700 hover:text-blue-800 transition-colors duration-200"
             >
               Experience
             </button>
-            <button 
-              onClick={() => scrollToSection('contact')}
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="text-gray-700 hover:text-blue-800 transition-colors duration-200"
+            >
+              Education
+            </button>
+            <button
+              onClick={() => scrollToSection("experience")}
               className="text-gray-700 hover:text-blue-800 transition-colors duration-200"
             >
               Contact
@@ -82,7 +83,6 @@ const Header = () => {
               onClick={handleDownloadResume}
               className="bg-blue-800 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors duration-200 flex items-center space-x-2"
             >
-              
               <span>Resume</span>
             </button>
           </nav>
@@ -100,20 +100,20 @@ const Header = () => {
         {isMenuOpen && (
           <nav className="md:hidden mt-4 pb-4">
             <div className="flex flex-col space-y-4">
-              <button 
-                onClick={() => scrollToSection('hero')}
+              <button
+                onClick={() => scrollToSection("hero")}
                 className="text-gray-700 hover:text-blue-800 transition-colors duration-200 text-left"
               >
                 Home
               </button>
-              <button 
-                onClick={() => scrollToSection('about')}
+              <button
+                onClick={() => scrollToSection("about")}
                 className="text-gray-700 hover:text-blue-800 transition-colors duration-200 text-left"
               >
                 About
               </button>
-              <button 
-                onClick={() => scrollToSection('skills')}
+              <button
+                onClick={() => scrollToSection("skills")}
                 className="text-gray-700 hover:text-blue-800 transition-colors duration-200 text-left"
               >
                 Skills
@@ -124,20 +124,20 @@ const Header = () => {
               >
                 Projects
               </button> */}
-              <button 
-                onClick={() => scrollToSection('education')}
+              <button
+                onClick={() => scrollToSection("education")}
                 className="text-gray-700 hover:text-blue-800 transition-colors duration-200 text-left"
               >
                 Education
               </button>
-              <button 
-                onClick={() => scrollToSection('experience')}
+              <button
+                onClick={() => scrollToSection("experience")}
                 className="text-gray-700 hover:text-blue-800 transition-colors duration-200 text-left"
               >
                 Experience
               </button>
-              <button 
-                onClick={() => scrollToSection('contact')}
+              <button
+                onClick={() => scrollToSection("contact")}
                 className="text-gray-700 hover:text-blue-800 transition-colors duration-200 text-left"
               >
                 Contact
