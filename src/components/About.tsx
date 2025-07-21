@@ -53,9 +53,9 @@ const About = () => {
             </div>
 
             <p className="text-gray-700 leading-relaxed text-justify tracking-wide mb-4">
-              ISTQB® Certified Software QA Engineer with 6+ years of experience
-              in testing web and mobile applications. I specialize in both
-              manual and automation testing, with a focus on early bug
+              I am an ISTQB® Certified Software QA Engineer with 6+ years of
+              experience testing web and mobile applications. I specialize in
+              both manual and automated testing, with a focus on early bug
               detection, API validation, and full-cycle test coverage.
             </p>
 
