@@ -55,6 +55,12 @@ const Header = () => {
             >
               Skills
             </button>
+            <button
+              onClick={() => scrollToSection("domains")}
+              className="text-gray-700 hover:text-blue-800 transition-colors duration-200"
+            >
+              Domains
+            </button>
             {/* <button 
               onClick={() => scrollToSection('projects')}
               className="text-gray-700 hover:text-blue-800 transition-colors duration-200"
@@ -122,6 +128,12 @@ const Header = () => {
                 className="text-gray-700 hover:text-blue-800 transition-colors duration-200 text-left"
               >
                 Skills
+              </button>
+              <button
+                onClick={() => scrollToSection("domains")}
+                className="text-gray-700 hover:text-blue-800 transition-colors duration-200 text-left"
+              >
+                Domains
               </button>
               {/* <button 
                 onClick={() => scrollToSection('projects')}
