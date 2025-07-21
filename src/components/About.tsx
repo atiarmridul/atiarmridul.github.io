@@ -1,4 +1,3 @@
-import React from "react";
 import { User, Target, Award, Heart, Gem } from "lucide-react";
 
 const values = [
