@@ -56,7 +56,7 @@ const Hero = () => {
               }
               className="bg-blue-800 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg hover:bg-blue-900 transition-all duration-200 transform hover:scale-105 font-medium text-sm sm:text-base"
             >
-              View My Work Experience
+              My Work Experience
             </button>
             <button
               onClick={() =>
