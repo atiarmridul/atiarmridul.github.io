@@ -53,27 +53,26 @@ const About = () => {
             </div>
 
             <p className="text-gray-700 leading-relaxed text-justify tracking-wide mb-4">
-              I'm an ISTQB® Certified Software QA Engineer with 6+ years of
-              experience in ensuring the functionality, performance, and quality
-              of web and mobile applications. I specialize in both manual and
-              automation testing, with a strong focus on early bug detection,
-              API validation, and full-cycle test coverage.
+              ISTQB® Certified Software QA Engineer with 6+ years of experience
+              in testing web and mobile applications. I specialize in both
+              manual and automation testing, with a focus on early bug
+              detection, API validation, and full-cycle test coverage.
             </p>
 
             <p className="text-gray-700 leading-relaxed text-justify tracking-wide mb-4">
-              I've worked closely with cross-functional Agile teams — including
-              developers, designers, DevOps, and product managers — to plan,
-              execute, and improve testing strategies that support high-quality,
+              I collaborate closely with cross-functional Agile teams —
+              including developers, designers, DevOps, and product managers — to
+              design and implement testing strategies that ensure high-quality,
               timely releases. My toolkit includes Postman, Selenium, and CI/CD
-              pipelines to accelerate feedback and improve efficiency.
+              pipelines to accelerate feedback and drive efficiency.
             </p>
 
             <p className="text-gray-700 leading-relaxed text-justify tracking-wide">
-              I approach QA as a mindset, not just a phase — blending curiosity,
-              clarity, and collaboration to enhance every stage of the software
-              development process. Whether it's test design, automation, or
-              mentoring, I aim to bring value with a user-first perspective and
-              a continuous learning attitude.
+              I see QA as a mindset, not just a phase — combining curiosity,
+              clarity, and collaboration to improve every stage of the
+              development lifecycle. From test design to automation and
+              mentoring, I bring a user-first approach and a commitment to
+              continuous learning.
             </p>
           </article>
 
@@ -117,7 +116,7 @@ const About = () => {
         </div>
 
         {/* Stats Section */}
-        <section className="mt-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
+        {/* <section className="mt-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             {[
               { label: "Years of Experience", value: "6+" },
@@ -131,7 +130,7 @@ const About = () => {
               </div>
             ))}
           </div>
-        </section>
+        </section> */}
       </div>
     </section>
   );
