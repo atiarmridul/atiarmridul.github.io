@@ -3,7 +3,7 @@ import {
   Building2, 
   ShoppingCart, 
   Smartphone, 
-  CreditCard, 
+  // CreditCard, 
   GraduationCap, 
   Heart,
   Truck,
@@ -12,46 +12,46 @@ import {
 
 const domains = [
   {
-    icon: <CreditCard className="text-blue-600" size={32} />,
-    title: 'FinTech & Banking',
+    icon: <Smartphone className="text-blue-600" size={32} />,
+    title: 'Telco',
     description: 'Mobile banking applications, payment gateways, and financial transaction systems with focus on security and compliance testing.',
     projects: ['Mobile Banking App', 'Payment Processing System', 'Digital Wallet Platform'],
-    keyAspects: ['Security Testing', 'PCI DSS Compliance', 'Transaction Validation', 'Multi-factor Authentication']
+    // keyAspects: ['Security Testing', 'PCI DSS Compliance', 'Transaction Validation', 'Multi-factor Authentication']
   },
   {
     icon: <ShoppingCart className="text-green-600" size={32} />,
     title: 'E-commerce & Retail',
     description: 'Online shopping platforms, inventory management systems, and customer-facing retail applications.',
     projects: ['E-commerce Platform', 'Inventory Management', 'Customer Portal'],
-    keyAspects: ['Payment Integration', 'Cart Functionality', 'Order Management', 'User Experience Testing']
+    // keyAspects: ['Payment Integration', 'Cart Functionality', 'Order Management', 'User Experience Testing']
   },
   {
     icon: <Heart className="text-red-600" size={32} />,
     title: 'Healthcare & Medical',
     description: 'Healthcare management systems, patient portals, and medical device software with HIPAA compliance focus.',
     projects: ['Patient Management System', 'Medical Records Platform', 'Telemedicine App'],
-    keyAspects: ['HIPAA Compliance', 'Data Privacy', 'Patient Safety', 'Medical Device Testing']
+    // keyAspects: ['HIPAA Compliance', 'Data Privacy', 'Patient Safety', 'Medical Device Testing']
   },
   {
     icon: <GraduationCap className="text-purple-600" size={32} />,
     title: 'Education & E-learning',
     description: 'Learning management systems, online course platforms, and educational mobile applications.',
     projects: ['LMS Platform', 'Online Course System', 'Student Portal'],
-    keyAspects: ['User Accessibility', 'Content Management', 'Assessment Tools', 'Multi-device Support']
+    // keyAspects: ['User Accessibility', 'Content Management', 'Assessment Tools', 'Multi-device Support']
   },
   {
     icon: <Truck className="text-orange-600" size={32} />,
     title: 'Logistics & Supply Chain',
     description: 'Transportation management, warehouse systems, and supply chain optimization platforms.',
     projects: ['Fleet Management', 'Warehouse System', 'Delivery Tracking'],
-    keyAspects: ['Real-time Tracking', 'Route Optimization', 'Inventory Control', 'GPS Integration']
+    // keyAspects: ['Real-time Tracking', 'Route Optimization', 'Inventory Control', 'GPS Integration']
   },
   {
     icon: <Building2 className="text-indigo-600" size={32} />,
     title: 'Enterprise & SaaS',
     description: 'Business management software, CRM systems, and enterprise-level SaaS applications.',
     projects: ['CRM Platform', 'Project Management Tool', 'Business Analytics'],
-    keyAspects: ['Scalability Testing', 'API Integration', 'Multi-tenant Architecture', 'Performance Optimization']
+    // keyAspects: ['Scalability Testing', 'API Integration', 'Multi-tenant Architecture', 'Performance Optimization']
   }
 ];
 
@@ -101,7 +101,7 @@ const Domains = () => {
                 </ul>
               </div>
 
-              <div>
+              {/* <div>
                 <h4 className="font-semibold text-gray-900 mb-3">Key Testing Focus:</h4>
                 <div className="flex flex-wrap gap-2">
                   {domain.keyAspects.map((aspect, aspectIndex) => (
@@ -113,7 +113,7 @@ const Domains = () => {
                     </span>
                   ))}
                 </div>
-              </div>
+              </div> */}
             </article>
           ))}
         </div>
