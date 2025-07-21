@@ -16,7 +16,7 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto">
           {/* Headline */}
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
-            Precision. <span className="text-blue-800">Quality</span>. Collaboration
+            Precision.<span className="text-blue-800">Quality.</span>Collaboration.
           </h1>
 
           {/* Subtitle */}
