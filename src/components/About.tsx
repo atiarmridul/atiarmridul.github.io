@@ -115,7 +115,7 @@ const About = () => {
         </div>
 
         {/* Stats Section */}
-        {/* <section className="mt-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
+        <section className="mt-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             {[
               { label: "Years of Experience", value: "6+" },
@@ -129,7 +129,7 @@ const About = () => {
               </div>
             ))}
           </div>
-        </section> */}
+        </section>
       </div>
     </section>
   );

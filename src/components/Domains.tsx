@@ -119,7 +119,7 @@ const Domains = () => {
         </div>
 
         {/* Summary Stats */}
-        <section className="mt-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
+        {/* <section className="mt-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-8 text-white">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold mb-2">Cross-Domain Impact</h3>
             <p className="text-blue-100">
@@ -140,7 +140,7 @@ const Domains = () => {
               </div>
             ))}
           </div>
-        </section>
+        </section> */}
       </div>
     </section>
   );
