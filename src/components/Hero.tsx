@@ -10,7 +10,8 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center pt-20 sm:pt-28 pb-20 sm:pb-28"
+      className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center pt-32 sm:pt-44
+ pb-20 sm:pb-28"
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 text-center">
         <div className="max-w-4xl mx-auto">
