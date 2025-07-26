@@ -58,12 +58,6 @@ const experiences = [
   }
 ];
 
-const highlights = [
-  { label: 'Years Experience', value: '6+' },
-  { label: 'Projects Completed', value: '20+' },
-  { label: 'Bugs Found & Fixed', value: '2000+' },
-  { label: 'Quality Standard', value: '99.9%' }
-];
 
 const Experience = () => (
   <section id="experience" className="py-20 bg-white">

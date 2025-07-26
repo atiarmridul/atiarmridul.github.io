@@ -1,5 +1,7 @@
 import React from "react";
-import { MapPin, Star } from "lucide-react"; // GraduationCap removed
+import { MapPin} from "lucide-react"; 
+// import { Star } from "lucide-react"; 
+
 
 type ColorKey = "blue" | "purple";
 
@@ -8,7 +10,7 @@ type EducationType = {
   institution: string;
   location: string;
   duration: string;
-  gpa: string;
+  // gpa: string;
   color: ColorKey;
 };
 
@@ -35,7 +37,7 @@ const educationData: EducationType[] = [
     institution: "University of Dhaka",
     location: "Bangladesh",
     duration: "2018 - 2020",
-    gpa: "CGPA: 3.89 / 4.00",
+    // gpa: "CGPA: 3.89 / 4.00",
     color: "purple",
   },
   {
@@ -43,7 +45,7 @@ const educationData: EducationType[] = [
     institution: "University of Information Technology & Sciences",
     location: "Bangladesh",
     duration: "2010 - 2015",
-    gpa: "CGPA: 4.96 / 5.00",
+    // gpa: "CGPA: 3.96 / 4.00",
     color: "blue",
   },
 ];
@@ -77,10 +79,10 @@ const EducationCard: React.FC<{ edu: EducationType }> = ({ edu }) => {
           <MapPin size={20} className="mr-2" />
           {edu.location}
         </span>
-        <span className="flex items-center">
+        {/* <span className="flex items-center">
           <Star size={20} className="mr-2" />
           {edu.gpa}
-        </span>
+        </span> */}
       </div>
     </div>
   );

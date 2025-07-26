@@ -44,7 +44,7 @@ const Footer = () => {
                 </button>
               </li>
               <li>
-                <button
+                {/* <button
                   onClick={() =>
                     document
                       .getElementById("domains")
@@ -53,7 +53,7 @@ const Footer = () => {
                   className="text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   Domains
-                </button>
+                </button> */}
               </li>
               {/* <li>
                 <button 
