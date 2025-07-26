@@ -8,7 +8,7 @@ const experiences = [
     duration: '2024 - Present',
     responsibilities: [
       'Conducted detailed requirement analysis and story reviews to understand feature scope before test case design.',
-      'Develop and maintain well-structured test cases, collaborating with product managers and developers to refine them and improve test planning.',
+      'Develop and maintain well-structured test cases, collaborating with product owners to refine them and improve test planning.',
       'Conducted functional, integration, regression, UI/UX, and UAT testing.',
       'Perform API testing to validate backend services.',
       'Debugged and identified issues using Kibana logs, improving test accuracy and system reliability.',
