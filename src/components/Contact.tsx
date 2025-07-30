@@ -1,6 +1,14 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 import emailjs from "emailjs-com";
-import { Mail, Phone, MapPin, Linkedin, Github, Send } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Linkedin,
+  Github,
+  Send,
+  MessageCircle,
+} from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +16,7 @@ const Contact = () => {
     email: "",
     subject: "",
     message: "",
+    robotField: "", // Honeypot field
   });
 
   const handleChange = (
@@ -20,19 +29,50 @@ const Contact = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
+    // ✋ Bot detected via honeypot
+    if (formData.robotField !== "") {
+      console.warn("Spam detected. Submission blocked.");
+      return;
+    }
+
+    // Sanitize input to prevent injection
+    const sanitize = (text: string) =>
+      text.replace(/</g, "&lt;").replace(/>/g, "&gt;").trim();
+
+    const name = sanitize(formData.name);
+    const email = formData.email.trim();
+    const subject = sanitize(formData.subject);
+    const message = sanitize(formData.message);
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("❌ Please enter a valid email address.");
+      return;
+    }
+
+    // Check for empty fields
+    if (!name || !email || !subject || !message) {
+      alert("❌ All fields are required.");
+      return;
+    }
+
     try {
       await emailjs.send(
         "service_btdlks9",
         "template_6g4f9jq",
         {
-          ...formData,
+          name,
+          email,
+          subject,
+          message,
           time: new Date().toLocaleString(),
         },
         "4pQMNQFnQL-koPcxW"
       );
 
       alert("✅ Thank you! Your message has been sent.");
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      setFormData({ name: "", email: "", subject: "", message: "", robotField: "" });
     } catch (error) {
       console.error("EmailJS Error:", error);
       alert("❌ Failed to send message. Please try again later.");
@@ -64,30 +104,50 @@ const Contact = () => {
                   icon: <Mail className="text-blue-600" size={24} />,
                   label: "Email",
                   value: "atiarmridul@gmail.com",
+                  href: "mailto:atiarmridul@gmail.com",
                 },
                 {
                   icon: <Phone className="text-green-600" size={24} />,
                   label: "Phone",
                   value: "+880 1916204614",
+                  href: "tel:+8801916204614",
+                },
+                {
+                  icon: <MessageCircle className="text-green-500" size={24} />,
+                  label: "WhatsApp",
+                  value: "Chat on WhatsApp",
+                  href: "https://wa.me/8801916204614",
                 },
                 {
                   icon: <MapPin className="text-purple-600" size={24} />,
                   label: "Location",
                   value: "Dhaka, Bangladesh",
                 },
-              ].map(({ icon, label, value }) => (
+              ].map(({ icon, label, value, href }) => (
                 <li key={label} className="flex items-center">
                   <div className="bg-gray-100 p-3 rounded-full mr-4">
                     {icon}
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900">{label}</h4>
-                    <p className="text-gray-600">{value}</p>
+                    {href ? (
+                      <a
+                        href={href}
+                        className="text-blue-600 hover:underline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {value}
+                      </a>
+                    ) : (
+                      <p className="text-gray-600">{value}</p>
+                    )}
                   </div>
                 </li>
               ))}
             </ul>
 
+            {/* Social Links */}
             <div className="mt-8">
               <h4 className="font-semibold text-gray-900 mb-4">
                 Connect with me
@@ -121,6 +181,17 @@ const Contact = () => {
             className="bg-white rounded-xl shadow-lg p-8 space-y-6"
           >
             <h3 className="text-2xl font-bold text-gray-900">Send Message</h3>
+
+            {/* Honeypot Field (hidden from users) */}
+            <input
+              type="text"
+              name="robotField"
+              value={formData.robotField}
+              onChange={handleChange}
+              autoComplete="off"
+              className="hidden"
+              tabIndex={-1}
+            />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[

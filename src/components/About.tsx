@@ -119,7 +119,7 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             {[
               { label: "Years of Experience", value: "6+" },
-              { label: "Projects Delivered", value: "20+" },
+              { label: "Projects Delivered", value: "15+" },
               { label: "Bugs Identified & Resolved", value: "2000+" },
               { label: "Quality Standard", value: "99.9%" },
             ].map((stat, index) => (
