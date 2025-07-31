@@ -1,13 +1,13 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 import emailjs from "emailjs-com";
 import {
-  Mail,
-  Phone,
-  MapPin,
+  MailCheck,
+  PhoneCall,
+  MessageSquareText,
+  MapPinned,
   Linkedin,
   Github,
-  Send,
-  MessageCircle,
+  SendHorizonal,
 } from "lucide-react";
 
 const Contact = () => {
@@ -16,7 +16,7 @@ const Contact = () => {
     email: "",
     subject: "",
     message: "",
-    robotField: "", // Honeypot field
+    robotField: "", // Honeypot
   });
 
   const handleChange = (
@@ -35,7 +35,7 @@ const Contact = () => {
       return;
     }
 
-    // Sanitize input to prevent injection
+    // Sanitize input
     const sanitize = (text: string) =>
       text.replace(/</g, "&lt;").replace(/>/g, "&gt;").trim();
 
@@ -51,7 +51,7 @@ const Contact = () => {
       return;
     }
 
-    // Check for empty fields
+    // Required field check
     if (!name || !email || !subject || !message) {
       alert("❌ All fields are required.");
       return;
@@ -82,6 +82,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Let's Connect
@@ -101,25 +102,25 @@ const Contact = () => {
             <ul className="space-y-6">
               {[
                 {
-                  icon: <Mail className="text-blue-600" size={24} />,
+                  icon: <MailCheck className="text-blue-600" size={24} />,
                   label: "Email",
                   value: "atiarmridul@gmail.com",
                   href: "mailto:atiarmridul@gmail.com",
                 },
                 {
-                  icon: <Phone className="text-green-600" size={24} />,
+                  icon: <PhoneCall className="text-green-600" size={24} />,
                   label: "Phone",
                   value: "+880 1916204614",
                   href: "tel:+8801916204614",
                 },
                 {
-                  icon: <MessageCircle className="text-green-500" size={24} />,
+                  icon: <MessageSquareText className="text-green-500" size={24} />,
                   label: "WhatsApp",
                   value: "Chat on WhatsApp",
                   href: "https://wa.me/8801916204614",
                 },
                 {
-                  icon: <MapPin className="text-purple-600" size={24} />,
+                  icon: <MapPinned className="text-purple-600" size={24} />,
                   label: "Location",
                   value: "Dhaka, Bangladesh",
                 },
@@ -182,7 +183,7 @@ const Contact = () => {
           >
             <h3 className="text-2xl font-bold text-gray-900">Send Message</h3>
 
-            {/* Honeypot Field (hidden from users) */}
+            {/* Honeypot Field */}
             <input
               type="text"
               name="robotField"
@@ -257,7 +258,7 @@ const Contact = () => {
               type="submit"
               className="w-full bg-blue-800 text-white py-3 px-6 rounded-lg hover:bg-blue-900 transition-colors flex items-center justify-center space-x-2"
             >
-              <Send size={18} />
+              <SendHorizonal size={18} />
               <span>Send Message</span>
             </button>
           </form>

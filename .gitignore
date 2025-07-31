@@ -1,2 +1,8 @@
-node_modules
-dist
+# Node modules
+node_modules/
+
+# Build output
+dist/
+
+# Logs
+*.log
