@@ -1,12 +1,14 @@
-import { Calendar, MapPin, Award } from 'lucide-react';
+import { Calendar, MapPin, Award, Linkedin } from 'lucide-react';
 
 const experiences = [
   {
     title: 'Software QA Engineer (Automation)',
     company: 'Portonics Limited',
+    companyUrl: 'https://portonics.com',
+    companyLinkedIn: 'https://www.linkedin.com/company/portonics/',
     location: 'Dhaka, Bangladesh',
     duration: '2024 - Present',
-    responsibilities: [
+     responsibilities: [
       'Conducted detailed requirement analysis and story reviews to understand feature scope before test case design.',
       'Develop and maintain well-structured test cases, collaborating with product owners to refine them and improve test planning.',
       'Conducted functional, integration, regression, UI/UX, and UAT testing.',
@@ -20,9 +22,11 @@ const experiences = [
   {
     title: 'SQA Engineer',
     company: 'Audacity IT Solutions Limited',
+    companyUrl: 'https://audacityit.com',
+    companyLinkedIn: 'https://www.linkedin.com/company/audacity-it-solutions-limited/',
     location: 'Dhaka, Bangladesh',
     duration: '2021 - 2024',
-    responsibilities: [
+   responsibilities: [
       'Worked on multiple projects in parallel from requirement analysis to product release phase.',
       'Conducted UI automation testing for web and mobile apps with Playwright, WebdriverIO, and Appium.',
       'Used Git, GitHub, and GitHub Actions for version control and CI.',
@@ -36,9 +40,11 @@ const experiences = [
   {
     title: 'Junior SQA Engineer',
     company: 'Audacity IT Solutions Limited',
+    companyUrl: 'https://audacityit.com',
+    companyLinkedIn: 'https://www.linkedin.com/company/audacity-it-solutions-limited/',
     location: 'Dhaka, Bangladesh',
     duration: '2020 - 2021',
-    responsibilities: [
+   responsibilities: [
       'Communicated regularly with stakeholders to clarify requirements and resolve queries.',
       'Authored technical documentation (SRS).',
       'Worked under the supervision of a Project Manager on small-scale product design.',
@@ -48,9 +54,11 @@ const experiences = [
   {
     title: 'Intern SQA Engineer',
     company: 'Audacity IT Solutions Limited',
+    companyUrl: 'https://audacityit.com',
+    companyLinkedIn: 'https://www.linkedin.com/company/audacity-it-solutions-limited/',
     location: 'Dhaka, Bangladesh',
     duration: '2019 - 2020',
-    responsibilities: [
+   responsibilities: [
       'Collected and analyzed software requirements.',
       'Conducted Functional, Integration, Regression, Exploratory, UI/UX, Cross-Browser, and UAT testing.',
       'Logged and tracked bugs using JIRA.'
@@ -58,64 +66,63 @@ const experiences = [
   }
 ];
 
-
 const Experience = () => (
-  <section id="experience" className="py-20 bg-white">
-    <div className="max-w-7xl mx-auto px-6">
-      <header className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Work Experience</h2>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Progressive career growth in quality assurance with a proven track record of delivering high-quality software solutions.
-        </p>
-      </header>
+  <section id="experience" className="py-16 bg-gray-50">
+    <div className="max-w-5xl mx-auto px-4">
+      <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+        Work Experience
+      </h2>
 
-      <div className="relative">
-        <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-blue-200" />
-
-        <ul className="space-y-12">
-          {experiences.map((exp, idx) => (
-            <li
-              key={exp.title + idx}
-              className={`relative flex items-center ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} flex-col md:space-x-8`}
-            >
-              <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-lg" />
-
-              <div className={`w-full md:w-1/2 ml-12 md:ml-0 ${idx % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
-                <article className="bg-gray-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition duration-300">
-                  <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-                    <h3 className="text-xl font-bold text-gray-900">{exp.title}</h3>
-                    <time className="flex items-center text-blue-600 text-sm font-medium">
-                      <Calendar size={16} className="mr-1" />
-                      {exp.duration}
-                    </time>
-                  </header>
-
-                  <div className="flex items-center text-gray-600 mb-4 gap-x-6">
-                    <span className="flex items-center">
-                      <Award size={16} className="mr-1" />
-                      {exp.company}
-                    </span>
-                    <span className="flex items-center">
-                      <MapPin size={16} className="mr-1" />
-                      {exp.location}
-                    </span>
-                  </div>
-
-                  <h4 className="font-semibold text-gray-900 mb-2">Key Responsibilities:</h4>
-                  <ul className="space-y-2">
-                    {exp.responsibilities.map((item, i) => (
-                      <li key={i} className="flex items-start">
-                        <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0" />
-                        <span className="text-gray-700 text-sm">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
+      <div className="space-y-8">
+        {experiences.map((exp, index) => (
+          <div
+            key={index}
+            className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition duration-200"
+          >
+            <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+              <h3 className="text-xl font-semibold text-gray-800">{exp.title}</h3>
+              <div className="flex items-center text-sm text-blue-600 mt-2 md:mt-0">
+                <Calendar size={16} className="mr-1" />
+                {exp.duration}
               </div>
-              <div className="hidden md:block w-1/2" />
-            </li>
-          ))}
-        </ul>
+            </div>
+
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm text-gray-600 mb-4 gap-2">
+              <div className="flex items-center gap-2">
+                <Award size={16} />
+                <a
+                  href={exp.companyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline font-medium"
+                >
+                  {exp.company}
+                </a>
+                {exp.companyLinkedIn && (
+                  <a
+                    href={exp.companyLinkedIn}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="text-gray-400 hover:text-blue-600"
+                  >
+                    <Linkedin size={16} />
+                  </a>
+                )}
+              </div>
+              <div className="flex items-center gap-1 text-gray-500">
+                <MapPin size={16} />
+                <span>{exp.location}</span>
+              </div>
+            </div>
+
+            <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700">
+              {exp.responsibilities.map((task, idx) => (
+                <li key={idx}>{task}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
   </section>
