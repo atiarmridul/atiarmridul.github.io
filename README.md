@@ -17,6 +17,51 @@ The live version of this portfolio can be viewed at [https://atiarmridul.github.
 - **EmailJS:** A service for sending emails from client-side applications.
 - **GitHub Pages:** For hosting the deployed application.
 
+## Project Structure
+
+```
+.
+├── .bolt/
+├── .git/
+├── dist/
+├── gh-pages/
+├── node_modules/
+├── public/
+│   ├── favicon.ico
+│   └── favicon.svg
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── About.tsx
+│   │   ├── Contact.tsx
+│   │   ├── Domains.tsx
+│   │   ├── Education.tsx
+│   │   ├── Experience.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Header.tsx
+│   │   ├── Hero.tsx
+│   │   ├── Projects.tsx
+│   │   └── Skills.tsx
+│   ├── styles/
+│   ├── App.tsx
+│   ├── constants.ts
+│   ├── index.css
+│   ├── main.tsx
+│   └── vite-env.d.ts
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── README.md
+├── tailwind.config.js
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+```
+
 ## How to Run Locally
 
 To get a local copy up and running, follow these simple steps.
