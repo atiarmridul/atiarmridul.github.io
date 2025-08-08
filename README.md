@@ -6,25 +6,6 @@ This is a personal portfolio website built with React, Vite, and Tailwind CSS. I
 
 The live version of this portfolio can be viewed at [https://atiarmridul.github.io/](https://atiarmridul.github.io/).
 
-## Features
-
-- **Responsive Design:** The website is fully responsive and works on all devices.
-- **Interactive UI:** The website has a modern and interactive user interface with animations.
-- **Contact Form:** A contact form to send emails directly from the website.
-- **Project Showcase:** A dedicated section to showcase my projects with links to the live demo and source code.
-- **Skills and Experience:** A detailed overview of my skills and professional experience.
-
-## Technologies Used
-
-- **React:** A JavaScript library for building user interfaces.
-- **Vite:** A fast build tool and development server for modern web projects.
-- **TypeScript:** A typed superset of JavaScript that compiles to plain JavaScript.
-- **Tailwind CSS:** A utility-first CSS framework for rapid UI development.
-- **Lucide React:** A library of beautiful and consistent icons.
-- **Framer Motion:** A library for creating animations in React.
-- **EmailJS:** A service for sending emails from client-side applications.
-- **GitHub Pages:** For hosting the deployed application.
-
 ## Project Structure
 
 ```ini
@@ -69,6 +50,25 @@ The live version of this portfolio can be viewed at [https://atiarmridul.github.
 ├── tsconfig.node.json
 └── vite.config.ts
 ```
+
+## Features
+
+- **Responsive Design:** The website is fully responsive and works on all devices.
+- **Interactive UI:** The website has a modern and interactive user interface with animations.
+- **Contact Form:** A contact form to send emails directly from the website.
+- **Project Showcase:** A dedicated section to showcase my projects with links to the live demo and source code.
+- **Skills and Experience:** A detailed overview of my skills and professional experience.
+
+## Technologies Used
+
+- **React:** A JavaScript library for building user interfaces.
+- **Vite:** A fast build tool and development server for modern web projects.
+- **TypeScript:** A typed superset of JavaScript that compiles to plain JavaScript.
+- **Tailwind CSS:** A utility-first CSS framework for rapid UI development.
+- **Lucide React:** A library of beautiful and consistent icons.
+- **Framer Motion:** A library for creating animations in React.
+- **EmailJS:** A service for sending emails from client-side applications.
+- **GitHub Pages:** For hosting the deployed application.
 
 ## Getting Started
 
