@@ -6,6 +6,14 @@ This is a personal portfolio website built with React, Vite, and Tailwind CSS. I
 
 The live version of this portfolio can be viewed at [https://atiarmridul.github.io/](https://atiarmridul.github.io/).
 
+## Features
+
+- **Responsive Design:** The website is fully responsive and works on all devices.
+- **Interactive UI:** The website has a modern and interactive user interface with animations.
+- **Contact Form:** A contact form to send emails directly from the website.
+- **Project Showcase:** A dedicated section to showcase my projects with links to the live demo and source code.
+- **Skills and Experience:** A detailed overview of my skills and professional experience.
+
 ## Technologies Used
 
 - **React:** A JavaScript library for building user interfaces.
@@ -19,7 +27,7 @@ The live version of this portfolio can be viewed at [https://atiarmridul.github.
 
 ## Project Structure
 
-```
+```ini
 .
 ├── .bolt/
 ├── .git/
@@ -62,25 +70,77 @@ The live version of this portfolio can be viewed at [https://atiarmridul.github.
 └── vite.config.ts
 ```
 
-## How to Run Locally
+## Getting Started
 
 To get a local copy up and running, follow these simple steps.
 
-1.  **Clone the repository:**
-    ```sh
-    git clone https://github.com/atiarmridul/atiarmridul.github.io.git
-    ```
-2.  **Navigate to the project directory:**
-    ```sh
-    cd atiarmridul.github.io
-    ```
-3.  **Install dependencies:**
-    ```sh
-    npm install
-    ```
-4.  **Run the development server:**
-    ```sh
-    npm run dev
-    ```
+### Prerequisites
+
+- Node.js (v18.x or later)
+- npm
+
+### Installation
+
+1. **Clone the repository:**
+
+```sh
+git clone https://github.com/atiarmridul/atiarmridul.github.io.git
+```
+
+2. **Navigate to the project directory:**
+
+```sh
+cd atiarmridul.github.io
+```
+
+3. **Install dependencies:**
+
+```sh
+npm install
+```
+
+## Usage
+
+To run the application in development mode, use the following command:
+
+```sh
+npm run dev
+```
 
 This will start the application on `http://localhost:5173`.
+
+To build the application for production, use the following command:
+
+```sh
+npm run build
+```
+
+This will create a `dist` folder with the production-ready files.
+
+To deploy the application to GitHub Pages, use the following command:
+
+```sh
+npm run deploy
+```
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m '''Add some AmazingFeature'''`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Contact
+
+Md. Atiar Rahman Chowdhury - [https://www.linkedin.com/in/atiarmridul/](https://www.linkedin.com/in/atiarmridul/)
+
+Project Link: [https://github.com/atiarmridul/atiarmridul.github.io](https://github.com/atiarmridul/atiarmridul.github.io)
