@@ -78,7 +78,6 @@ const combinedAchievements = [
     title: 'LambdaTest Test Automation Professional',
     link: 'https://www.linkedin.com/learning/certificates/127fae46800047159138f6efaf951cbbaf36cebe88510ca3bd536e369bbdfcd9?trk=share_certificate'
   }
- 
 
 ];
 
