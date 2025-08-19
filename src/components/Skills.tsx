@@ -56,7 +56,7 @@ const combinedAchievements = [
   {
     type: 'Training & Course',
     title: 'Certified Expert SQA Automation Program',
-    link: 'https://www.dropbox.com/scl/fi/1pk9d3jjma7rq5a664toy/Md.-Atiar-Rahman-Chowdhury.jpg?rlkey=04svf4ou2wm16tns7myba8vog&st=0xcllz3v&dl=0'
+    link: 'https://www.dropbox.com/scl/fi/16gkyzv9doj1iqmo2tds0/Md.-Atiar-Rahman-Chowdhury.jpg?rlkey=lpnx939z4qoh7vlt1p3eghx92&st=ewkble9w&dl=0'
   },
   {
     type: 'Training & Course',
