@@ -3,7 +3,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
-// import Domains from './components/Domains';
+import Domains from './components/Domains';
 //import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Education from './components/Education';
@@ -18,7 +18,7 @@ function App() {
         <Hero />
         <About />
         <Skills />
-        {/* <Domains /> */}
+        <Domains />
          {/* <Projects /> */}
         
         <Experience />
