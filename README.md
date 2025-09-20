@@ -11,15 +11,29 @@ The live version of this portfolio can be viewed at [https://atiarmridul.github.
 ```ini
 .
 ├── .bolt/
+│   ├── config.json
+│   └── prompt
+├── .DS_Store
 ├── .git/
-├── dist/
+├── .gitignore
+├── eslint.config.js
 ├── gh-pages/
-├── node_modules/
+│   ├── assets/
+│   │   ├── index-B9I0VrzX.css
+│   │   └── index-WbFsAKE7.js
+│   └── index.html
+├── index.html
+├── package-lock.json
+├── package.json
+├── postcss.config.js
 ├── public/
+│   ├── .DS_Store
 │   ├── favicon.ico
 │   └── favicon.svg
+├── README.md
 ├── src/
-│   ├── assets/
+│   ├── .DS_Store
+│   ├── App.tsx
 │   ├── components/
 │   │   ├── About.tsx
 │   │   ├── Contact.tsx
@@ -31,19 +45,10 @@ The live version of this portfolio can be viewed at [https://atiarmridul.github.
 │   │   ├── Hero.tsx
 │   │   ├── Projects.tsx
 │   │   └── Skills.tsx
-│   ├── styles/
-│   ├── App.tsx
 │   ├── constants.ts
 │   ├── index.css
 │   ├── main.tsx
 │   └── vite-env.d.ts
-├── .gitignore
-├── eslint.config.js
-├── index.html
-├── package-lock.json
-├── package.json
-├── postcss.config.js
-├── README.md
 ├── tailwind.config.js
 ├── tsconfig.app.json
 ├── tsconfig.json
