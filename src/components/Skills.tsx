@@ -50,7 +50,7 @@ const skillCategories = [
 const combinedAchievements = [
   {
     type: 'Certification',
-    title: 'ISTQB Certified',
+    title: 'ISTQB® Certified Tester - Foundation Level 4.0',
     link: 'https://zertdb.isqi.org/en/download/index/token/jAPq8%24J2y%24X%21Xy_39p84'
   },
   {
