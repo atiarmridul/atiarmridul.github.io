@@ -7,5 +7,8 @@ dist/
 # Logs
 *.log
 
+# Bolt
+bolt/
+
 # Gemini knowledge file
 .gemini_knowledge.md

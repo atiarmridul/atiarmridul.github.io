@@ -36,7 +36,7 @@ const skillCategories = [
   {
     title: 'Methodologies',
     icon: <Users className="text-purple-600" size={24} />,
-    skills: ['Agile', 'Scrum', 'CI/CD', 'Test-Driven Development', 'Behavior-Driven Development'],
+    skills: ['Agile', 'Scrum', 'CI/CD', 'Test-Driven Development'],
     color: 'purple'
   },
   {

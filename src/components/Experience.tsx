@@ -9,14 +9,15 @@ const experiences = [
     location: 'Dhaka, Bangladesh',
     duration: '2024 - Present',
      responsibilities: [
-      'Conducted detailed requirement analysis and story reviews to understand feature scope before test case design.',
-      'Developed and maintained well-structured test cases, collaborating with product owners to refine them and improve test planning.',
-      'Conducted functional, integration, regression, UI/UX, and UAT testing.',
-      'Performed API testing to validate backend services.',
-      'Debugged and identified issues using Kibana logs, improving test accuracy and system reliability.',
-      'Collaborated with developers and DevOps teams to investigate and resolve production and testing environment issues using log analysis.',
-      'Authored technical documentation (User Manual).',
-      'Participated in Agile ceremonies including Sprint Planning, Standups, Reviews, Retrospectives, and Backlog Refinement.'
+      "Executed requirement analysis and story reviews to define feature scope and ensure comprehensive test coverage before case design.",
+      "Designed and optimized well-structured test cases, partnering with product owners to refine acceptance criteria and improve sprint test planning.",
+      "Executed API testing to validate backend services and ensure seamless integration.",
+      "Delivered Functional, Integration, Regression, UI/UX, and UAT testing across multiple releases to maintain high-quality standards.",
+      "Diagnosed and resolved issues via Kibana log analysis, boosting test accuracy and system reliability.",
+      "Partnered with developers and DevOps teams to investigate and remediate production and test environment defects using log-based insights.",
+      "Produced comprehensive technical documentation, including User Stories and User Manuals, to support cross-team understanding.",
+      "Mentored team members by sharing QA best practices, fostering continuous learning, and collaboration.",
+      "Contributed to Agile ceremonies, actively providing QA insights during Sprint Planning, Reviews, and Retrospectives."
     ]
   },
   {
