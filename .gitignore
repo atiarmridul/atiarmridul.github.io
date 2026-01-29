@@ -8,7 +8,11 @@ dist/
 *.log
 
 # Bolt
-bolt/
+.bolt/
 
 # Gemini knowledge file
 .gemini_knowledge.md
+
+# OS / editor
+.DS_Store
+.idea/
