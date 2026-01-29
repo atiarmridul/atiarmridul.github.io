@@ -1,10 +1,28 @@
 # Personal Portfolio Website
 
-This is a personal portfolio website built with React, Vite, and Tailwind CSS. It showcases my skills, experience, and projects as a Software QA Engineer.
+A React + Vite + Tailwind CSS portfolio site showcasing skills, experience, and projects for a Software QA Engineer.
 
 ## Live Demo
 
-The live version of this portfolio can be viewed at [https://atiarmridul.github.io/](https://atiarmridul.github.io/).
+https://atiarmridul.github.io/
+
+## Tech Stack
+
+- React 18
+- Vite 5
+- TypeScript 5
+- Tailwind CSS 3
+- Framer Motion
+- Lucide React
+- EmailJS
+- GitHub Pages
+
+## Features
+
+- Responsive layout optimized for mobile and desktop
+- Animated, modern UI with smooth section transitions
+- Contact form with validation and bot honeypot
+- Dedicated sections for skills, experience, education, and projects
 
 ## Project Structure
 
@@ -13,27 +31,13 @@ The live version of this portfolio can be viewed at [https://atiarmridul.github.
 ├── .bolt/
 │   ├── config.json
 │   └── prompt
-├── .DS_Store
-├── .git/
-├── .gitignore
-├── eslint.config.js
 ├── gh-pages/
 │   ├── assets/
-│   │   ├── index-B9I0VrzX.css
-│   │   └── index-WbFsAKE7.js
 │   └── index.html
-├── index.html
-├── package-lock.json
-├── package.json
-├── postcss.config.js
 ├── public/
-│   ├── .DS_Store
 │   ├── favicon.ico
 │   └── favicon.svg
-├── README.md
 ├── src/
-│   ├── .DS_Store
-│   ├── App.tsx
 │   ├── components/
 │   │   ├── About.tsx
 │   │   ├── Contact.tsx
@@ -49,87 +53,66 @@ The live version of this portfolio can be viewed at [https://atiarmridul.github.
 │   ├── index.css
 │   ├── main.tsx
 │   └── vite-env.d.ts
+├── index.html
+├── package.json
 ├── tailwind.config.js
-├── tsconfig.app.json
 ├── tsconfig.json
-├── tsconfig.node.json
 └── vite.config.ts
 ```
 
-## Features
-
-- **Responsive Design:** The website is fully responsive and works on all devices.
-- **Interactive UI:** The website has a modern and interactive user interface with animations.
-- **Contact Form:** A contact form to send emails directly from the website.
-- **Project Showcase:** A dedicated section to showcase my projects with links to the live demo and source code.
-- **Skills and Experience:** A detailed overview of my skills and professional experience.
-
-## Technologies Used
-
-- **React:** A JavaScript library for building user interfaces.
-- **Vite:** A fast build tool and development server for modern web projects.
-- **TypeScript:** A typed superset of JavaScript that compiles to plain JavaScript.
-- **Tailwind CSS:** A utility-first CSS framework for rapid UI development.
-- **Lucide React:** A library of beautiful and consistent icons.
-- **Framer Motion:** A library for creating animations in React.
-- **EmailJS:** A service for sending emails from client-side applications.
-- **GitHub Pages:** For hosting the deployed application.
-
 ## Getting Started
-
-To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-- Node.js (v18.x or later)
-- npm
+- Node.js 18+ and npm
 
-### Installation
-
-1. **Clone the repository:**
+### Install
 
 ```sh
 git clone https://github.com/atiarmridul/atiarmridul.github.io.git
-```
-
-2. **Navigate to the project directory:**
-
-```sh
 cd atiarmridul.github.io
-```
-
-3. **Install dependencies:**
-
-```sh
 npm install
 ```
 
-## Usage
-
-To run the application in development mode, use the following command:
+### Dev
 
 ```sh
 npm run dev
 ```
 
-This will start the application on `http://localhost:5173`.
+Open http://localhost:5173
 
-To build the application for production, use the following command:
+### Build
 
 ```sh
 npm run build
 ```
 
-This will create a `dist` folder with the production-ready files.
+### Preview
 
-To deploy the application to GitHub Pages, use the following command:
+```sh
+npm run preview
+```
+
+### Lint
+
+```sh
+npm run lint
+```
+
+## Deployment (GitHub Pages)
 
 ```sh
 npm run deploy
 ```
 
+This runs `vite build` and publishes `dist/` to GitHub Pages.
+
+## Contact Form (EmailJS)
+
+EmailJS IDs are currently set directly in `src/components/Contact.tsx`. If you want to change them, update the `service`, `template`, and `public key` values in that file.
+
 ## Contact
 
-Md. Atiar Rahman Chowdhury - [https://www.linkedin.com/in/atiarmridul/](https://www.linkedin.com/in/atiarmridul/)
-
-Project Link: [https://github.com/atiarmridul/atiarmridul.github.io](https://github.com/atiarmridul/atiarmridul.github.io)
+- LinkedIn: https://www.linkedin.com/in/atiarmridul/
+- GitHub: https://github.com/atiarmridul
