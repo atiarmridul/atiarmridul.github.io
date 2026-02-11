@@ -4,7 +4,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Domains from './components/Domains';
-//import Projects from './components/Projects';
+import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Contact from './components/Contact';
@@ -19,8 +19,7 @@ function App() {
         <About />
         <Skills />
         <Domains />
-         {/* <Projects /> */}
-        
+        <Projects />
         <Experience />
         <Education />
         <Contact />

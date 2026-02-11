@@ -1,5 +1,5 @@
 import { useState, FormEvent, ChangeEvent } from "react";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import {
   MailCheck,
   PhoneCall,
@@ -18,6 +18,7 @@ const Contact = () => {
     message: "",
     robotField: "", // Honeypot
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -58,9 +59,10 @@ const Contact = () => {
     }
 
     try {
+      setIsSubmitting(true);
       await emailjs.send(
-        "service_btdlks9",
-        "template_6g4f9jq",
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
           name,
           email,
@@ -68,14 +70,22 @@ const Contact = () => {
           message,
           time: new Date().toLocaleString(),
         },
-        "4pQMNQFnQL-koPcxW"
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
       alert("✅ Thank you! Your message has been sent.");
-      setFormData({ name: "", email: "", subject: "", message: "", robotField: "" });
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+        robotField: "",
+      });
     } catch (error) {
       console.error("EmailJS Error:", error);
       alert("❌ Failed to send message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -256,10 +266,15 @@ const Contact = () => {
 
             <button
               type="submit"
-              className="w-full bg-blue-800 text-white py-3 px-6 rounded-lg hover:bg-blue-900 transition-colors flex items-center justify-center space-x-2"
+              disabled={isSubmitting}
+              className={`w-full py-3 px-6 rounded-lg transition-colors flex items-center justify-center space-x-2 ${
+                isSubmitting
+                  ? "bg-blue-400 cursor-not-allowed"
+                  : "bg-blue-800 hover:bg-blue-900 text-white"
+              }`}
             >
               <SendHorizonal size={18} />
-              <span>Send Message</span>
+              <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
             </button>
           </form>
         </div>
