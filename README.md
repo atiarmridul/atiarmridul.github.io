@@ -1,10 +1,20 @@
 # Personal Portfolio Website
 
-A React + Vite + Tailwind CSS portfolio site showcasing skills, experience, and projects for a Software QA Engineer.
+A modern portfolio and QA engineering showcase website built with React, Vite, TypeScript, and Tailwind CSS.
 
 ## Live Demo
 
 https://atiarmridul.github.io/
+
+## About This Project
+
+This repository showcases:
+
+- Professional portfolio presentation
+- QA automation engineering background
+- Frontend engineering practices
+- Responsive UI development
+- Modern deployment workflows
 
 ## Tech Stack
 
@@ -19,100 +29,114 @@ https://atiarmridul.github.io/
 
 ## Features
 
-- Responsive layout optimized for mobile and desktop
-- Animated, modern UI with smooth section transitions
-- Contact form with validation and bot honeypot
-- Dedicated sections for skills, experience, education, and projects
+- Responsive design
+- Modern animated UI
+- Modular component structure
+- Contact form integration
+- Mobile-first experience
+- TypeScript-based architecture
+
+## Engineering Goals
+
+- Clean and maintainable architecture
+- Automation-ready frontend
+- CI/CD integration
+- Accessibility improvements
+- Performance optimization
+- Scalable component structure
+
+## Documentation
+
+Project documentation is available inside the `docs/` folder.
+
+- architecture decisions
+- testing strategy
+- deployment process
+- coding guidelines
+- folder structure
 
 ## Project Structure
 
-```ini
+```text
 .
-├── .bolt/
-│   ├── config.json
-│   └── prompt
-├── gh-pages/
-│   ├── assets/
-│   └── index.html
 ├── public/
-│   ├── favicon.ico
-│   └── favicon.svg
 ├── src/
 │   ├── components/
-│   │   ├── About.tsx
-│   │   ├── Contact.tsx
-│   │   ├── Domains.tsx
-│   │   ├── Education.tsx
-│   │   ├── Experience.tsx
-│   │   ├── Footer.tsx
-│   │   ├── Header.tsx
-│   │   ├── Hero.tsx
-│   │   ├── Projects.tsx
-│   │   └── Skills.tsx
+│   ├── assets/
 │   ├── constants.ts
 │   ├── index.css
-│   ├── main.tsx
-│   └── vite-env.d.ts
-├── index.html
+│   └── main.tsx
+├── docs/
+├── tests/
 ├── package.json
-├── tailwind.config.js
 ├── tsconfig.json
 └── vite.config.ts
 ```
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js 18+ and npm
-
 ### Install
 
-```sh
+```bash
 git clone https://github.com/atiarmridul/atiarmridul.github.io.git
 cd atiarmridul.github.io
 npm install
 ```
 
-### Dev
+### Run Development Server
 
-```sh
+```bash
 npm run dev
 ```
 
-Open http://localhost:5173
+### Build Project
 
-### Build
-
-```sh
+```bash
 npm run build
 ```
 
-### Preview
+### Run Lint
 
-```sh
-npm run preview
-```
-
-### Lint
-
-```sh
+```bash
 npm run lint
 ```
 
-## Deployment (GitHub Pages)
+## Deployment
 
-```sh
+Hosted using GitHub Pages.
+
+```bash
 npm run deploy
 ```
 
-This runs `vite build` and publishes `dist/` to GitHub Pages.
+## Planned Improvements
 
-## Contact Form (EmailJS)
+- Playwright E2E automation
+- GitHub Actions CI/CD
+- Accessibility testing
+- Lighthouse optimization
+- Automated deployment validation
+- Advanced frontend optimization
 
-EmailJS IDs are currently set directly in `src/components/Contact.tsx`. If you want to change them, update the `service`, `template`, and `public key` values in that file.
+## QA Automation Vision
 
-## Contact
+This repository will gradually evolve into a professional QA engineering showcase featuring:
+
+- UI automation
+- Cross-browser validation
+- Responsive testing
+- Accessibility validation
+- CI pipeline integration
+- Automated deployment workflows
+
+## Author
+
+Md. Atiar Rahman Chowdhury
+
+- Software QA Engineer
+- ISTQB Certified
+
+## Links
 
 - LinkedIn: https://www.linkedin.com/in/atiarmridul/
 - GitHub: https://github.com/atiarmridul
