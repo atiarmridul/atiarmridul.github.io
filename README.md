@@ -1,5 +1,12 @@
 # Personal Portfolio Website
 
+![React](https://img.shields.io/badge/React-18-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![Vite](https://img.shields.io/badge/Vite-5-purple)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-38BDF8)
+![GitHub Pages](https://img.shields.io/badge/Deployment-GitHub%20Pages-black)
+![License](https://img.shields.io/badge/License-MIT-green)
+
 A modern portfolio and QA engineering showcase website built with React, Vite, TypeScript, and Tailwind CSS.
 
 ## Live Demo
