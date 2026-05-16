@@ -64,20 +64,35 @@ Project documentation is available inside the `docs/` folder.
 
 ## Project Structure
 
-```text
-.
-├── public/
+```txt
+atiarmridul.github.io/
+├── public/                     # Static public assets
 ├── src/
-│   ├── components/
-│   ├── assets/
-│   ├── constants.ts
-│   ├── index.css
-│   └── main.tsx
-├── docs/
-├── tests/
-├── package.json
-├── tsconfig.json
-└── vite.config.ts
+│   ├── assets/                 # Images, icons, and static resources
+│   ├── components/             # Reusable UI components
+│   │   ├── Header.tsx          # Navigation and responsive menu
+│   │   ├── Hero.tsx            # Landing section
+│   │   ├── About.tsx           # Professional summary
+│   │   ├── Skills.tsx          # Technical expertise section
+│   │   ├── Domains.tsx         # QA specialization domains
+│   │   ├── Experience.tsx      # Work experience timeline
+│   │   ├── Education.tsx       # Academic background
+│   │   ├── Contact.tsx         # Contact form and communication links
+│   │   └── Footer.tsx          # Footer section
+│   │
+│   ├── constants/              # Centralized reusable constants/data
+│   ├── hooks/                  # Custom React hooks (future scalability)
+│   ├── utils/                  # Helper and utility functions
+│   ├── App.tsx                 # Main application structure
+│   ├── main.tsx                # React application entry point
+│   └── index.css               # Global styling
+│
+├── CODING_STANDARDS.md         # Engineering and coding conventions
+├── package.json                # Project dependencies and scripts
+├── tailwind.config.js          # Tailwind CSS configuration
+├── tsconfig.json               # TypeScript configuration
+├── vite.config.ts              # Vite configuration
+└── README.md                   # Project documentation
 ```
 
 ## Getting Started
