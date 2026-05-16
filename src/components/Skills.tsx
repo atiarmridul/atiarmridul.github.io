@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 
+// Categorized technical skills used for dynamic portfolio rendering
 const skillCategories = [
   {
     title: 'Testing Frameworks',
@@ -47,6 +48,7 @@ const skillCategories = [
   }
 ];
 
+// Certifications and training achievements displayed in learning section
 const combinedAchievements = [
   {
     type: 'Certification',
@@ -81,6 +83,7 @@ const combinedAchievements = [
 
 ];
 
+// Centralized styling map keeps badge design consistent and maintainable
 const colorMap = {
   blue: 'bg-blue-50 text-blue-700 border border-blue-200',
   yellow: 'bg-yellow-50 text-yellow-700 border border-yellow-200',
@@ -91,17 +94,23 @@ const colorMap = {
 };
 
 const Skills = () => {
+  // Tracks currently selected achievement category filter
   const [filter, setFilter] = useState('All');
+
+  // Available filter tabs for certifications and training
   const filters = ['All', 'Certification', 'Training & Course'];
 
+  // Dynamically filters achievement cards based on selected category
   const filteredAchievements =
     filter === 'All'
       ? combinedAchievements
       : combinedAchievements.filter((item) => item.type === filter);
 
   return (
+    // Technical expertise section showcasing engineering and QA capabilities
     <section id="skills" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
+        {/* Section heading optimized for recruiter readability */}
         <header className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Technical Expertise</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -109,16 +118,20 @@ const Skills = () => {
           </p>
         </header>
 
+        {/* Responsive grid layout for scalable skill category display */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map(({ title, icon, skills, color }) => (
             <article
               key={title}
               className="bg-gray-50 border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-2"
             >
+              {/* Skill category heading with icon-based visual recognition */}
               <header className="flex items-center mb-4">
                 {icon}
                 <h3 className="text-xl font-semibold text-gray-900 ml-3">{title}</h3>
               </header>
+
+              {/* Skill badges designed for quick technology scanning */}
               <ul className="flex flex-wrap gap-2">
                 {skills.map((skill) => (
                   <li
@@ -133,12 +146,14 @@ const Skills = () => {
           ))}
         </div>
 
+        {/* Continuous learning and certification showcase */}
         <section className="mt-16 rounded-2xl p-8 border border-gray-200 bg-gradient-to-br from-blue-50 to-indigo-100 shadow-sm text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Learning Milestones</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
             A showcase of my professional certifications and commitment to continuous learning in the SQA field.
           </p>
 
+          {/* Interactive filter controls for achievement categorization */}
           <div className="mb-6 flex justify-center gap-4">
             {filters.map((option) => (
               <button
@@ -153,6 +168,7 @@ const Skills = () => {
             ))}
           </div>
 
+          {/* Achievement cards dynamically rendered from centralized data */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {filteredAchievements.map(({ type, title, subtitle, link }) => (
               <div
@@ -162,6 +178,8 @@ const Skills = () => {
                 <span className="text-xs uppercase font-medium text-blue-700">{type}</span>
                 <h4 className="font-semibold text-gray-900 mt-1">{title}</h4>
                 <p className="text-sm text-gray-600 mb-2">{subtitle}</p>
+
+                {/* External verification link for certification authenticity */}
                 {link && (
                   <a
                     href={link}
