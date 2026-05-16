@@ -11,14 +11,16 @@ import {
 } from "lucide-react";
 
 const Contact = () => {
+  // Centralized form state for controlled input handling
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
-    robotField: "", // Honeypot
+    robotField: "", // Honeypot field for spam prevention
   });
 
+  // Updates form state dynamically based on input field changes
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -26,16 +28,17 @@ const Contact = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Handles form validation and email submission workflow
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    // ✋ Bot detected via honeypot
+    // Basic bot protection using hidden honeypot field
     if (formData.robotField !== "") {
       console.warn("Spam detected. Submission blocked.");
       return;
     }
 
-    // Sanitize input
+    // Sanitizes user input to reduce injection risks
     const sanitize = (text: string) =>
       text.replace(/</g, "&lt;").replace(/>/g, "&gt;").trim();
 
@@ -44,20 +47,21 @@ const Contact = () => {
     const subject = sanitize(formData.subject);
     const message = sanitize(formData.message);
 
-    // Email validation
+    // Validates email format before submission
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       alert("❌ Please enter a valid email address.");
       return;
     }
 
-    // Required field check
+    // Ensures all required fields contain valid values
     if (!name || !email || !subject || !message) {
       alert("❌ All fields are required.");
       return;
     }
 
     try {
+      // Sends email using EmailJS without requiring backend infrastructure
       await emailjs.send(
         "service_btdlks9",
         "template_6g4f9jq",
@@ -71,18 +75,21 @@ const Contact = () => {
         "4pQMNQFnQL-koPcxW"
       );
 
+      // Clears form after successful submission
       alert("✅ Thank you! Your message has been sent.");
       setFormData({ name: "", email: "", subject: "", message: "", robotField: "" });
     } catch (error) {
+      // Error logging helps debugging production email delivery issues
       console.error("EmailJS Error:", error);
       alert("❌ Failed to send message. Please try again later.");
     }
   };
 
   return (
+    // Contact section focused on recruiter communication and networking
     <section id="contact" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
+        {/* Section introduction and collaboration messaging */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Let's Connect
@@ -93,12 +100,15 @@ const Contact = () => {
           </p>
         </div>
 
+        {/* Two-column responsive layout for contact info and form */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
+          {/* Direct communication methods and professional links */}
           <div>
             <h3 className="text-2xl font-bold text-gray-900 mb-8">
               Get In Touch
             </h3>
+
+            {/* Contact details designed for fast recruiter access */}
             <ul className="space-y-6">
               {[
                 {
@@ -126,11 +136,15 @@ const Contact = () => {
                 },
               ].map(({ icon, label, value, href }) => (
                 <li key={label} className="flex items-center">
+                  {/* Visual icon container for faster recognition */}
                   <div className="bg-gray-100 p-3 rounded-full mr-4">
                     {icon}
                   </div>
+
                   <div>
                     <h4 className="font-semibold text-gray-900">{label}</h4>
+
+                    {/* External contact links open in separate tabs for convenience */}
                     {href ? (
                       <a
                         href={href}
@@ -148,12 +162,14 @@ const Contact = () => {
               ))}
             </ul>
 
-            {/* Social Links */}
+            {/* Social media links for professional networking */}
             <div className="mt-8">
               <h4 className="font-semibold text-gray-900 mb-4">
                 Connect with me
               </h4>
+
               <div className="flex space-x-4">
+                {/* LinkedIn profile for professional verification */}
                 <a
                   href="https://www.linkedin.com/in/atiarmridul/"
                   className="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-colors"
@@ -163,6 +179,8 @@ const Contact = () => {
                 >
                   <Linkedin size={20} />
                 </a>
+
+                {/* GitHub profile for technical portfolio visibility */}
                 <a
                   href="https://github.com/atiarmridul"
                   className="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-900 transition-colors"
@@ -176,14 +194,14 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Contact form for direct recruiter communication */}
           <form
             onSubmit={handleSubmit}
             className="bg-white rounded-xl shadow-lg p-8 space-y-6"
           >
             <h3 className="text-2xl font-bold text-gray-900">Send Message</h3>
 
-            {/* Honeypot Field */}
+            {/* Hidden anti-spam honeypot field */}
             <input
               type="text"
               name="robotField"
@@ -194,18 +212,21 @@ const Contact = () => {
               tabIndex={-1}
             />
 
+            {/* Responsive input grouping for compact form layout */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
                 { id: "name", label: "Name", type: "text" },
                 { id: "email", label: "Email", type: "email" },
               ].map(({ id, label, type }) => (
                 <div key={id}>
+                  {/* Semantic labels improve accessibility and usability */}
                   <label
                     htmlFor={id}
                     className="block text-sm font-medium text-gray-700 mb-2"
                   >
                     {label}
                   </label>
+
                   <input
                     type={type}
                     id={id}
@@ -219,6 +240,7 @@ const Contact = () => {
               ))}
             </div>
 
+            {/* Message fields rendered dynamically for maintainability */}
             {[
               { id: "subject", label: "Subject" },
               { id: "message", label: "Message", textarea: true },
@@ -230,6 +252,7 @@ const Contact = () => {
                 >
                   {label}
                 </label>
+
                 {textarea ? (
                   <textarea
                     id={id}
@@ -254,6 +277,7 @@ const Contact = () => {
               </div>
             ))}
 
+            {/* Primary form submission action */}
             <button
               type="submit"
               className="w-full bg-blue-800 text-white py-3 px-6 rounded-lg hover:bg-blue-900 transition-colors flex items-center justify-center space-x-2"
