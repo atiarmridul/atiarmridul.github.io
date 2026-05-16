@@ -2,12 +2,14 @@ import React from "react";
 import { ChevronDown, Shield, Target, CheckCircle } from "lucide-react";
 
 const Hero = () => {
+  // Smoothly navigates users to the next content section
   const scrollToNext = () => {
     const element = document.getElementById("about");
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
+    // Main landing section designed for strong first impression and branding
     <section
       id="hero"
       className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center pt-32 sm:pt-44
@@ -15,30 +17,35 @@ const Hero = () => {
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 text-center">
         <div className="max-w-4xl mx-auto">
-          {/* Headline */}
+          {/* Primary headline communicating engineering and QA mindset */}
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
             Precision. <span className="text-blue-800"> Quality. </span> Collaboration.
           </h1>
 
-          {/* Subtitle */}
+          {/* Supporting statement highlighting professional specialization */}
           <p className="text-base sm:text-lg md:text-2xl text-gray-600 mb-10 sm:mb-12 leading-relaxed">
             Passion for Clean Releases. Focused on Automation. Trusted for Reliability.
           </p>
 
-          {/* Tags */}
+          {/* Quick skill highlights for recruiter-friendly scanning */}
           <div className="flex flex-wrap justify-center gap-3 sm:gap-5 md:gap-8 mb-14 sm:mb-16">
+            {/* QA domain badge */}
             <div className="flex items-center space-x-2 bg-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-md">
               <Shield className="text-green-600" size={18} />
               <span className="text-sm sm:text-base text-gray-700 font-medium">
                 Quality Assurance
               </span>
             </div>
+
+            {/* Automation specialization badge */}
             <div className="flex items-center space-x-2 bg-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-md">
               <Target className="text-blue-600" size={18} />
               <span className="text-sm sm:text-base text-gray-700 font-medium">
                 Test Automation
               </span>
             </div>
+
+            {/* Performance testing specialization badge */}
             <div className="flex items-center space-x-2 bg-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-md">
               <CheckCircle className="text-emerald-600" size={18} />
               <span className="text-sm sm:text-base text-gray-700 font-medium">
@@ -47,7 +54,7 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* CTA Buttons */}
+          {/* Main recruiter interaction buttons */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-16 sm:mb-20">
             <button
               onClick={() =>
@@ -59,6 +66,8 @@ const Hero = () => {
             >
               Technical Expertise
             </button>
+
+            {/* Secondary CTA encouraging direct communication */}
             <button
               onClick={() =>
                 document
@@ -71,7 +80,7 @@ const Hero = () => {
             </button>
           </div>
 
-          {/* Scroll Down Icon */}
+          {/* Visual scroll indicator encouraging deeper page exploration */}
           <button
             onClick={scrollToNext}
             className="animate-bounce text-blue-800 hover:text-blue-900 transition-colors duration-200"
