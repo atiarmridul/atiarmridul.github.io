@@ -1,70 +1,79 @@
-import { useState, FormEvent, ChangeEvent } from "react";
-import emailjs from "emailjs-com";
+import { useState, type ChangeEvent, type FormEvent } from 'react';
+import emailjs from 'emailjs-com';
 import {
-  MailCheck,
-  PhoneCall,
-  MessageSquareText,
-  MapPinned,
-  Linkedin,
   Github,
+  Linkedin,
+  MailCheck,
+  MapPinned,
+  MessageSquareText,
+  PhoneCall,
   SendHorizonal,
-} from "lucide-react";
+} from 'lucide-react';
+
+const toTestId = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+
+const emailJsConfig = {
+  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+};
+
+const isEmailJsConfigured = Object.values(emailJsConfig).every(Boolean);
 
 const Contact = () => {
-  // Centralized form state for controlled input handling
+  // Centralized form state for controlled input handling.
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-    robotField: "", // Honeypot field for spam prevention
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+    robotField: '',
   });
 
-  // Updates form state dynamically based on input field changes
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Handles form validation and email submission workflow
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    // Basic bot protection using hidden honeypot field
-    if (formData.robotField !== "") {
-      console.warn("Spam detected. Submission blocked.");
+    if (formData.robotField !== '') {
+      console.warn('Spam detected. Submission blocked.');
       return;
     }
 
-    // Sanitizes user input to reduce injection risks
-    const sanitize = (text: string) =>
-      text.replace(/</g, "&lt;").replace(/>/g, "&gt;").trim();
+    if (!isEmailJsConfigured) {
+      alert('Contact form is not configured yet.');
+      return;
+    }
+
+    const sanitize = (text: string) => text.replace(/</g, '&lt;').replace(/>/g, '&gt;').trim();
 
     const name = sanitize(formData.name);
     const email = formData.email.trim();
     const subject = sanitize(formData.subject);
     const message = sanitize(formData.message);
 
-    // Validates email format before submission
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      alert("❌ Please enter a valid email address.");
+      alert('Please enter a valid email address.');
       return;
     }
 
-    // Ensures all required fields contain valid values
     if (!name || !email || !subject || !message) {
-      alert("❌ All fields are required.");
+      alert('All fields are required.');
       return;
     }
 
     try {
-      // Sends email using EmailJS without requiring backend infrastructure
       await emailjs.send(
-        "service_btdlks9",
-        "template_6g4f9jq",
+        emailJsConfig.serviceId!,
+        emailJsConfig.templateId!,
         {
           name,
           email,
@@ -72,85 +81,74 @@ const Contact = () => {
           message,
           time: new Date().toLocaleString(),
         },
-        "4pQMNQFnQL-koPcxW"
+        emailJsConfig.publicKey!,
       );
 
-      // Clears form after successful submission
-      alert("✅ Thank you! Your message has been sent.");
-      setFormData({ name: "", email: "", subject: "", message: "", robotField: "" });
+      alert('Thank you. Your message has been sent.');
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+        robotField: '',
+      });
     } catch (error) {
-      // Error logging helps debugging production email delivery issues
-      console.error("EmailJS Error:", error);
-      alert("❌ Failed to send message. Please try again later.");
+      console.error('EmailJS error:', error);
+      alert('Failed to send message. Please try again later.');
     }
   };
 
   return (
-    // Contact section focused on recruiter communication and networking
-    <section id="contact" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Section introduction and collaboration messaging */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Let's Connect
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to discuss quality assurance strategies or explore
-            collaboration opportunities? I'd love to hear from you.
+    <section id="contact" data-testid="section-contact" className="bg-gray-50 py-20">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">Let&apos;s Connect</h2>
+          <p className="mx-auto max-w-3xl text-xl text-gray-600">
+            Ready to discuss quality assurance strategies or explore collaboration opportunities? I&apos;d
+            love to hear from you.
           </p>
         </div>
 
-        {/* Two-column responsive layout for contact info and form */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Direct communication methods and professional links */}
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-8">
-              Get In Touch
-            </h3>
-
-            {/* Contact details designed for fast recruiter access */}
+            <h3 className="mb-8 text-2xl font-bold text-gray-900">Get In Touch</h3>
             <ul className="space-y-6">
               {[
                 {
                   icon: <MailCheck className="text-blue-600" size={24} />,
-                  label: "Email",
-                  value: "atiarmridul@gmail.com",
-                  href: "mailto:atiarmridul@gmail.com",
+                  label: 'Email',
+                  value: 'atiarmridul@gmail.com',
+                  href: 'mailto:atiarmridul@gmail.com',
                 },
                 {
                   icon: <PhoneCall className="text-green-600" size={24} />,
-                  label: "Phone",
-                  value: "+880 1916204614",
-                  href: "tel:+8801916204614",
+                  label: 'Phone',
+                  value: '+880 1916204614',
+                  href: 'tel:+8801916204614',
                 },
                 {
                   icon: <MessageSquareText className="text-green-500" size={24} />,
-                  label: "WhatsApp",
-                  value: "Chat on WhatsApp",
-                  href: "https://wa.me/8801916204614",
+                  label: 'WhatsApp',
+                  value: 'Chat on WhatsApp',
+                  href: 'https://wa.me/8801916204614',
                 },
                 {
                   icon: <MapPinned className="text-purple-600" size={24} />,
-                  label: "Location",
-                  value: "Dhaka, Bangladesh",
+                  label: 'Location',
+                  value: 'Dhaka, Bangladesh',
                 },
               ].map(({ icon, label, value, href }) => (
-                <li key={label} className="flex items-center">
-                  {/* Visual icon container for faster recognition */}
-                  <div className="bg-gray-100 p-3 rounded-full mr-4">
-                    {icon}
-                  </div>
-
+                <li key={label} className="flex items-center" data-testid={`contact-info-${toTestId(label)}`}>
+                  <div className="mr-4 rounded-full bg-gray-100 p-3">{icon}</div>
                   <div>
                     <h4 className="font-semibold text-gray-900">{label}</h4>
-
-                    {/* External contact links open in separate tabs for convenience */}
                     {href ? (
                       <a
                         href={href}
                         className="text-blue-600 hover:underline"
                         target="_blank"
                         rel="noopener noreferrer"
+                        data-testid={`contact-info-link-${toTestId(label)}`}
                       >
                         {value}
                       </a>
@@ -162,31 +160,26 @@ const Contact = () => {
               ))}
             </ul>
 
-            {/* Social media links for professional networking */}
             <div className="mt-8">
-              <h4 className="font-semibold text-gray-900 mb-4">
-                Connect with me
-              </h4>
-
+              <h4 className="mb-4 font-semibold text-gray-900">Connect with me</h4>
               <div className="flex space-x-4">
-                {/* LinkedIn profile for professional verification */}
                 <a
                   href="https://www.linkedin.com/in/atiarmridul/"
-                  className="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-colors"
+                  className="rounded-full bg-blue-600 p-3 text-white transition-colors hover:bg-blue-700"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
+                  data-testid="social-link-linkedin"
                 >
                   <Linkedin size={20} />
                 </a>
-
-                {/* GitHub profile for technical portfolio visibility */}
                 <a
                   href="https://github.com/atiarmridul"
-                  className="bg-gray-800 text-white p-3 rounded-full hover:bg-gray-900 transition-colors"
+                  className="rounded-full bg-gray-800 p-3 text-white transition-colors hover:bg-gray-900"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
+                  data-testid="social-link-github"
                 >
                   <Github size={20} />
                 </a>
@@ -194,14 +187,13 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact form for direct recruiter communication */}
           <form
             onSubmit={handleSubmit}
-            className="bg-white rounded-xl shadow-lg p-8 space-y-6"
+            className="space-y-6 rounded-xl bg-white p-8 shadow-lg"
+            data-testid="contact-form"
           >
             <h3 className="text-2xl font-bold text-gray-900">Send Message</h3>
 
-            {/* Hidden anti-spam honeypot field */}
             <input
               type="text"
               name="robotField"
@@ -210,77 +202,79 @@ const Contact = () => {
               autoComplete="off"
               className="hidden"
               tabIndex={-1}
+              data-testid="contact-honeypot-field"
             />
 
-            {/* Responsive input grouping for compact form layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               {[
-                { id: "name", label: "Name", type: "text" },
-                { id: "email", label: "Email", type: "email" },
+                { id: 'name', label: 'Name', type: 'text' },
+                { id: 'email', label: 'Email', type: 'email' },
               ].map(({ id, label, type }) => (
-                <div key={id}>
-                  {/* Semantic labels improve accessibility and usability */}
+                <div key={id} data-testid={`contact-field-${id}`}>
                   <label
                     htmlFor={id}
-                    className="block text-sm font-medium text-gray-700 mb-2"
+                    data-testid={`contact-${id}-label`}
+                    className="mb-2 block text-sm font-medium text-gray-700"
                   >
                     {label}
                   </label>
-
                   <input
                     type={type}
                     id={id}
                     name={id}
+                    data-testid={`contact-${id}-input`}
                     value={formData[id as keyof typeof formData]}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               ))}
             </div>
 
-            {/* Message fields rendered dynamically for maintainability */}
             {[
-              { id: "subject", label: "Subject" },
-              { id: "message", label: "Message", textarea: true },
+              { id: 'subject', label: 'Subject' },
+              { id: 'message', label: 'Message', textarea: true },
             ].map(({ id, label, textarea }) => (
-              <div key={id}>
+              <div key={id} data-testid={`contact-field-${id}`}>
                 <label
                   htmlFor={id}
-                  className="block text-sm font-medium text-gray-700 mb-2"
+                  data-testid={`contact-${id}-label`}
+                  className="mb-2 block text-sm font-medium text-gray-700"
                 >
                   {label}
                 </label>
-
                 {textarea ? (
                   <textarea
                     id={id}
                     name={id}
                     rows={6}
+                    data-testid={`contact-${id}-textarea`}
                     value={formData[id as keyof typeof formData]}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
+                    className="w-full resize-none rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 ) : (
                   <input
                     type="text"
                     id={id}
                     name={id}
+                    data-testid={`contact-${id}-input`}
                     value={formData[id as keyof typeof formData]}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 )}
               </div>
             ))}
 
-            {/* Primary form submission action */}
             <button
               type="submit"
-              className="w-full bg-blue-800 text-white py-3 px-6 rounded-lg hover:bg-blue-900 transition-colors flex items-center justify-center space-x-2"
+              aria-label="Send contact message"
+              data-testid="contact-submit-button"
+              className="flex w-full items-center justify-center space-x-2 rounded-lg bg-blue-800 px-6 py-3 text-white transition-colors hover:bg-blue-900"
             >
               <SendHorizonal size={18} />
               <span>Send Message</span>

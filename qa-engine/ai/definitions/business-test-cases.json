@@ -1,0 +1,507 @@
+[
+  {
+    "testCaseId": "AI_TC_HOME_001",
+    "title": "AI-assisted verification that the portfolio homepage loads successfully",
+    "module": "Homepage",
+    "scenario": "the portfolio homepage loads successfully",
+    "priority": "High",
+    "tags": ["homepage", "ai-ui", "high"],
+    "preconditions": [
+      "User has internet connection",
+      "Portfolio website is accessible",
+      "Browser console logging is enabled"
+    ],
+    "testData": {
+      "url": "https://atiarmridul.github.io/",
+      "expectedTitle": "Md. Atiar Rahman Chowdhury",
+      "expectedHeroText": "Precision. Quality. Collaboration."
+    },
+    "steps": [
+      "Open the portfolio website URL",
+      "Wait until network activity is idle",
+      "Capture page title, visible text, screenshot, console logs, and failed network requests",
+      "Ask the AI validator to compare the captured UI against the expected homepage content"
+    ],
+    "expectedResults": [
+      "Homepage loads without runtime errors",
+      "Expected page title and hero content are visible",
+      "Main sections are present",
+      "No critical console errors or failed document/script requests are found"
+    ],
+    "aiValidation": [
+      "Classify the page as loaded or broken based on visible content, console errors, and failed requests",
+      "Detect missing core sections such as hero, about, skills, experience, education, and contact",
+      "Flag blank screen, major visual defects, or broken layout patterns"
+    ],
+    "testType": "AI UI",
+    "automationMode": "ai-assisted"
+  },
+  {
+    "testCaseId": "AI_TC_HOME_002",
+    "title": "AI-assisted verification that navigation menu items are clickable",
+    "module": "Navigation",
+    "scenario": "navigation menu items are clickable",
+    "priority": "High",
+    "tags": ["navigation", "ai-functional", "high"],
+    "preconditions": ["Homepage is loaded", "Navigation menu is visible"],
+    "testData": {
+      "expectedNavigationItems": ["Home", "About", "Skills", "Experience", "Education", "Contact"]
+    },
+    "steps": [
+      "Open the homepage",
+      "Extract all visible navigation menu items",
+      "Click each navigation menu item one by one",
+      "Capture scroll position and visible section heading after each click",
+      "Ask the AI validator to match each clicked item with the expected destination section"
+    ],
+    "expectedResults": [
+      "Every navigation item is clickable",
+      "Each item scrolls to its matching section",
+      "No dead or mismatched navigation links exist"
+    ],
+    "aiValidation": [
+      "Identify whether the clicked menu item lands near the correct section",
+      "Detect dead links, no-op clicks, or incorrect scroll targets",
+      "Compare observed navigation labels with expected navigation items"
+    ],
+    "testType": "AI Functional",
+    "automationMode": "ai-assisted"
+  },
+  {
+    "testCaseId": "AI_TC_HOME_003",
+    "title": "AI-assisted verification of smooth scrolling behavior",
+    "module": "Navigation",
+    "scenario": "smooth scrolling behavior",
+    "priority": "Medium",
+    "tags": ["navigation", "ai-ui", "medium"],
+    "preconditions": ["Homepage is loaded", "Reduced motion mode is not forced by the browser"],
+    "testData": {},
+    "steps": [
+      "Open the homepage",
+      "Click navigation items and hero CTA buttons linked to page sections",
+      "Record scroll movement frames or scroll position changes",
+      "Ask the AI validator to inspect whether the transition appears smooth and reaches the correct section"
+    ],
+    "expectedResults": [
+      "Page scrolls smoothly to the target section",
+      "Correct target section becomes visible",
+      "No unexpected layout shift occurs during scrolling"
+    ],
+    "aiValidation": [
+      "Detect sudden jump behavior where smooth scrolling is expected",
+      "Confirm target section is visible after scrolling completes",
+      "Flag scroll position ending too far above or below the intended section"
+    ],
+    "testType": "AI UI",
+    "automationMode": "ai-assisted"
+  },
+  {
+    "testCaseId": "AI_TC_HOME_004",
+    "title": "AI-assisted mobile responsive layout verification",
+    "module": "Responsive UI",
+    "scenario": "mobile responsive layout verification",
+    "priority": "High",
+    "tags": ["responsive-ui", "ai-responsive", "high"],
+    "preconditions": ["Homepage is available", "Mobile viewport simulation is enabled"],
+    "testData": {
+      "viewports": ["375x667", "390x844", "414x896"]
+    },
+    "steps": [
+      "Open the website in each mobile viewport",
+      "Capture full-page screenshots",
+      "Open the mobile menu and capture the expanded menu state",
+      "Ask the AI visual validator to inspect layout, spacing, and readability"
+    ],
+    "expectedResults": [
+      "UI adapts correctly to mobile viewport sizes",
+      "No overlapping or clipped elements appear",
+      "Mobile navigation remains visible and usable"
+    ],
+    "aiValidation": [
+      "Detect overlapping text, clipped buttons, horizontal scrolling, and inaccessible menu items",
+      "Confirm section content stacks correctly on narrow screens",
+      "Flag visual elements that are too small or misaligned"
+    ],
+    "testType": "AI Responsive",
+    "automationMode": "ai-assisted"
+  },
+  {
+    "testCaseId": "AI_TC_HOME_005",
+    "title": "AI-assisted social media link verification",
+    "module": "Social Links",
+    "scenario": "social media link verification",
+    "priority": "Medium",
+    "tags": ["social-links", "ai-functional", "medium"],
+    "preconditions": ["Homepage is loaded", "Contact section is reachable"],
+    "testData": {
+      "linkedInUrl": "https://www.linkedin.com/in/atiarmridul/",
+      "githubUrl": "https://github.com/atiarmridul"
+    },
+    "steps": [
+      "Navigate to the Contact section",
+      "Identify social links by accessible labels and icons",
+      "Click the LinkedIn link",
+      "Click the GitHub link",
+      "Ask the AI validator to compare opened URLs with expected profile destinations"
+    ],
+    "expectedResults": [
+      "LinkedIn profile URL opens correctly",
+      "GitHub profile URL opens correctly",
+      "No social link points to an empty or broken destination"
+    ],
+    "aiValidation": [
+      "Verify that social links open in a new tab or external navigation context",
+      "Detect incorrect, missing, or placeholder profile URLs",
+      "Confirm accessible labels match the social platform"
+    ],
+    "testType": "AI Functional",
+    "automationMode": "ai-assisted"
+  },
+  {
+    "testCaseId": "AI_TC_HOME_006",
+    "title": "AI-assisted project section availability verification",
+    "module": "Projects Section",
+    "scenario": "project section availability verification",
+    "priority": "Medium",
+    "tags": ["projects-section", "ai-ui", "medium"],
+    "preconditions": ["Homepage is loaded", "Latest deployed build is under test"],
+    "testData": {},
+    "steps": [
+      "Inspect the navigation menu for a Projects item",
+      "Search the page DOM for a section with id projects",
+      "Capture visible page sections",
+      "Ask the AI validator to determine whether project cards are expected for this build"
+    ],
+    "expectedResults": [
+      "If Projects section is enabled, project cards display complete content",
+      "If Projects section is disabled in the current build, the test is marked not applicable with evidence",
+      "No broken project UI appears on the homepage"
+    ],
+    "aiValidation": [
+      "Classify Projects as visible, hidden, commented out, or unavailable",
+      "If visible, verify project cards include title, description, technology tags, and links",
+      "If unavailable, flag the case as not applicable instead of failed"
+    ],
+    "testType": "AI UI",
+    "automationMode": "ai-assisted"
+  },
+  {
+    "testCaseId": "AI_TC_HOME_007",
+    "title": "AI-assisted project repository and demo link verification",
+    "module": "Projects Section",
+    "scenario": "project repository and demo link verification",
+    "priority": "High",
+    "tags": ["projects-section", "ai-functional", "high"],
+    "preconditions": [
+      "Projects section is enabled and visible",
+      "Project cards contain repository or demo links"
+    ],
+    "testData": {},
+    "steps": [
+      "Navigate to the Projects section",
+      "Extract all repository and demo links",
+      "Open each link in a new tab",
+      "Ask the AI validator to classify each destination as valid, placeholder, broken, or unrelated"
+    ],
+    "expectedResults": [
+      "Each repository link opens the correct GitHub repository",
+      "Each demo link opens the correct live demo",
+      "No project link uses a placeholder or broken URL"
+    ],
+    "aiValidation": [
+      "Detect placeholder values such as #",
+      "Compare destination content with project title and description",
+      "Flag HTTP errors, empty tabs, and unrelated destinations"
+    ],
+    "testType": "AI Functional",
+    "automationMode": "ai-assisted"
+  },
+  {
+    "testCaseId": "AI_TC_HOME_008",
+    "title": "AI-assisted contact form submission with valid data",
+    "module": "Contact Form",
+    "scenario": "contact form submission with valid data",
+    "priority": "Critical",
+    "tags": ["contact-form", "ai-functional", "critical"],
+    "preconditions": [
+      "Contact section is reachable",
+      "EmailJS environment variables are configured in the test environment",
+      "Network requests can be monitored"
+    ],
+    "testData": {
+      "name": "AI Test User",
+      "email": "ai.test.user@example.com",
+      "subject": "Portfolio QA test",
+      "message": "This is an AI-assisted contact form test message."
+    },
+    "steps": [
+      "Navigate to the Contact section",
+      "Enter valid name, email, subject, and message",
+      "Click the Send Message button",
+      "Capture alert text and EmailJS network request result",
+      "Ask the AI validator to classify the outcome"
+    ],
+    "expectedResults": [
+      "Form submits successfully when EmailJS is configured",
+      "Success message appears",
+      "No validation error is shown",
+      "Form fields reset after successful submission"
+    ],
+    "aiValidation": [
+      "Confirm success feedback appears only after a successful submission path",
+      "Detect configuration errors such as missing EmailJS service, template, or public key",
+      "Verify submitted form values are cleared after success"
+    ],
+    "testType": "AI Functional",
+    "automationMode": "ai-assisted"
+  },
+  {
+    "testCaseId": "AI_TC_HOME_009",
+    "title": "AI-assisted contact form empty-field validation",
+    "module": "Contact Form",
+    "scenario": "contact form empty-field validation",
+    "priority": "High",
+    "tags": ["contact-form", "ai-validation", "high"],
+    "preconditions": ["Contact section is reachable", "Browser native form validation is enabled"],
+    "testData": {},
+    "steps": [
+      "Navigate to the Contact section",
+      "Leave name, email, subject, and message empty",
+      "Click the Send Message button",
+      "Capture validation state from each required field",
+      "Ask the AI validator to confirm submission was blocked"
+    ],
+    "expectedResults": [
+      "Required-field validation is triggered",
+      "Form submission is blocked",
+      "No contact request is sent"
+    ],
+    "aiValidation": [
+      "Detect required-field validation on all visible mandatory inputs",
+      "Confirm no EmailJS request is sent",
+      "Flag missing validation on any mandatory field"
+    ],
+    "testType": "AI Validation",
+    "automationMode": "ai-assisted"
+  },
+  {
+    "testCaseId": "AI_TC_HOME_010",
+    "title": "AI-assisted invalid email validation",
+    "module": "Contact Form",
+    "scenario": "invalid email validation",
+    "priority": "High",
+    "tags": ["contact-form", "ai-validation", "high"],
+    "preconditions": ["Contact section is reachable"],
+    "testData": {
+      "name": "AI Test User",
+      "email": "invalid-email",
+      "subject": "Invalid email validation",
+      "message": "Testing invalid email format."
+    },
+    "steps": [
+      "Navigate to the Contact section",
+      "Enter invalid email format",
+      "Fill all other required fields with valid values",
+      "Click the Send Message button",
+      "Ask the AI validator to inspect field validity and alert behavior"
+    ],
+    "expectedResults": [
+      "Invalid email validation appears",
+      "Form is not submitted",
+      "No contact request is sent"
+    ],
+    "aiValidation": [
+      "Confirm invalid email format is rejected",
+      "Confirm no EmailJS request is sent",
+      "Classify whether validation comes from browser native validation or custom validation"
+    ],
+    "testType": "AI Validation",
+    "automationMode": "ai-assisted"
+  },
+  {
+    "testCaseId": "AI_TC_HOME_011",
+    "title": "AI-assisted animation and interaction stability verification",
+    "module": "UI Animation",
+    "scenario": "animation and interaction stability verification",
+    "priority": "Low",
+    "tags": ["ui-animation", "ai-ui", "low"],
+    "preconditions": ["Homepage is loaded", "Browser supports CSS transitions and animations"],
+    "testData": {},
+    "steps": [
+      "Open the homepage",
+      "Scroll through all visible sections",
+      "Hover over cards, buttons, and interactive items",
+      "Capture short visual snapshots before and after interactions",
+      "Ask the AI visual validator to detect flicker, jitter, and layout instability"
+    ],
+    "expectedResults": [
+      "Animations and hover effects run smoothly",
+      "No UI flickering occurs",
+      "Interactive states do not break layout"
+    ],
+    "aiValidation": [
+      "Detect visual flickering, broken transitions, and unexpected layout shifts",
+      "Confirm hover states preserve readability",
+      "Flag elements that move or scale in a way that blocks nearby content"
+    ],
+    "testType": "AI UI",
+    "automationMode": "ai-assisted"
+  },
+  {
+    "testCaseId": "AI_TC_HOME_012",
+    "title": "AI-assisted website performance and rendering quality verification",
+    "module": "Performance",
+    "scenario": "website performance and rendering quality verification",
+    "priority": "Medium",
+    "tags": ["performance", "ai-performance", "medium"],
+    "preconditions": ["Homepage is accessible", "Performance metrics collection is enabled"],
+    "testData": {
+      "targetLoadTimeSeconds": 3,
+      "targetLargestContentfulPaintSeconds": 2.5,
+      "targetCumulativeLayoutShift": 0.1
+    },
+    "steps": [
+      "Open the homepage in a clean browser context",
+      "Collect navigation timing and core web vitals where available",
+      "Capture failed or slow network requests",
+      "Ask the AI validator to summarize performance risks"
+    ],
+    "expectedResults": [
+      "Website loads within acceptable time",
+      "No major rendering delay occurs",
+      "No severe layout shift is detected"
+    ],
+    "aiValidation": [
+      "Classify load speed as acceptable, warning, or failed based on thresholds",
+      "Identify heavy resources, delayed rendering, and layout shifts",
+      "Recommend follow-up investigation if metrics exceed thresholds"
+    ],
+    "testType": "AI Performance",
+    "automationMode": "ai-assisted"
+  },
+  {
+    "testCaseId": "AI_TC_HOME_013",
+    "title": "AI-assisted cross-browser consistency verification",
+    "module": "Cross Browser",
+    "scenario": "cross-browser consistency verification",
+    "priority": "High",
+    "tags": ["cross-browser", "ai-crossbrowser", "high"],
+    "preconditions": [
+      "Chrome, Firefox, Edge, and Safari are available or provided by the test platform",
+      "Homepage is accessible"
+    ],
+    "testData": {},
+    "steps": [
+      "Open the website in Chrome",
+      "Open the website in Firefox",
+      "Open the website in Edge",
+      "Open the website in Safari",
+      "Capture screenshots and console logs from each browser",
+      "Ask the AI validator to compare visual layout and behavior across browsers"
+    ],
+    "expectedResults": [
+      "Website works consistently across supported browsers",
+      "No browser-specific layout breaking issue is found",
+      "Navigation and contact interactions behave consistently"
+    ],
+    "aiValidation": [
+      "Detect browser-specific layout differences",
+      "Compare typography, spacing, button states, and section alignment",
+      "Flag browser-specific console errors or unsupported behavior"
+    ],
+    "testType": "AI CrossBrowser",
+    "automationMode": "ai-assisted"
+  },
+  {
+    "testCaseId": "AI_TC_HOME_014",
+    "title": "AI-assisted theme availability and contrast consistency verification",
+    "module": "Theme",
+    "scenario": "theme availability and contrast consistency verification",
+    "priority": "Low",
+    "tags": ["theme", "ai-ui", "low"],
+    "preconditions": ["Homepage is loaded"],
+    "testData": {},
+    "steps": [
+      "Inspect the UI for a dark/light theme toggle",
+      "If a theme toggle exists, switch themes",
+      "Capture screenshots of all major sections before and after switching",
+      "Ask the AI validator to inspect readability, contrast, and color consistency"
+    ],
+    "expectedResults": [
+      "If no theme toggle exists, test is marked not applicable",
+      "If a theme toggle exists, theme changes successfully",
+      "Text remains readable and UI colors remain consistent"
+    ],
+    "aiValidation": [
+      "Classify the test as not applicable if no theme toggle exists",
+      "If available, confirm theme changes apply consistently across sections",
+      "Detect unreadable text, low contrast, or inconsistent themed surfaces"
+    ],
+    "testType": "AI UI",
+    "automationMode": "ai-assisted"
+  },
+  {
+    "testCaseId": "AI_TC_HOME_015",
+    "title": "AI-assisted media and icon integrity verification",
+    "module": "Media",
+    "scenario": "media and icon integrity verification",
+    "priority": "Medium",
+    "tags": ["media", "ai-ui", "medium"],
+    "preconditions": ["Homepage is loaded", "Network request logging is enabled"],
+    "testData": {},
+    "steps": [
+      "Open the homepage",
+      "Inspect all visible images, SVG icons, and icon-only links",
+      "Capture failed media requests and accessibility labels",
+      "Ask the AI validator to detect missing media, broken icons, or unlabeled icon links"
+    ],
+    "expectedResults": [
+      "All visible images and icons load properly",
+      "No broken placeholders appear",
+      "Functional icon-only links include accessible labels"
+    ],
+    "aiValidation": [
+      "Detect broken image placeholders or missing SVG/icon rendering",
+      "Verify icon-only social links have accessible labels",
+      "Flag decorative or functional icons that appear visually broken"
+    ],
+    "testType": "AI UI",
+    "automationMode": "ai-assisted"
+  },
+  {
+    "testCaseId": "AI_TC_SMOKE_001",
+    "title": "Homepage - Portfolio landing page loads",
+    "module": "Homepage",
+    "scenario": "Portfolio landing page loads",
+    "priority": "High",
+    "tags": ["smoke", "homepage"],
+    "steps": ["Open homepage", "Verify Md. Atiar Rahman Chowdhury is visible", "Verify Contact is visible"],
+    "expectedResults": [
+      "Homepage loads successfully",
+      "Owner name is displayed in the hero section",
+      "Contact entry point is available"
+    ],
+    "preconditions": [],
+    "aiValidation": [],
+    "testType": "AI Smoke",
+    "automationMode": "automated"
+  },
+  {
+    "testCaseId": "AI_TC_SMOKE_002",
+    "title": "Navigation - Navigate to contact section",
+    "module": "Navigation",
+    "scenario": "Navigate to contact section",
+    "priority": "Medium",
+    "tags": ["navigation", "contact"],
+    "steps": ["Open homepage", "Click Contact", "Verify Get In Touch is visible"],
+    "expectedResults": [
+      "Homepage is ready",
+      "The page scrolls to the contact area",
+      "The contact section heading is visible"
+    ],
+    "preconditions": [],
+    "aiValidation": [],
+    "testType": "AI Smoke",
+    "automationMode": "automated"
+  }
+]

@@ -21,6 +21,7 @@ and quality standards followed in this project.
 ## Intent-Based Comments
 
 Comments should explain:
+
 - WHY something exists
 - Architectural decisions
 - Accessibility reasoning
@@ -33,7 +34,7 @@ Avoid commenting obvious syntax.
 
 ```tsx
 // Smooth scrolling improves navigation experience on long pages
-scrollIntoView({ behavior: "smooth" });
+scrollIntoView({ behavior: 'smooth' });
 ```
 
 ### Bad Example
@@ -63,27 +64,30 @@ scrollIntoView();
 # 4. Naming Conventions
 
 ## Components
+
 Use PascalCase.
 
 ```tsx
-HeroSection.tsx
-ContactForm.tsx
+HeroSection.tsx;
+ContactForm.tsx;
 ```
 
 ## Variables
+
 Use camelCase.
 
 ```tsx
-isMenuOpen
-filteredAchievements
+isMenuOpen;
+filteredAchievements;
 ```
 
 ## Constants
+
 Use descriptive naming.
 
 ```tsx
-skillCategories
-combinedAchievements
+skillCategories;
+combinedAchievements;
 ```
 
 ---

@@ -1,41 +1,45 @@
-import React from 'react';
+type ColorKey = 'blue' | 'green' | 'red' | 'purple' | 'orange' | 'indigo';
 
-type ColorKey = "blue" | "green" | "red" | "purple" | "orange" | "indigo";
+const toTestId = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
 
 const colorStyles: Record<ColorKey, Record<string, string>> = {
   blue: {
-    bg: "bg-blue-50",
-    border: "border-blue-200",
-    text: "text-blue-700",
+    bg: 'bg-blue-50',
+    border: 'border-blue-200',
+    text: 'text-blue-700',
   },
   green: {
-    bg: "bg-green-50",
-    border: "border-green-200",
-    text: "text-green-700",
+    bg: 'bg-green-50',
+    border: 'border-green-200',
+    text: 'text-green-700',
   },
   red: {
-    bg: "bg-red-50",
-    border: "border-red-200",
-    text: "text-red-700",
+    bg: 'bg-red-50',
+    border: 'border-red-200',
+    text: 'text-red-700',
   },
   purple: {
-    bg: "bg-purple-50",
-    border: "border-purple-200",
-    text: "text-purple-700",
+    bg: 'bg-purple-50',
+    border: 'border-purple-200',
+    text: 'text-purple-700',
   },
   orange: {
-    bg: "bg-orange-50",
-    border: "border-orange-200",
-    text: "text-orange-700",
+    bg: 'bg-orange-50',
+    border: 'border-orange-200',
+    text: 'text-orange-700',
   },
   indigo: {
-    bg: "bg-indigo-50",
-    border: "border-indigo-200",
-    text: "text-indigo-700",
+    bg: 'bg-indigo-50',
+    border: 'border-indigo-200',
+    text: 'text-indigo-700',
   },
 };
 
-const domains = [
+const domains: Array<{ title: string; color: ColorKey }> = [
   {
     title: 'Telco',
     color: 'blue',
@@ -59,20 +63,18 @@ const domains = [
   {
     title: 'Enterprise & SaaS',
     color: 'indigo',
-  }
+  },
 ];
 
 const Domains = () => {
   return (
-    <section id="domains" className="py-20 bg-white">
+    <section id="domains" data-testid="section-domains" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <header className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Domain Expertise
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Domain Expertise</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Extensive experience across diverse industries, bringing domain-specific testing knowledge 
-            and understanding of business-critical requirements to ensure quality delivery.
+            Extensive experience across diverse industries, bringing domain-specific testing knowledge and
+            understanding of business-critical requirements to ensure quality delivery.
           </p>
         </header>
 
@@ -80,8 +82,9 @@ const Domains = () => {
           {domains.map((domain, index) => {
             const colors = colorStyles[domain.color];
             return (
-              <article 
+              <article
                 key={index}
+                data-testid={`domain-card-${toTestId(domain.title)}`}
                 className={`
                   ${colors.bg} 
                   ${colors.border} 

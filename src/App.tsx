@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -13,11 +12,11 @@ import Footer from './components/Footer';
 function App() {
   return (
     // Root container for the entire portfolio application
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white" data-testid="portfolio-app">
       {/* Sticky top navigation for quick section access */}
       <Header />
 
-      <main>
+      <main data-testid="portfolio-main">
         {/* Main landing section introducing profile and role */}
         <Hero />
 

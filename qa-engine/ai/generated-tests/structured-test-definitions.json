@@ -1,0 +1,88 @@
+[
+  {
+    "id": "AI_TC_SMOKE_001",
+    "sourceTestCaseId": "AI_TC_SMOKE_001",
+    "module": "Homepage",
+    "scenario": "Portfolio landing page loads",
+    "title": "Homepage - Portfolio landing page loads",
+    "priority": "High",
+    "riskLevel": "Medium",
+    "tags": [
+      "smoke",
+      "homepage"
+    ],
+    "preconditions": [],
+    "generatedAt": "2026-05-26T12:10:14.432Z",
+    "confidenceScore": 0.82,
+    "testData": {},
+    "aiValidation": [],
+    "testType": "AI Smoke",
+    "automationMode": "automated",
+    "steps": [
+      {
+        "id": "step-1",
+        "businessText": "Open homepage",
+        "action": "navigate",
+        "targetHint": "homepage",
+        "expectedResult": "Homepage loads successfully"
+      },
+      {
+        "id": "step-2",
+        "businessText": "Verify Md. Atiar Rahman Chowdhury is visible",
+        "action": "assertVisible",
+        "targetHint": "Md. Atiar Rahman Chowdhury",
+        "expectedResult": "Owner name is displayed in the hero section"
+      },
+      {
+        "id": "step-3",
+        "businessText": "Verify Contact is visible",
+        "action": "assertVisible",
+        "targetHint": "Contact",
+        "expectedResult": "Contact entry point is available"
+      }
+    ]
+  },
+  {
+    "id": "AI_TC_SMOKE_002",
+    "sourceTestCaseId": "AI_TC_SMOKE_002",
+    "module": "Navigation",
+    "scenario": "Navigate to contact section",
+    "title": "Navigation - Navigate to contact section",
+    "priority": "Medium",
+    "riskLevel": "Low",
+    "tags": [
+      "navigation",
+      "contact"
+    ],
+    "preconditions": [],
+    "generatedAt": "2026-05-26T12:10:14.432Z",
+    "confidenceScore": 0.82,
+    "testData": {},
+    "aiValidation": [],
+    "testType": "AI Smoke",
+    "automationMode": "automated",
+    "steps": [
+      {
+        "id": "step-1",
+        "businessText": "Open homepage",
+        "action": "navigate",
+        "targetHint": "homepage",
+        "expectedResult": "Homepage is ready"
+      },
+      {
+        "id": "step-2",
+        "businessText": "Click Contact",
+        "action": "click",
+        "targetHint": "Contact",
+        "expectedResult": "The page scrolls to the contact area"
+      },
+      {
+        "id": "step-3",
+        "businessText": "Verify Get In Touch is visible",
+        "action": "assertVisible",
+        "targetHint": "Get In Touch",
+        "expectedResult": "The contact section heading is visible"
+      }
+    ]
+  }
+]

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-import { navLinks } from "../constants";
+import { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
+import { navLinks } from '../constants';
 
 const Header = () => {
   // Controls mobile navigation visibility on smaller devices
@@ -15,21 +15,21 @@ const Header = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     // Cleanup prevents duplicate event listeners during rerenders
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Opens resume in a new tab for recruiter convenience
   const handleDownloadResume = () => {
-    window.open("https://flowcv.com/resume/vwl1uu59wg", "_blank");
+    window.open('https://flowcv.com/resume/vwl1uu59wg', '_blank');
   };
 
   // Smoothly scrolls users to the selected portfolio section
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: "smooth" });
+    element?.scrollIntoView({ behavior: 'smooth' });
 
     // Automatically closes mobile menu after navigation
     setIsMenuOpen(false);
@@ -38,23 +38,26 @@ const Header = () => {
   return (
     // Fixed navigation improves accessibility on long scrolling pages
     <header
+      data-testid="site-header"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-lg backdrop-blur-sm" : "bg-transparent"
+        isScrolled ? 'bg-white shadow-lg backdrop-blur-sm' : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Personal branding and quick identity recognition */}
-          <div className="text-2xl font-bold text-blue-800">
+          <div className="text-2xl font-bold text-blue-800" data-testid="site-brand">
             Md. Atiar Rahman Chowdhury
           </div>
 
           {/* Desktop navigation optimized for larger screens */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-8" data-testid="desktop-navigation">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
+                aria-label={`Navigate to ${link.title}`}
+                data-testid={`nav-link-${link.id}`}
                 className="text-gray-700 hover:text-blue-800 transition-colors duration-200"
               >
                 {link.title}
@@ -64,6 +67,8 @@ const Header = () => {
             {/* Primary CTA for resume download */}
             <button
               onClick={handleDownloadResume}
+              aria-label="Open resume"
+              data-testid="resume-button-desktop"
               className="bg-blue-800 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors duration-200 flex items-center space-x-2"
             >
               <span>Resume</span>
@@ -73,6 +78,9 @@ const Header = () => {
           {/* Mobile-friendly hamburger navigation toggle */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isMenuOpen}
+            data-testid="mobile-menu-toggle"
             className="md:hidden text-gray-700 hover:text-blue-800 transition-colors duration-200"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -81,12 +89,14 @@ const Header = () => {
 
         {/* Mobile navigation menu rendered conditionally */}
         {isMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4">
+          <nav className="md:hidden mt-4 pb-4" data-testid="mobile-navigation">
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <button
                   key={link.id}
                   onClick={() => scrollToSection(link.id)}
+                  aria-label={`Navigate to ${link.title}`}
+                  data-testid={`mobile-nav-link-${link.id}`}
                   className="text-gray-700 hover:text-blue-800 transition-colors duration-200 text-left"
                 >
                   {link.title}
@@ -96,6 +106,8 @@ const Header = () => {
               {/* Keeps resume access visible for mobile users */}
               <button
                 onClick={handleDownloadResume}
+                aria-label="Open resume"
+                data-testid="resume-button-mobile"
                 className="bg-blue-800 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors duration-200 flex items-center space-x-2 w-fit"
               >
                 <span>Resume</span>

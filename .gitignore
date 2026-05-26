@@ -4,8 +4,24 @@ node_modules/
 # Build output
 dist/
 
+# Local environment overrides
+.env
+.env.local
+.env.*.local
+
 # Logs
 *.log
+
+# Playwright artifacts
+playwright-report/
+test-results/
+qa-engine/output/reports/*
+!qa-engine/output/reports/.gitkeep
+qa-engine/output/screenshots/*
+!qa-engine/output/screenshots/.gitkeep
+qa-engine/output/traces/*
+!qa-engine/output/traces/.gitkeep
+qa-engine/output/test-artifacts/
 
 # Bolt
 .bolt/

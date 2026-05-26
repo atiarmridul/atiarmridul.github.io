@@ -8,6 +8,20 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit -p tsconfig.app.json",
+    "typecheck:qa": "tsc --noEmit -p tsconfig.qa.json",
+    "qa:sample-excel": "tsx qa-engine/core/parser/create-sample-excel.ts",
+    "qa:parse": "tsx qa-engine/test-case-parser.ts qa-engine/ai/definitions/business-test-cases.json",
+    "qa:scan": "tsx qa-engine/core/locator-engine/locator-extractor.ts http://127.0.0.1:5173 qa-engine/ai/locator-catalog/locators.json",
+    "qa:generate": "tsx qa-engine/generate-test.ts --input qa-engine/ai/definitions/business-test-cases.json --base-url http://127.0.0.1:5173 --out-dir qa-engine/playwright/tests/generated --catalog qa-engine/ai/locator-catalog/locators.json --scan",
+    "mcp:playwright": "playwright-mcp",
+    "test:e2e": "playwright test",
+    "quality": "npm run typecheck && npm run typecheck:qa && npm run lint && npm run format:check",
+    "prepare": "husky",
+    "root:check": "node scripts/root-check.mjs",
+    "ci:verify": "npm run quality && npm run build && npm run root:check",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
@@ -21,6 +35,9 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
+    "@playwright/mcp": "^0.0.75",
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.1",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.7.0",
@@ -30,10 +47,24 @@
     "eslint-plugin-react-refresh": "^0.4.11",
     "gh-pages": "^6.3.0",
     "globals": "^15.9.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.5",
     "postcss": "^8.4.35",
+    "prettier": "^3.8.3",
     "tailwindcss": "^3.4.1",
+    "tsx": "^4.22.3",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",
-    "vite": "^5.4.19"
+    "vite": "^5.4.19",
+    "xlsx": "^0.18.5"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css}": [
+      "prettier --write"
+    ]
   }
 }

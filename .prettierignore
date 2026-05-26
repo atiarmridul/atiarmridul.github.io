@@ -1,0 +1,10 @@
+dist/
+gh-pages/
+node_modules/
+playwright-report/
+test-results/
+qa-engine/ai/generated-tests/
+qa-engine/ai/locator-catalog/
+qa-engine/playwright/tests/generated/
+qa-engine/output/
+*.xlsx
