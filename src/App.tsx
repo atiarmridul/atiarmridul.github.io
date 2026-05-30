@@ -2,8 +2,9 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
+import Achievements from './components/Achievements';
 import Domains from './components/Domains';
-// import Projects from './components/Projects';
+import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Contact from './components/Contact';
@@ -23,14 +24,17 @@ function App() {
         {/* Professional summary and personal background */}
         <About />
 
-        {/* Technical skills and tooling overview */}
+        {/* Technical skills and tooling overview (Technical Expertise) */}
         <Skills />
+
+        {/* Showcase of AI automation projects */}
+        <Projects />
+
+        {/* Professional certifications and training (Learning Milestones) */}
+        <Achievements />
 
         {/* QA specialization and engineering domains */}
         <Domains />
-
-        {/* Reserved for future project showcase expansion */}
-        {/* <Projects /> */}
 
         {/* Work history and practical industry experience */}
         <Experience />

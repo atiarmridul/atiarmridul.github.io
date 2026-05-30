@@ -1,8 +1,21 @@
 # Agent Progress
 
-This file tracks major automation framework milestones.
+This file tracks major automation framework and portfolio milestones.
 
-## Completed
+## Portfolio UI & Content Updates (Completed)
+
+- **Project List Refactor:**
+  - Added **AI Playwright Test Generator** (JavaScript/OpenAI).
+  - Added **Chaldal Android Automation** (JavaScript/Appium/WebdriverIO).
+  - Maintained **Singer BD Automation Framework** (TypeScript/Playwright).
+  - Removed placeholder and internal tool cards ("Self-Healing AI QA Engine", "LLM-Powered Test Generator", etc.) to focus on external repositories.
+- **UI Enhancements:**
+  - **Mobile Responsiveness:** Refactored the Architecture Preview modal to use a stacked grid on mobile and fixed overflow issues in code previews.
+  - **Performance Optimization:** Reduced modal transition duration to 200ms for a snappier feel.
+  - **Design Cleanup:** Removed redundant external link icons from card headers and improved the "AI Automation Showcase" badge prominence.
+  - **Metadata Accuracy:** Corrected language tagging (JS vs TS) across all featured project cards.
+
+## Framework Completed (qa-engine)
 
 - Installed Playwright browser support.
 - Added JSON and Excel business test parsing.
