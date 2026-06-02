@@ -16,6 +16,7 @@ export async function recordLocatorRepair(
     throw new Error(`Cannot repair missing locator catalog entry: ${entryKey}`);
   }
 
+  // Preserve the previous primary as a fallback before promoting the repaired selector.
   entry.fallbacks = [entry.primary, ...entry.fallbacks].filter(
     (candidate, index, candidates) =>
       candidates.findIndex(

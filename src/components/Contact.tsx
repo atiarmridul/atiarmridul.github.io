@@ -25,7 +25,6 @@ const emailJsConfig = {
 const isEmailJsConfigured = Object.values(emailJsConfig).every(Boolean);
 
 const Contact = () => {
-  // Centralized form state for controlled input handling.
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -42,6 +41,7 @@ const Contact = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
+    // Hidden honeypot field blocks basic bot submissions without adding friction for real visitors.
     if (formData.robotField !== '') {
       console.warn('Spam detected. Submission blocked.');
       return;
@@ -52,6 +52,7 @@ const Contact = () => {
       return;
     }
 
+    // EmailJS receives plain template params, so trim and neutralize angle brackets before sending.
     const sanitize = (text: string) => text.replace(/</g, '&lt;').replace(/>/g, '&gt;').trim();
 
     const name = sanitize(formData.name);
@@ -99,19 +100,24 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" data-testid="section-contact" className="bg-gray-50 py-20">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">Let&apos;s Connect</h2>
-          <p className="mx-auto max-w-3xl text-xl text-gray-600">
+    <section id="contact" data-testid="section-contact" className="bg-white py-24">
+      <div className="section-shell">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <span className="section-kicker">Collaboration</span>
+          <h2 className="section-title">Let&apos;s Connect</h2>
+          <p className="section-copy">
             Ready to discuss quality assurance strategies or explore collaboration opportunities? I&apos;d
             love to hear from you.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-          <div>
-            <h3 className="mb-8 text-2xl font-bold text-gray-900">Get In Touch</h3>
+          <div className="premium-card p-7 sm:p-8">
+            <h3 className="mb-3 text-2xl font-black text-slate-950">Get In Touch</h3>
+            <p className="mb-8 text-slate-600">
+              Available for QA leadership, automation framework design, release quality strategy, and
+              product-focused testing collaboration.
+            </p>
             <ul className="space-y-6">
               {[
                 {
@@ -139,13 +145,13 @@ const Contact = () => {
                 },
               ].map(({ icon, label, value, href }) => (
                 <li key={label} className="flex items-center" data-testid={`contact-info-${toTestId(label)}`}>
-                  <div className="mr-4 rounded-full bg-gray-100 p-3">{icon}</div>
+                  <div className="mr-4 rounded-2xl bg-slate-50 p-3 ring-1 ring-slate-100">{icon}</div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">{label}</h4>
+                    <h4 className="font-black text-slate-950">{label}</h4>
                     {href ? (
                       <a
                         href={href}
-                        className="text-blue-600 hover:underline"
+                        className="font-semibold text-cyan-700 hover:text-cyan-900"
                         target="_blank"
                         rel="noopener noreferrer"
                         data-testid={`contact-info-link-${toTestId(label)}`}
@@ -153,19 +159,19 @@ const Contact = () => {
                         {value}
                       </a>
                     ) : (
-                      <p className="text-gray-600">{value}</p>
+                      <p className="text-slate-600">{value}</p>
                     )}
                   </div>
                 </li>
               ))}
             </ul>
 
-            <div className="mt-8">
-              <h4 className="mb-4 font-semibold text-gray-900">Connect with me</h4>
+            <div className="mt-8 rounded-3xl border border-slate-200 bg-slate-50 p-5">
+              <h4 className="mb-4 font-black text-slate-950">Connect with me</h4>
               <div className="flex space-x-4">
                 <a
                   href="https://www.linkedin.com/in/atiarmridul/"
-                  className="rounded-full bg-blue-600 p-3 text-white transition-colors hover:bg-blue-700"
+                  className="rounded-2xl bg-blue-600 p-3 text-white shadow-lg shadow-blue-600/20 transition hover:-translate-y-0.5 hover:bg-blue-700"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
@@ -175,7 +181,7 @@ const Contact = () => {
                 </a>
                 <a
                   href="https://github.com/atiarmridul"
-                  className="rounded-full bg-gray-800 p-3 text-white transition-colors hover:bg-gray-900"
+                  className="rounded-2xl bg-slate-950 p-3 text-white shadow-lg shadow-slate-950/20 transition hover:-translate-y-0.5 hover:bg-slate-800"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
@@ -189,10 +195,10 @@ const Contact = () => {
 
           <form
             onSubmit={handleSubmit}
-            className="space-y-6 rounded-xl bg-white p-8 shadow-lg"
+            className="premium-card space-y-6 p-7 sm:p-8"
             data-testid="contact-form"
           >
-            <h3 className="text-2xl font-bold text-gray-900">Send Message</h3>
+            <h3 className="text-2xl font-black text-slate-950">Send Message</h3>
 
             <input
               type="text"
@@ -214,7 +220,7 @@ const Contact = () => {
                   <label
                     htmlFor={id}
                     data-testid={`contact-${id}-label`}
-                    className="mb-2 block text-sm font-medium text-gray-700"
+                    className="mb-2 block text-sm font-bold text-slate-700"
                   >
                     {label}
                   </label>
@@ -226,7 +232,7 @@ const Contact = () => {
                     value={formData[id as keyof typeof formData]}
                     onChange={handleChange}
                     required
-                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 transition focus:border-cyan-400 focus:bg-white focus:outline-none focus:ring-4 focus:ring-cyan-100"
                   />
                 </div>
               ))}
@@ -240,7 +246,7 @@ const Contact = () => {
                 <label
                   htmlFor={id}
                   data-testid={`contact-${id}-label`}
-                  className="mb-2 block text-sm font-medium text-gray-700"
+                  className="mb-2 block text-sm font-bold text-slate-700"
                 >
                   {label}
                 </label>
@@ -253,7 +259,7 @@ const Contact = () => {
                     value={formData[id as keyof typeof formData]}
                     onChange={handleChange}
                     required
-                    className="w-full resize-none rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 transition focus:border-cyan-400 focus:bg-white focus:outline-none focus:ring-4 focus:ring-cyan-100"
                   />
                 ) : (
                   <input
@@ -264,7 +270,7 @@ const Contact = () => {
                     value={formData[id as keyof typeof formData]}
                     onChange={handleChange}
                     required
-                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 transition focus:border-cyan-400 focus:bg-white focus:outline-none focus:ring-4 focus:ring-cyan-100"
                   />
                 )}
               </div>
@@ -274,7 +280,7 @@ const Contact = () => {
               type="submit"
               aria-label="Send contact message"
               data-testid="contact-submit-button"
-              className="flex w-full items-center justify-center space-x-2 rounded-lg bg-blue-800 px-6 py-3 text-white transition-colors hover:bg-blue-900"
+              className="flex w-full items-center justify-center space-x-2 rounded-2xl bg-slate-950 px-6 py-4 font-black text-white shadow-xl shadow-slate-950/15 transition hover:-translate-y-0.5 hover:bg-cyan-700"
             >
               <SendHorizonal size={18} />
               <span>Send Message</span>

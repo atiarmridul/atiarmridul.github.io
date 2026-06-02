@@ -1,4 +1,4 @@
-import { Code, Bug, Zap, Users, Database, Globe } from 'lucide-react';
+import { Bug, Code, Database, Globe, Users, Zap } from 'lucide-react';
 
 const toTestId = (value: string) =>
   value
@@ -76,20 +76,21 @@ const skillCategories: Array<{
 
 const colorMap: Record<SkillColor, string> = {
   blue: 'bg-blue-50 text-blue-700 border border-blue-200',
-  yellow: 'bg-yellow-50 text-yellow-700 border border-yellow-200',
-  red: 'bg-red-50 text-red-700 border border-red-200',
-  green: 'bg-green-50 text-green-700 border border-green-200',
+  yellow: 'bg-amber-50 text-amber-700 border border-amber-200',
+  red: 'bg-rose-50 text-rose-700 border border-rose-200',
+  green: 'bg-emerald-50 text-emerald-700 border border-emerald-200',
   purple: 'bg-purple-50 text-purple-700 border border-purple-200',
   indigo: 'bg-indigo-50 text-indigo-700 border border-indigo-200',
 };
 
 const Skills = () => {
   return (
-    <section id="skills" data-testid="section-skills" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <header className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Technical Expertise</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+    <section id="skills" data-testid="section-skills" className="bg-white py-24">
+      <div className="section-shell">
+        <header className="mx-auto mb-16 max-w-3xl text-center">
+          <span className="section-kicker">Capability Matrix</span>
+          <h2 className="section-title">Technical Expertise</h2>
+          <p className="section-copy">
             Comprehensive skill set spanning manual and automated testing, with expertise in modern frameworks
             and methodologies
           </p>
@@ -100,18 +101,21 @@ const Skills = () => {
             <article
               key={title}
               data-testid={`skill-category-${toTestId(title)}`}
-              className="bg-gray-50 border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-2"
+              className="premium-card premium-card-hover flex h-full flex-col p-6"
             >
               <header className="flex items-center mb-4">
-                {icon}
-                <h3 className="text-xl font-semibold text-gray-900 ml-3">{title}</h3>
+                <div className="rounded-2xl bg-slate-50 p-3 ring-1 ring-slate-100">{icon}</div>
+                <div className="ml-3">
+                  <h3 className="text-xl font-black text-slate-950">{title}</h3>
+                </div>
               </header>
+
               <ul className="flex flex-wrap gap-2">
                 {skills.map((skill) => (
                   <li
                     key={skill}
                     data-testid={`skill-item-${toTestId(skill)}`}
-                    className={`px-3 py-1 rounded-full text-sm font-medium transition-transform duration-200 transform hover:scale-110 ${colorMap[color]}`}
+                    className={`px-3 py-1.5 rounded-full text-xs font-bold transition-transform duration-200 hover:-translate-y-0.5 ${colorMap[color]}`}
                   >
                     {skill}
                   </li>

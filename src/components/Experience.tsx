@@ -1,4 +1,4 @@
-import { Calendar, MapPin, Award, Linkedin } from 'lucide-react';
+import { Award, Calendar, CheckCircle2, Linkedin, MapPin } from 'lucide-react';
 
 const toTestId = (value: string) =>
   value
@@ -74,70 +74,80 @@ const experiences = [
 ];
 
 const Experience = () => (
-  <section id="experience" data-testid="section-experience" className="py-20 bg-gray-50">
-    <div className="max-w-7xl mx-auto px-6">
-      <header className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Work Experience</h2>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+  <section id="experience" data-testid="section-experience" className="bg-white py-24">
+    <div className="section-shell">
+      <header className="mx-auto mb-16 max-w-3xl text-center">
+        <span className="section-kicker">Delivery Record</span>
+        <h2 className="section-title">Work Experience</h2>
+        <p className="section-copy">
           Highlighting my professional journey, key roles and significant contributions in the software
           quality assurance landscape.
         </p>
       </header>
 
-      <div className="space-y-8">
+      <div className="relative space-y-8 lg:before:absolute lg:before:left-6 lg:before:top-3 lg:before:h-[calc(100%-1.5rem)] lg:before:w-px lg:before:bg-gradient-to-b lg:before:from-cyan-300 lg:before:via-slate-200 lg:before:to-emerald-300">
         {experiences.map((exp, index) => (
-          <div
-            key={index}
-            data-testid={`experience-card-${index + 1}`}
-            className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition duration-200"
-          >
-            <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
-              <h3 className="text-xl font-semibold text-gray-800">{exp.title}</h3>
-              <div className="flex items-center text-sm text-blue-600 mt-2 md:mt-0">
-                <Calendar size={16} className="mr-1" />
-                {exp.duration}
-              </div>
+          <article key={index} data-testid={`experience-card-${index + 1}`} className="relative lg:pl-16">
+            <div className="absolute left-0 top-6 hidden h-12 w-12 items-center justify-center rounded-2xl border border-cyan-200 bg-white text-cyan-700 shadow-lg shadow-cyan-900/10 lg:flex">
+              <CheckCircle2 size={22} />
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm text-gray-600 mb-4 gap-2">
-              <div className="flex items-center gap-2">
-                <Award size={16} />
-                <a
-                  href={exp.companyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid={`experience-company-link-${index + 1}`}
-                  className="text-blue-600 hover:underline font-medium"
-                >
-                  {exp.company}
-                </a>
-                {exp.companyLinkedIn && (
-                  <a
-                    href={exp.companyLinkedIn}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${exp.company} LinkedIn`}
-                    data-testid={`experience-linkedin-${index + 1}`}
-                    className="text-gray-400 hover:text-blue-600"
+            <div className="premium-card premium-card-hover p-6 sm:p-7">
+              <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+                <div>
+                  <h3 className="text-xl font-black text-slate-950">{exp.title}</h3>
+                  <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-slate-600">
+                    <div className="flex items-center gap-2">
+                      <Award size={16} />
+                      <a
+                        href={exp.companyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-testid={`experience-company-link-${index + 1}`}
+                        className="font-bold text-cyan-700 hover:text-cyan-900"
+                      >
+                        {exp.company}
+                      </a>
+                      {exp.companyLinkedIn && (
+                        <a
+                          href={exp.companyLinkedIn}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${exp.company} LinkedIn`}
+                          data-testid={`experience-linkedin-${index + 1}`}
+                          className="text-slate-400 hover:text-blue-600"
+                        >
+                          <Linkedin size={16} />
+                        </a>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-1 text-slate-500">
+                      <MapPin size={16} />
+                      <span>{exp.location}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex w-fit items-center rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-sm font-bold text-blue-700">
+                  <Calendar size={16} className="mr-2" />
+                  {exp.duration}
+                </div>
+              </div>
+
+              <ul className="mt-6 grid gap-3 text-sm text-slate-700 md:grid-cols-2">
+                {exp.responsibilities.map((task, idx) => (
+                  <li
+                    key={idx}
+                    data-testid={`experience-responsibility-${toTestId(exp.title)}-${idx + 1}`}
+                    className="flex gap-3 rounded-2xl bg-slate-50 p-3 leading-6"
                   >
-                    <Linkedin size={16} />
-                  </a>
-                )}
-              </div>
-              <div className="flex items-center gap-1 text-gray-500">
-                <MapPin size={16} />
-                <span>{exp.location}</span>
-              </div>
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 flex-none text-emerald-500" />
+                    <span>{task}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-
-            <ul className="list-disc pl-5 space-y-2 text-sm text-gray-700">
-              {exp.responsibilities.map((task, idx) => (
-                <li key={idx} data-testid={`experience-responsibility-${toTestId(exp.title)}-${idx + 1}`}>
-                  {task}
-                </li>
-              ))}
-            </ul>
-          </div>
+          </article>
         ))}
       </div>
     </div>

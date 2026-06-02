@@ -51,6 +51,7 @@ export async function extractLocatorCatalog(options: {
 async function collectDomElements(page: Page): Promise<DomElementSnapshot[]> {
   const browserScript = String.raw`
   (() => {
+    // Scan semantic and testable surfaces only; full DOM catalogs are noisy and slow to repair.
     const interactiveSelector = [
       'a',
       'button',
@@ -175,6 +176,7 @@ function buildCatalog(
 function rankCandidates(element: DomElementSnapshot): LocatorCandidate[] {
   const candidates: LocatorCandidate[] = [];
 
+  // Prefer selectors that describe user intent, then fall back to structural selectors for recovery.
   if (element.testId)
     candidates.push({ strategy: 'data-testid', selector: element.testId, score: 100, source: 'dom' });
   if (element.ariaLabel)
@@ -206,6 +208,7 @@ function buildFallbackCandidates(
   const fallbacks = [...rankedFallbacks];
 
   if (element.testId) {
+    // Keep the stable test ID available even when another selector is temporarily promoted to primary.
     fallbacks.push({
       strategy: 'data-testid',
       selector: element.testId,

@@ -63,4 +63,16 @@ qa-engine/output/test-artifacts/
 3. Open trace.
 4. Check console and network errors.
 5. Confirm the expected UI actually rendered.
-6. Only then update selectors or regenerate tests.
+6. Check whether recent UI redesign work changed section layout, modal structure, or header state.
+7. Only then update selectors or regenerate tests.
+
+## Portfolio-Specific Evidence To Capture
+
+For visual or responsive failures, capture:
+
+- desktop hero screenshot
+- mobile hero screenshot
+- header over a light section
+- mobile menu open state
+- project modal open state
+- contact form viewport

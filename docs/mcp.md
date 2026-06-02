@@ -23,6 +23,16 @@ The framework uses Playwright to scan the live website and extract locator candi
 The extractor scopes scans to useful elements such as links, buttons, inputs, landmarks, headings, and elements with semantic attributes.
 For elements with `data-testid`, the scanner records the test ID as both the highest-priority candidate and a fallback candidate for future self-healing repairs.
 
+Portfolio UI sections intentionally keep stable IDs and `data-testid` attributes so browser automation can
+survive visual redesigns. The current high-value automation surfaces are:
+
+- sticky header navigation
+- hero CTA buttons
+- project architecture preview modal
+- achievement filters
+- contact form fields and submit button
+- footer navigation
+
 ## Source-Assisted Mapping
 
 `qa-engine/core/locator-engine/source-code-mapper.ts` adds source context by detecting:
@@ -48,3 +58,4 @@ Future MCP integrations can plug in at these points:
 - Keep expensive semantic similarity bounded.
 - Do not mutate the DOM to make normal user interactions pass.
 - Treat MCP/browser findings as evidence, not as a reason to ignore product bugs.
+- When a visual redesign changes markup, rescan before updating generated specs.

@@ -1,6 +1,5 @@
 import React from 'react';
-import { MapPin } from 'lucide-react';
-// import { Star } from "lucide-react";
+import { GraduationCap, MapPin } from 'lucide-react';
 
 const toTestId = (value: string) =>
   value
@@ -15,7 +14,6 @@ type EducationType = {
   institution: string;
   location: string;
   duration: string;
-  // gpa: string;
   color: ColorKey;
 };
 
@@ -42,7 +40,6 @@ const educationData: EducationType[] = [
     institution: 'University of Dhaka',
     location: 'Bangladesh',
     duration: '2018 - 2020',
-    // gpa: "CGPA: 3.89 / 4.00",
     color: 'purple',
   },
   {
@@ -50,7 +47,6 @@ const educationData: EducationType[] = [
     institution: 'University of Information Technology & Sciences',
     location: 'Bangladesh',
     duration: '2010 - 2015',
-    // gpa: "CGPA: 3.96 / 4.00",
     color: 'blue',
   },
 ];
@@ -61,51 +57,45 @@ const EducationCard: React.FC<{ edu: EducationType; index: number }> = ({ edu, i
   return (
     <div
       data-testid={`education-card-${index + 1}`}
-      className={`${colors.bg} ${colors.border} border-2 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] relative overflow-hidden w-full md:max-w-[450px] flex-1`}
+      className="premium-card premium-card-hover relative w-full flex-1 overflow-hidden p-8 md:max-w-[450px]"
     >
-      {/* Decorative corner */}
-      <div
-        aria-hidden="true"
-        className={`absolute top-0 right-0 w-20 h-20 ${colors.accent} opacity-10 rounded-full -mr-10 -mt-10`}
-      />
+      <div aria-hidden="true" className={`absolute right-0 top-0 h-1.5 w-full ${colors.accent}`} />
 
-      {/* Degree */}
+      <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-50 ring-1 ring-slate-100">
+        <GraduationCap className={colors.icon} size={28} />
+      </div>
+
       <h3
-        className="text-2xl font-bold text-gray-900 mb-2 text-center"
+        className="text-center text-2xl font-black text-slate-950 mb-2"
         data-testid={`education-degree-${toTestId(edu.degree)}`}
       >
         {edu.degree}
       </h3>
 
-      {/* Institution */}
       <p
-        className={`text-lg ${colors.text} font-semibold mb-3 text-center`}
+        className={`text-lg ${colors.text} font-bold mb-3 text-center`}
         data-testid={`education-institution-${toTestId(edu.institution)}`}
       >
         {edu.institution}
       </p>
 
-      {/* Location and CGPA (separate lines) */}
-      <div className="flex flex-col items-center gap-2 text-lg text-gray-600 mb-2">
+      <div className="flex flex-col items-center gap-2 text-base font-semibold text-slate-600 mb-2">
         <span className="flex items-center" data-testid={`education-location-${toTestId(edu.degree)}`}>
           <MapPin size={20} className="mr-2" />
           {edu.location}
         </span>
-        {/* <span className="flex items-center">
-          <Star size={20} className="mr-2" />
-          {edu.gpa}
-        </span> */}
       </div>
     </div>
   );
 };
 
 const Education: React.FC = () => (
-  <section id="education" data-testid="section-education" className="py-20 bg-gray-50">
-    <div className="max-w-7xl mx-auto px-6">
-      <header className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Education</h2>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+  <section id="education" data-testid="section-education" className="bg-slate-50 py-24">
+    <div className="section-shell">
+      <header className="mx-auto mb-16 max-w-3xl text-center">
+        <span className="section-kicker">Academic Foundation</span>
+        <h2 className="section-title">Education</h2>
+        <p className="section-copy">
           Strong academic foundation in computer science and engineering, complemented by continuous
           professional development.
         </p>

@@ -37,3 +37,15 @@ To test the GitHub Pages deployment:
 ```sh
 PLAYWRIGHT_BASE_URL=https://atiarmridul.github.io PLAYWRIGHT_SKIP_WEBSERVER=true npm run test:e2e
 ```
+
+## Contact Form Environment
+
+The frontend contact form reads EmailJS settings from Vite environment variables:
+
+```text
+VITE_EMAILJS_SERVICE_ID
+VITE_EMAILJS_TEMPLATE_ID
+VITE_EMAILJS_PUBLIC_KEY
+```
+
+If any value is missing, the form intentionally blocks submission and shows a configuration alert.

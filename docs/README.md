@@ -1,23 +1,33 @@
-# QA Automation Documentation
+# Project Documentation
 
-This folder documents the AI-assisted Playwright QA framework for the portfolio website.
+This folder documents the portfolio application, design system, deployment workflow, and AI-assisted
+Playwright QA framework.
 
 ## Start Here
 
-- [Walkthrough](walkthrough.md): end-to-end usage from business case to generated test.
-- [Architecture](architecture.md): framework structure and data flow.
+- [Architecture](architecture.md): portfolio app structure, QA framework structure, and data flow.
+- [Project Structure](project-structure.md): source, docs, and QA engine ownership boundaries.
 - [Commands](commands.md): local development, generation, and test commands.
 - [Standards](standards.md): imported engineering standards and quality expectations.
+- [Testing Strategy](testing-strategy.md): manual, automated, responsive, and accessibility coverage.
+- [Deployment Process](deployment-process.md): GitHub Pages deployment and validation.
+
+## Portfolio Guides
+
+- [Coding Guidelines](coding-guidelines.md)
+- [Folder Structure](folder-structure.md)
+- [Deployment Process](deployment-process.md)
+- [Testing Strategy](testing-strategy.md)
 
 ## Framework Guides
 
+- [Walkthrough](walkthrough.md): end-to-end usage from business case to generated test.
 - [AI-Assisted Workflow](ai-assisted-workflow.md)
 - [Test Cases](test-cases.md)
 - [MCP And Browser Automation](mcp.md)
 - [Reports And Artifacts](reports.md)
 - [Environments](environments.md)
 - [CI](ci.md)
-- [Project Structure](project-structure.md)
 
 ## Agent Guides
 

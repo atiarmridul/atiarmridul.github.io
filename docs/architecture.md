@@ -1,6 +1,70 @@
 # Architecture
 
-The QA framework is split into generation-time code and runtime Playwright code.
+The repository has two primary layers:
+
+1. A React portfolio application in `src/`.
+2. An AI-assisted Playwright QA automation framework in `qa-engine/`.
+
+The portfolio presents senior QA engineering expertise. The QA framework validates and generates automation
+against the same portfolio UI.
+
+## Portfolio Application
+
+The app is a Vite + React + TypeScript single-page portfolio. `App.tsx` composes the page sections in a
+fixed order and each section exposes stable IDs for smooth scrolling and automation.
+
+```text
+App
+  -> Header
+  -> Hero
+  -> About
+  -> Skills
+  -> Projects
+  -> Achievements
+  -> Domains
+  -> Experience
+  -> Education
+  -> Contact
+  -> Footer
+```
+
+### UI Design System
+
+Global styling lives in `src/index.css`:
+
+- `section-shell`: consistent section width and responsive horizontal padding.
+- `section-kicker`, `section-title`, `section-copy`: shared section heading system.
+- `premium-card`, `premium-card-hover`: card surfaces, borders, shadows, and hover behavior.
+- `dark-band`: dark engineering-focused background used for hero and footer areas.
+
+The design direction is a modern SaaS/QA dashboard aesthetic with Inter typography, cyan/blue/emerald accents,
+subtle glass surfaces, restrained shadows, and responsive card layouts.
+
+### Navigation Behavior
+
+`Header.tsx` owns:
+
+- fixed sticky navigation
+- smooth section scrolling
+- resume link opening in a new tab
+- mobile menu state
+- active section tracking via `IntersectionObserver`
+- theme-aware header contrast
+
+The header keeps a dark glass appearance on the hero section and switches to a light frosted surface with
+dark text over light sections.
+
+### Business Logic Boundaries
+
+The redesign keeps existing behavior in place:
+
+- section IDs and `data-testid` attributes remain stable for automation
+- project architecture preview modal still opens from project cards
+- certification filters still run client-side
+- the contact form remains a controlled EmailJS form with honeypot, sanitization, validation, success reset,
+  and failure alerts
+
+## QA Framework
 
 ## High-Level Flow
 
@@ -52,6 +116,10 @@ the stable test ID available after self-healing promotes another selector to pri
 
 ## Design Constraints
 
+- Portfolio sections must remain responsive and keyboard-accessible.
+- Stable `data-testid` contracts should not be renamed without updating generated tests and locator catalogs.
+- Visual redesign work should not change form submission behavior, external links, modal behavior, or navigation
+  semantics unless explicitly intended.
 - Generated tests must stay human-readable.
 - Generated tests must compile with `tsconfig.qa.json`.
 - Self-healing must log annotations when recovery happens.

@@ -118,6 +118,7 @@ Accessibility is treated as a core engineering requirement.
 - Use responsive Tailwind breakpoints
 - Avoid fixed-width layouts
 - Test on mobile, tablet, and desktop
+- Verify sticky header contrast on dark and light sections
 
 ---
 
@@ -128,6 +129,28 @@ Accessibility is treated as a core engineering requirement.
 - Group related utility classes logically
 - Avoid extremely long inline class chains
 - Add intent comments above complex UI blocks
+- Reuse shared utilities from `src/index.css` for repeated section and card patterns
+- Use valid Tailwind opacity values so generated CSS is not silently missing
+- Keep the visual language professional, minimal, and QA-engineering focused
+
+## Portfolio Design System
+
+- `section-shell`: standard page width and responsive padding.
+- `section-kicker`: small uppercase section label.
+- `section-title`: high-contrast section heading.
+- `section-copy`: readable section intro text.
+- `premium-card`: default card surface.
+- `premium-card-hover`: card hover elevation and border behavior.
+- `dark-band`: dark engineering background for high-impact sections.
+
+## Header Contrast
+
+The sticky header must support two visual states:
+
+- dark glass state over the hero and dark sections
+- light frosted state over white/light sections
+
+Text, active nav pills, borders, and menu buttons must remain readable in both states.
 
 ### Example
 
@@ -212,12 +235,13 @@ fixed stuff
 ```txt
 src/
  ├── components/
- ├── constants/
- ├── assets/
- ├── hooks/
- ├── utils/
- └── styles/
+ ├── App.tsx
+ ├── constants.ts
+ ├── index.css
+ └── main.tsx
 ```
+
+The QA framework lives separately under `qa-engine/`, and documentation lives under `docs/`.
 
 ---
 

@@ -8,6 +8,7 @@ Common commands for local development, QA generation, and verification.
 npm run dev
 npm run build
 npm run preview
+npm run deploy
 ```
 
 ## Quality Commands
@@ -21,7 +22,7 @@ npm run quality
 npm run ci:verify
 ```
 
-Use `npm run quality` before committing framework changes.
+Use `npm run quality` before committing app or framework changes.
 Use `npm run ci:verify` to match the non-browser verification run in GitHub Actions.
 
 ## QA Framework Commands
@@ -57,6 +58,31 @@ Run generated tests:
 npm run test:e2e
 npm run test:e2e -- --project=chromium
 ```
+
+Run tests against the deployed site:
+
+```sh
+PLAYWRIGHT_BASE_URL=https://atiarmridul.github.io PLAYWRIGHT_SKIP_WEBSERVER=true npm run test:e2e
+```
+
+## UI Redesign Verification
+
+After visual or layout changes, run:
+
+```sh
+npm run typecheck
+npm run lint
+npm run format:check
+npm run build
+```
+
+Then manually inspect:
+
+- hero desktop and mobile views
+- header on dark and light sections
+- mobile navigation menu
+- project architecture modal
+- contact form on mobile
 
 ## Playwright Debug Commands
 

@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Github,
   Sparkles,
@@ -38,7 +38,7 @@ const projects = [
       ],
       workflow: 'API Data → POM Interaction → Multi-Layer Assert → Allure Report',
       execution: '$ npm run test:sanity && npm run test:visual',
-      report: '✅ 100% Type Safe | 🛡️ Self-Healing Active | 📊 Allure Integrated',
+      report: '100% Type Safe | Self-Healing Active | Allure Integrated',
     },
   },
   {
@@ -60,7 +60,7 @@ const projects = [
       ],
       workflow: 'URL → Crawl → DOM Extraction → OpenAI → Playwright Spec',
       execution: '$ node runGenerator.js --url "https://example.com"',
-      report: 'Confidence Score: 0.95 | Valid Scaffolding | Ready to Run',
+      report: 'Confidence Score 0.95 | Valid Scaffolding | Ready to Run',
     },
   },
   {
@@ -82,7 +82,7 @@ const projects = [
       ],
       workflow: 'Appium → Driver Init → POM Screen → User Flow → Allure',
       execution: '$ npm run wdio',
-      report: '✅ Tests Passed | 📱 Android Verified | 📊 Allure Ready',
+      report: 'Tests Passed | Android Verified | Allure Ready',
     },
   },
 ];
@@ -100,17 +100,14 @@ const ArchitecturePreview = ({
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.2, ease: 'easeOut' }}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-2 md:p-6 bg-slate-900/60 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/75 p-2 backdrop-blur-md md:p-6"
       onClick={onClose}
     >
       <motion.div
-        layoutId={`card-${project.title}`}
-        transition={{ duration: 0.2 }}
-        className="bg-white rounded-2xl md:rounded-3xl shadow-2xl w-full max-w-4xl overflow-hidden max-h-[95vh] md:max-h-[90vh] flex flex-col"
+        className="flex max-h-[95vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl md:max-h-[90vh] md:rounded-3xl"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="p-4 md:p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+        <div className="flex items-center justify-between border-b border-slate-100 bg-slate-50 p-4 md:p-6">
           <div className="flex items-center space-x-3 md:space-x-4">
             <div className="p-2 bg-white rounded-xl shadow-sm">{project.icon}</div>
             <div>
@@ -118,15 +115,18 @@ const ArchitecturePreview = ({
               <p className="text-xs md:text-sm text-slate-500">Architecture Preview</p>
             </div>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-slate-200 rounded-full transition-colors">
+          <button
+            onClick={onClose}
+            aria-label="Close architecture preview"
+            className="rounded-full p-2 transition-colors hover:bg-slate-200"
+          >
             <X size={20} className="text-slate-500" />
           </button>
         </div>
 
-        {/* Content */}
+        {/* Modal content can exceed mobile height, so only the body scrolls while actions stay reachable. */}
         <div className="flex-1 overflow-y-auto p-4 md:p-8 space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {/* Left Column: Structure & Workflow */}
             <div className="space-y-6 md:space-y-8">
               <section>
                 <div className="flex items-center space-x-2 text-blue-600 mb-3 md:mb-4">
@@ -162,7 +162,6 @@ const ArchitecturePreview = ({
               </section>
             </div>
 
-            {/* Right Column: Execution & Report */}
             <div className="space-y-6 md:space-y-8">
               <section>
                 <div className="flex items-center space-x-2 text-emerald-600 mb-3 md:mb-4">
@@ -197,7 +196,7 @@ const ArchitecturePreview = ({
                     Real-time Report
                   </h4>
                 </div>
-                <div className="bg-white border-2 border-slate-50 rounded-2xl p-4 md:p-6 shadow-lg flex items-center justify-between">
+                <div className="flex flex-col gap-5 rounded-2xl border border-slate-100 bg-white p-4 shadow-lg md:p-6">
                   <div className="flex items-center space-x-3 md:space-x-4">
                     <div className="p-2 md:p-3 bg-emerald-50 rounded-full">
                       <CheckCircle2 className="text-emerald-500" size={24} />
@@ -211,12 +210,19 @@ const ArchitecturePreview = ({
                       </div>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div className="text-[9px] md:text-xs font-bold text-slate-400 uppercase tracking-tighter">
+                  <div>
+                    <div className="mb-2 text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400">
                       Status
                     </div>
-                    <div className="text-[10px] md:text-sm font-mono font-bold text-slate-700">
-                      {project.preview.report}
+                    <div className="flex flex-wrap gap-2">
+                      {project.preview.report.split(' | ').map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full border border-emerald-100 bg-emerald-50 px-3 py-1 text-[11px] font-black text-emerald-700"
+                        >
+                          {item}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -225,7 +231,6 @@ const ArchitecturePreview = ({
           </div>
         </div>
 
-        {/* Footer */}
         <div className="p-4 md:p-6 bg-slate-50 border-t border-slate-100 flex justify-end space-x-3 md:space-x-4">
           <a
             href={project.github}
@@ -245,19 +250,33 @@ const ArchitecturePreview = ({
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<(typeof projects)[0] | null>(null);
 
+  useEffect(() => {
+    if (!selectedProject) {
+      return;
+    }
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setSelectedProject(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleEscape);
+
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [selectedProject]);
+
   return (
-    <section id="projects" className="py-24 bg-slate-50 relative overflow-hidden">
+    <section
+      id="projects"
+      data-testid="section-projects"
+      className="relative overflow-hidden bg-slate-50 py-24"
+    >
       <AnimatePresence>
         {selectedProject && (
           <ArchitecturePreview project={selectedProject} onClose={() => setSelectedProject(null)} />
         )}
       </AnimatePresence>
-
-      {/* Decorative background elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none opacity-20">
-        <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-200 blur-3xl" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-purple-200 blur-3xl" />
-      </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
@@ -265,7 +284,7 @@ const Projects = () => {
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center space-x-3 bg-blue-100 text-blue-700 px-6 py-2.5 rounded-full text-base md:text-lg font-bold mb-6 shadow-md"
+            className="section-kicker"
           >
             <Zap size={20} />
             <span>AI Automation Showcase</span>
@@ -276,7 +295,7 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight"
+            className="section-title"
           >
             Featured Projects
           </motion.h2>
@@ -286,7 +305,7 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-slate-600 max-w-2xl mx-auto"
+            className="section-copy mx-auto max-w-2xl"
           >
             A collection of production-grade automation frameworks and AI-driven testing tools designed for
             scalability and precision.
@@ -295,12 +314,7 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              layoutId={`card-${project.title}`}
-              whileHover={{ y: -8 }}
-              className="group bg-white/80 backdrop-blur-md border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 flex flex-col h-full"
-            >
+            <article key={index} className="premium-card premium-card-hover group flex h-full flex-col p-8">
               <div className="flex justify-between items-start mb-6">
                 <div className="p-3 bg-slate-50 rounded-xl group-hover:bg-blue-50 transition-colors duration-300">
                   {project.icon}
@@ -318,17 +332,20 @@ const Projects = () => {
               </div>
 
               <div className="mb-4 flex-1">
-                <span className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-2 block">
-                  {project.type}
-                </span>
-                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-slate-600 text-sm leading-relaxed mb-6">{project.description}</p>
+                {/* Fixed content height aligns preview buttons across cards with uneven descriptions. */}
+                <div className="lg:min-h-[190px]">
+                  <span className="text-xs font-bold uppercase tracking-wider text-blue-600 mb-2 block">
+                    {project.type}
+                  </span>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">{project.description}</p>
+                </div>
 
                 <button
                   onClick={() => setSelectedProject(project)}
-                  className="w-full py-3 border-2 border-blue-50 bg-blue-50/30 text-blue-600 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all mb-6 flex items-center justify-center space-x-2"
+                  className="mt-6 mb-6 flex w-full items-center justify-center gap-2 rounded-2xl border border-cyan-100 bg-cyan-50/70 py-3 text-xs font-black uppercase tracking-widest text-cyan-700 transition-all hover:border-cyan-600 hover:bg-cyan-600 hover:text-white lg:mt-0"
                 >
                   <Workflow size={14} />
                   <span>Architecture Preview</span>
@@ -370,7 +387,7 @@ const Projects = () => {
                   View Repo <Github size={14} className="ml-1" />
                 </motion.a>
               </div>
-            </motion.div>
+            </article>
           ))}
         </div>
 
@@ -384,7 +401,7 @@ const Projects = () => {
             href="https://github.com/atiarmridul"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center space-x-3 bg-slate-900 text-white px-8 py-4 rounded-xl hover:bg-slate-800 transition-all shadow-lg hover:shadow-slate-200"
+            className="inline-flex items-center space-x-3 rounded-full bg-slate-950 px-8 py-4 text-white shadow-lg transition-all hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-slate-200"
           >
             <Github size={20} />
             <span className="font-semibold">Explore More on GitHub</span>

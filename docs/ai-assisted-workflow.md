@@ -28,6 +28,8 @@ npm run qa:scan
 ```
 
 The scanner uses the live rendered page to collect semantic and fallback locator candidates.
+After portfolio UI changes, regenerate or review the locator catalog because section surfaces, card structure,
+or modal markup may have changed even when `data-testid` values are preserved.
 
 ## Step 4: Generate Specs
 
@@ -51,6 +53,15 @@ Review:
 - `qa-engine/playwright/tests/generated/*.generated.spec.ts`
 
 Generated tests should be treated like normal code.
+
+When the portfolio design changes, specifically review generated selectors for:
+
+- header navigation buttons
+- hero CTA buttons
+- project architecture modal controls
+- achievement filter buttons
+- contact form inputs and submit button
+- footer navigation buttons
 
 ## Step 6: Execute Tests
 

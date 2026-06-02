@@ -1,6 +1,8 @@
-# Engineering Standards & Automation Boilerplate Roadmap
+# Engineering Standards & Automation Roadmap
 
-This document outlines the architectural standards and engineering rigor established in the Singer_BD_Automation project. Follow this guide to implement these same standards in future automation projects.
+This document outlines the architectural standards and engineering rigor expected in this portfolio and its
+AI-assisted QA automation framework. Follow this guide when extending the app UI, generated tests, or future
+automation projects.
 
 ## 1. Core Infrastructure & Quality Gates
 
@@ -82,6 +84,7 @@ Modern automation requires more than functional UI checks.
 - **Visual Regression:** Use Playwright's `toHaveScreenshot` for critical components such as headers, footers, and hero sections to catch layout drift.
 - **Accessibility (a11y):** Integrate `@axe-core/playwright` and Lighthouse audits to ensure compliance with WCAG standards.
 - **API Baselines:** Run lightweight API tests to verify backend health before executing expensive UI journeys.
+- **Responsive UI Checks:** Verify mobile menu behavior, project modal overflow, contact form layout, and theme-aware header contrast.
 
 ---
 

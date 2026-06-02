@@ -21,6 +21,7 @@ export class SelfHealingLocator {
       return matchedLocator;
     }
 
+    // Generated nav locators may target desktop links while the active viewport exposes only the mobile menu.
     if (await this.openMobileNavigationIfNeeded()) {
       const responsiveMatch = await this.findUsableLocator(candidates);
       if (responsiveMatch) {
@@ -28,6 +29,7 @@ export class SelfHealingLocator {
       }
     }
 
+    // Semantic recovery is the last resort because it is broader and less deterministic than catalog selectors.
     const semanticLocator = await this.findBySemanticSimilarity();
     if (semanticLocator) {
       return semanticLocator;
@@ -71,6 +73,7 @@ export class SelfHealingLocator {
       const visibleLocator = locator.filter({ visible: true });
       if (await this.isUsable(visibleLocator)) {
         if (candidate !== this.entry.primary) {
+          // Promote successful fallbacks so future generated runs start with the selector that actually worked.
           await this.onRepair?.({
             repaired: true,
             oldLocator: this.entry.primary,
@@ -115,6 +118,7 @@ export class SelfHealingLocator {
 
   private async findBySemanticSimilarity(): Promise<Locator | undefined> {
     const label = this.entry.label.toLowerCase();
+    // Cap candidates to keep recovery predictable on content-heavy pages.
     const candidates = await this.page.locator(SEMANTIC_CANDIDATE_SELECTOR).evaluateAll(
       (elements, maxCandidates) =>
         elements.slice(0, Number(maxCandidates)).map((element, index) => ({

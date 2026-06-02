@@ -53,6 +53,7 @@ export async function generatePlaywrightSpecs(options: GenerateOptions): Promise
 }
 
 function renderSpec(definition: AiTestDefinition, catalog: LocatorCatalog): string {
+  // Resolve locator entries during generation so emitted specs stay readable and deterministic.
   const matchedEntries = definition.steps.map((step) =>
     shouldUseLocator(step) ? matchCatalogEntry(step, catalog) : undefined,
   );
@@ -170,6 +171,7 @@ function matchCatalogEntry(
   catalog: LocatorCatalog,
 ): LocatorCatalogEntry | undefined {
   const hint = (step.targetHint || step.businessText).toLowerCase();
+  // Favor exact semantic matches, but allow partial matches for business-language test steps.
   const scored = catalog.entries
     .map((entry) => {
       return { entry, score: scoreCatalogEntry(hint, entry) };

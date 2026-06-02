@@ -4,6 +4,14 @@ This file tracks major automation framework and portfolio milestones.
 
 ## Portfolio UI & Content Updates (Completed)
 
+- **Premium QA Portfolio Redesign:**
+  - Rebuilt the visual system around a modern SaaS/QA engineering aesthetic.
+  - Added shared Tailwind utilities for section shells, section headings, premium cards, hover states, and dark engineering bands.
+  - Updated the hero with senior QA positioning, stack badges, QA pipeline visuals, release readiness metrics, and terminal-style quality gate snippet.
+  - Added theme-aware sticky navigation with active section indicators and distinct dark/light header states.
+  - Modernized About, Skills, Domains, Experience, Education, Contact, and Footer layouts while preserving current content and behavior.
+  - Improved project cards and architecture preview modal, including an accessible close button and `Escape` support.
+  - Added SEO metadata for the senior QA engineer portfolio.
 - **Project List Refactor:**
   - Added **AI Playwright Test Generator** (JavaScript/OpenAI).
   - Added **Chaldal Android Automation** (JavaScript/Appium/WebdriverIO).
@@ -41,6 +49,10 @@ This file tracks major automation framework and portfolio milestones.
 ## Verified Commands
 
 ```sh
+npm run typecheck
+npm run lint
+npm run format:check
+npm run build
 npm run quality
 npm run test:e2e -- --project=chromium
 ```

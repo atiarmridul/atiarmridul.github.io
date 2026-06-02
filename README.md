@@ -1,13 +1,15 @@
-# Personal Portfolio Website
+# Senior QA Engineer Portfolio
 
 ![React](https://img.shields.io/badge/React-18-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
 ![Vite](https://img.shields.io/badge/Vite-5-purple)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3-38BDF8)
 ![GitHub Pages](https://img.shields.io/badge/Deployment-GitHub%20Pages-black)
-![License](https://img.shields.io/badge/License-MIT-green)
+![QA](https://img.shields.io/badge/Focus-Manual%20%2B%20Automation%20QA-10B981)
 
-A modern portfolio and QA engineering showcase website built with React, Vite, TypeScript, and Tailwind CSS.
+A premium portfolio and QA engineering showcase for Md. Atiar Rahman Chowdhury, an ISTQB-certified
+Software QA Engineer focused on manual testing, automation testing, API validation, performance testing,
+and release quality workflows.
 
 ## Live Demo
 
@@ -17,11 +19,12 @@ https://atiarmridul.github.io/
 
 This repository showcases:
 
-- Professional portfolio presentation
-- QA automation engineering background
-- Frontend engineering practices
-- Responsive UI development
-- Modern deployment workflows
+- Senior-level QA engineering portfolio presentation
+- Manual and automation testing expertise
+- Production-style React, TypeScript, and Tailwind implementation
+- Responsive, recruiter-friendly UI with smooth interactions
+- AI-assisted Playwright QA automation framework
+- GitHub Pages deployment workflow
 
 ## Tech Stack
 
@@ -32,16 +35,21 @@ This repository showcases:
 - Framer Motion
 - Lucide React
 - EmailJS
+- Playwright
 - GitHub Pages
 
 ## Features
 
-- Responsive design
-- Modern animated UI
-- Modular component structure
-- Contact form integration
-- Mobile-first experience
-- TypeScript-based architecture
+- Premium SaaS-inspired QA engineer portfolio design
+- Theme-aware sticky navigation with active section indicators
+- Dashboard-style hero section with QA pipeline and metrics
+- Categorized skills with applied proficiency indicators
+- Project showcase cards with architecture preview modal
+- Filterable certification and learning milestone cards
+- Professional experience timeline
+- Responsive contact form with EmailJS integration
+- SEO metadata for the QA engineer portfolio
+- Stable `data-testid` selectors for automation
 
 ## Engineering Goals
 
@@ -51,16 +59,18 @@ This repository showcases:
 - Accessibility improvements
 - Performance optimization
 - Scalable component structure
+- Recruiter-friendly storytelling for QA engineering impact
 
 ## Documentation
 
 Project documentation is available inside the `docs/` folder.
 
-- architecture decisions
-- testing strategy
-- deployment process
-- coding guidelines
-- folder structure
+- [Documentation Index](docs/README.md)
+- [Architecture](docs/architecture.md)
+- [Testing Strategy](docs/testing-strategy.md)
+- [Deployment Process](docs/deployment-process.md)
+- [Coding Guidelines](docs/coding-guidelines.md)
+- [Project Structure](docs/project-structure.md)
 
 ## Project Structure
 
@@ -68,25 +78,25 @@ Project documentation is available inside the `docs/` folder.
 atiarmridul.github.io/
 ├── public/                     # Static public assets
 ├── src/
-│   ├── assets/                 # Images, icons, and static resources
 │   ├── components/             # Reusable UI components
-│   │   ├── Header.tsx          # Navigation and responsive menu
-│   │   ├── Hero.tsx            # Landing section
-│   │   ├── About.tsx           # Professional summary
-│   │   ├── Skills.tsx          # Technical expertise section
-│   │   ├── Domains.tsx         # QA specialization domains
-│   │   ├── Experience.tsx      # Work experience timeline
+│   │   ├── Header.tsx          # Theme-aware sticky navigation
+│   │   ├── Hero.tsx            # Dashboard-inspired QA hero
+│   │   ├── About.tsx           # Professional summary and QA values
+│   │   ├── Skills.tsx          # Capability matrix and tools
+│   │   ├── Projects.tsx        # Automation projects and modal previews
+│   │   ├── Achievements.tsx    # Certifications and learning milestones
+│   │   ├── Domains.tsx         # Industry/domain expertise
+│   │   ├── Experience.tsx      # Professional timeline
 │   │   ├── Education.tsx       # Academic background
-│   │   ├── Contact.tsx         # Contact form and communication links
-│   │   └── Footer.tsx          # Footer section
-│   │
-│   ├── constants/              # Centralized reusable constants/data
-│   ├── hooks/                  # Custom React hooks (future scalability)
-│   ├── utils/                  # Helper and utility functions
+│   │   ├── Contact.tsx         # Contact form and social links
+│   │   └── Footer.tsx          # Footer navigation and specializations
+│   ├── constants.ts            # Navigation data
 │   ├── App.tsx                 # Main application structure
 │   ├── main.tsx                # React application entry point
-│   └── index.css               # Global styling
+│   └── index.css               # Global design utilities and Tailwind layers
 │
+├── qa-engine/                  # AI-assisted QA automation framework
+├── docs/                       # Portfolio and QA framework documentation
 ├── CODING_STANDARDS.md         # Engineering and coding conventions
 ├── package.json                # Project dependencies and scripts
 ├── tailwind.config.js          # Tailwind CSS configuration
@@ -121,6 +131,13 @@ npm run build
 
 ```bash
 npm run lint
+```
+
+### Run Quality Checks
+
+```bash
+npm run quality
+npm run build
 ```
 
 ## AI QA Automation Framework
@@ -204,18 +221,9 @@ Hosted using GitHub Pages.
 npm run deploy
 ```
 
-## Planned Improvements
-
-- Playwright E2E automation
-- GitHub Actions CI/CD
-- Accessibility testing
-- Lighthouse optimization
-- Automated deployment validation
-- Advanced frontend optimization
-
 ## QA Automation Vision
 
-This repository will gradually evolve into a professional QA engineering showcase featuring:
+This repository is designed as a professional QA engineering showcase featuring:
 
 - UI automation
 - Cross-browser validation
@@ -228,8 +236,8 @@ This repository will gradually evolve into a professional QA engineering showcas
 
 Md. Atiar Rahman Chowdhury
 
-- Software QA Engineer
-- ISTQB Certified
+- Senior Software QA Engineer
+- ISTQB Certified Tester - Foundation Level 4.0
 
 ## Links
 

@@ -74,3 +74,18 @@ qa-engine/playwright/tests/generated/*.generated.spec.ts
 ```
 
 Generated specs include metadata comments so humans can review business intent and automation risk.
+
+## Current Portfolio Smoke Coverage
+
+The current generated examples cover:
+
+- portfolio landing page load
+- navigation to the contact section
+
+Recommended next business cases:
+
+- verify hero CTA navigation
+- verify project architecture preview opens and closes
+- verify achievement filter behavior
+- verify contact form validation for invalid email and missing required fields
+- verify mobile navigation menu opens and closes

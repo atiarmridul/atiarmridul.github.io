@@ -19,6 +19,15 @@ The workflow runs:
 
 `npm run ci:verify` expands to quality checks, production build, and root file policy validation.
 
+For portfolio UI changes, the most important non-browser CI signal is `npm run ci:verify`. It verifies:
+
+- app TypeScript
+- QA engine TypeScript
+- ESLint
+- Prettier formatting
+- production build
+- root file policy
+
 ## Playwright CI Behavior
 
 `playwright.config.ts` includes:
@@ -37,3 +46,13 @@ PLAYWRIGHT_BASE_URL=https://atiarmridul.github.io PLAYWRIGHT_SKIP_WEBSERVER=true
 ```
 
 On failure, the workflow uploads Playwright reports and test artifacts.
+
+## UI Regression Notes
+
+CI should protect behavior, but visual polish still requires browser review for major design changes. Prioritize:
+
+- dark hero header state
+- light section header state
+- mobile menu
+- project modal
+- contact form

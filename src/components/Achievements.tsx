@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Award, ExternalLink, GraduationCap, ShieldCheck } from 'lucide-react';
 
 const toTestId = (value: string) =>
   value
@@ -54,27 +55,33 @@ const Achievements = () => {
     filter === 'All' ? combinedAchievements : combinedAchievements.filter((item) => item.type === filter);
 
   return (
-    <section id="achievements" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="achievements" className="bg-white py-24">
+      <div className="section-shell">
         <div
-          className="rounded-3xl p-8 md:p-12 border border-gray-200 bg-gradient-to-br from-blue-50 to-indigo-100 shadow-sm text-center"
+          className="overflow-hidden rounded-[2rem] border border-slate-200 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-6 text-center shadow-2xl shadow-slate-950/15 md:p-12"
           data-testid="learning-milestones"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Learning Milestones</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-10">
+          <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-cyan-300/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-cyan-200">
+            <ShieldCheck size={16} />
+            Verified Growth
+          </span>
+          <h2 className="mt-5 text-4xl font-black tracking-tight text-white md:text-5xl">
+            Learning Milestones
+          </h2>
+          <p className="mx-auto mt-5 mb-10 max-w-3xl text-lg leading-8 text-slate-300">
             A showcase of my professional certifications and commitment to continuous learning in the SQA
             field.
           </p>
 
-          <div className="mb-10 flex justify-center gap-4">
+          <div className="mb-10 flex flex-wrap justify-center gap-3">
             {filters.map((option) => (
               <button
                 key={option}
                 data-testid={`achievement-filter-${toTestId(option)}`}
-                className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+                className={`rounded-full px-5 py-2.5 text-sm font-bold transition-all duration-300 ${
                   filter === option
-                    ? 'bg-blue-800 text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
+                    ? 'bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/25'
+                    : 'border border-white/10 bg-white/10 text-slate-200 hover:bg-white/20'
                 }`}
                 onClick={() => setFilter(option)}
               >
@@ -88,43 +95,34 @@ const Achievements = () => {
               <div
                 key={title}
                 data-testid={`achievement-card-${toTestId(title)}`}
-                className="bg-white/60 backdrop-blur-sm border border-white/50 rounded-2xl p-6 text-left shadow-sm transition-all duration-300 transform hover:shadow-xl hover:-translate-y-2 group"
+                className="group rounded-3xl border border-white/10 bg-white/[0.06] p-6 text-left shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/50 hover:bg-white/[0.09]"
               >
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-300/10 text-cyan-200 ring-1 ring-cyan-300/20">
+                  {type === 'Certification' ? <Award size={24} /> : <GraduationCap size={24} />}
+                </div>
                 <span
-                  className="text-xs uppercase font-bold tracking-wider text-blue-700 mb-2 block"
+                  className="text-xs uppercase font-bold tracking-wider text-cyan-200 mb-2 block"
                   data-testid={`achievement-type-${toTestId(title)}`}
                 >
                   {type}
                 </span>
                 <h4
-                  className="font-bold text-gray-900 text-lg leading-tight group-hover:text-blue-800 transition-colors"
+                  className="font-black text-white text-lg leading-tight transition-colors group-hover:text-cyan-100"
                   data-testid={`achievement-title-${toTestId(title)}`}
                 >
                   {title}
                 </h4>
-                {subtitle && <p className="text-sm text-gray-600 mt-2">{subtitle}</p>}
+                {subtitle && <p className="text-sm text-slate-300 mt-2">{subtitle}</p>}
                 {link && (
                   <a
                     href={link}
                     target="_blank"
                     rel="noopener noreferrer"
                     data-testid={`achievement-link-${toTestId(title)}`}
-                    className="inline-flex items-center mt-4 text-sm font-bold text-blue-800 hover:text-blue-900 group"
+                    className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-black text-slate-950 transition hover:bg-cyan-100"
                   >
                     View Certificate
-                    <svg
-                      className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M14 5l7 7m0 0l-7 7m7-7H3"
-                      />
-                    </svg>
+                    <ExternalLink size={15} />
                   </a>
                 )}
               </div>

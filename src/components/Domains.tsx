@@ -1,3 +1,5 @@
+import { Building2, GraduationCap, HeartPulse, Network, ShoppingCart, Truck } from 'lucide-react';
+
 type ColorKey = 'blue' | 'green' | 'red' | 'purple' | 'orange' | 'indigo';
 
 const toTestId = (value: string) =>
@@ -39,40 +41,53 @@ const colorStyles: Record<ColorKey, Record<string, string>> = {
   },
 };
 
-const domains: Array<{ title: string; color: ColorKey }> = [
+const domains: Array<{ title: string; color: ColorKey; icon: JSX.Element; caption: string }> = [
   {
     title: 'Telco',
     color: 'blue',
+    icon: <Network size={24} />,
+    caption: 'High-volume workflows, integrations, and uptime-sensitive validation.',
   },
   {
     title: 'E-commerce & Retail',
     color: 'green',
+    icon: <ShoppingCart size={24} />,
+    caption: 'Checkout, inventory, catalog, mobile, and payment-adjacent quality checks.',
   },
   {
     title: 'Healthcare & Medical',
     color: 'red',
+    icon: <HeartPulse size={24} />,
+    caption: 'Accuracy-focused testing for regulated and user-sensitive experiences.',
   },
   {
     title: 'Education & E-learning',
     color: 'purple',
+    icon: <GraduationCap size={24} />,
+    caption: 'Learning journeys, content flows, user roles, and cross-device coverage.',
   },
   {
     title: 'Logistics & Supply Chain',
     color: 'orange',
+    icon: <Truck size={24} />,
+    caption: 'Operational workflows, tracking, backend validation, and data consistency.',
   },
   {
     title: 'Enterprise & SaaS',
     color: 'indigo',
+    icon: <Building2 size={24} />,
+    caption: 'Role-based access, dashboards, API contracts, and release confidence.',
   },
 ];
 
 const Domains = () => {
   return (
-    <section id="domains" data-testid="section-domains" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <header className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Domain Expertise</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+    <section id="domains" data-testid="section-domains" className="bg-slate-50 py-24">
+      <div className="section-shell">
+        <header className="mx-auto mb-16 max-w-3xl text-center">
+          <span className="section-kicker">Industry Coverage</span>
+          <h2 className="section-title">Domain Expertise</h2>
+          <p className="section-copy">
             Extensive experience across diverse industries, bringing domain-specific testing knowledge and
             understanding of business-critical requirements to ensure quality delivery.
           </p>
@@ -85,15 +100,16 @@ const Domains = () => {
               <article
                 key={index}
                 data-testid={`domain-card-${toTestId(domain.title)}`}
-                className={`
-                  ${colors.bg} 
-                  ${colors.border} 
-                  rounded-xl p-6 shadow-lg hover:shadow-xl 
-                  transition-all duration-300 transform hover:-translate-y-2 border
-                `}
+                className="premium-card premium-card-hover p-6"
               >
-                <header className="flex items-center justify-center">
-                  <h3 className={`text-xl font-bold ${colors.text}`}>{domain.title}</h3>
+                <header className="flex items-start gap-4">
+                  <div className={`${colors.bg} ${colors.border} ${colors.text} rounded-2xl border p-3`}>
+                    {domain.icon}
+                  </div>
+                  <div>
+                    <h3 className={`text-xl font-black ${colors.text}`}>{domain.title}</h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-600">{domain.caption}</p>
+                  </div>
                 </header>
               </article>
             );
