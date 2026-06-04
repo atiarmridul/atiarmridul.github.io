@@ -1,20 +1,5 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react';
 import emailjs from 'emailjs-com';
-import {
-  Github,
-  Linkedin,
-  MailCheck,
-  MapPinned,
-  MessageSquareText,
-  PhoneCall,
-  SendHorizonal,
-} from 'lucide-react';
-
-const toTestId = (value: string) =>
-  value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
 
 const emailJsConfig = {
   serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -23,6 +8,13 @@ const emailJsConfig = {
 };
 
 const isEmailJsConfigured = Object.values(emailJsConfig).every(Boolean);
+
+const contactLinks = [
+  { label: '✉ atiarmridul@gmail.com', href: 'mailto:atiarmridul@gmail.com' },
+  { label: '↗ GitHub', href: 'https://github.com/atiarmridul' },
+  { label: '↗ LinkedIn', href: 'https://www.linkedin.com/in/atiarmridul/' },
+  { label: '↗ WhatsApp', href: 'https://wa.me/8801916204614' },
+];
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -41,7 +33,7 @@ const Contact = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    // Hidden honeypot field blocks basic bot submissions without adding friction for real visitors.
+    // Hidden honeypot field blocks basic bot submissions without adding friction.
     if (formData.robotField !== '') {
       console.warn('Spam detected. Submission blocked.');
       return;
@@ -52,7 +44,6 @@ const Contact = () => {
       return;
     }
 
-    // EmailJS receives plain template params, so trim and neutralize angle brackets before sending.
     const sanitize = (text: string) => text.replace(/</g, '&lt;').replace(/>/g, '&gt;').trim();
 
     const name = sanitize(formData.name);
@@ -75,24 +66,12 @@ const Contact = () => {
       await emailjs.send(
         emailJsConfig.serviceId!,
         emailJsConfig.templateId!,
-        {
-          name,
-          email,
-          subject,
-          message,
-          time: new Date().toLocaleString(),
-        },
+        { name, email, subject, message, time: new Date().toLocaleString() },
         emailJsConfig.publicKey!,
       );
 
       alert('Thank you. Your message has been sent.');
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-        robotField: '',
-      });
+      setFormData({ name: '', email: '', subject: '', message: '', robotField: '' });
     } catch (error) {
       console.error('EmailJS error:', error);
       alert('Failed to send message. Please try again later.');
@@ -100,194 +79,120 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" data-testid="section-contact" className="bg-white py-24">
-      <div className="section-shell">
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <span className="section-kicker">Collaboration</span>
-          <h2 className="section-title">Let&apos;s Connect</h2>
-          <p className="section-copy">
-            Ready to discuss quality assurance strategies or explore collaboration opportunities? I&apos;d
-            love to hear from you.
-          </p>
-        </div>
+    <section className="section contact wrap" id="contact" data-testid="section-contact">
+      <span className="eyebrow reveal">Contact</span>
+      <h2 className="contact-big reveal" data-d="1" style={{ marginTop: 24 }}>
+        Let&apos;s ship
+        <br />
+        quality{' '}
+        <a href="mailto:atiarmridul@gmail.com" data-mag>
+          <span className="underline">together</span> →
+        </a>
+      </h2>
 
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-          <div className="premium-card p-7 sm:p-8">
-            <h3 className="mb-3 text-2xl font-black text-slate-950">Get In Touch</h3>
-            <p className="mb-8 text-slate-600">
-              Available for QA leadership, automation framework design, release quality strategy, and
-              product-focused testing collaboration.
-            </p>
-            <ul className="space-y-6">
-              {[
-                {
-                  icon: <MailCheck className="text-blue-600" size={24} />,
-                  label: 'Email',
-                  value: 'atiarmridul@gmail.com',
-                  href: 'mailto:atiarmridul@gmail.com',
-                },
-                {
-                  icon: <PhoneCall className="text-green-600" size={24} />,
-                  label: 'Phone',
-                  value: '+880 1916204614',
-                  href: 'tel:+8801916204614',
-                },
-                {
-                  icon: <MessageSquareText className="text-green-500" size={24} />,
-                  label: 'WhatsApp',
-                  value: 'Chat on WhatsApp',
-                  href: 'https://wa.me/8801916204614',
-                },
-                {
-                  icon: <MapPinned className="text-purple-600" size={24} />,
-                  label: 'Location',
-                  value: 'Dhaka, Bangladesh',
-                },
-              ].map(({ icon, label, value, href }) => (
-                <li key={label} className="flex items-center" data-testid={`contact-info-${toTestId(label)}`}>
-                  <div className="mr-4 rounded-2xl bg-slate-50 p-3 ring-1 ring-slate-100">{icon}</div>
-                  <div>
-                    <h4 className="font-black text-slate-950">{label}</h4>
-                    {href ? (
-                      <a
-                        href={href}
-                        className="font-semibold text-cyan-700 hover:text-cyan-900"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        data-testid={`contact-info-link-${toTestId(label)}`}
-                      >
-                        {value}
-                      </a>
-                    ) : (
-                      <p className="text-slate-600">{value}</p>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-8 rounded-3xl border border-slate-200 bg-slate-50 p-5">
-              <h4 className="mb-4 font-black text-slate-950">Connect with me</h4>
-              <div className="flex space-x-4">
-                <a
-                  href="https://www.linkedin.com/in/atiarmridul/"
-                  className="rounded-2xl bg-blue-600 p-3 text-white shadow-lg shadow-blue-600/20 transition hover:-translate-y-0.5 hover:bg-blue-700"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  data-testid="social-link-linkedin"
-                >
-                  <Linkedin size={20} />
-                </a>
-                <a
-                  href="https://github.com/atiarmridul"
-                  className="rounded-2xl bg-slate-950 p-3 text-white shadow-lg shadow-slate-950/20 transition hover:-translate-y-0.5 hover:bg-slate-800"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                  data-testid="social-link-github"
-                >
-                  <Github size={20} />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <form
-            onSubmit={handleSubmit}
-            className="premium-card space-y-6 p-7 sm:p-8"
-            data-testid="contact-form"
+      <div className="contact-links reveal" data-d="2">
+        {contactLinks.map((c) => (
+          <a
+            key={c.label}
+            className="contact-link"
+            href={c.href}
+            target={c.href.startsWith('mailto:') ? undefined : '_blank'}
+            rel="noopener noreferrer"
+            data-mag
           >
-            <h3 className="text-2xl font-black text-slate-950">Send Message</h3>
-
-            <input
-              type="text"
-              name="robotField"
-              value={formData.robotField}
-              onChange={handleChange}
-              autoComplete="off"
-              className="hidden"
-              tabIndex={-1}
-              data-testid="contact-honeypot-field"
-            />
-
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              {[
-                { id: 'name', label: 'Name', type: 'text' },
-                { id: 'email', label: 'Email', type: 'email' },
-              ].map(({ id, label, type }) => (
-                <div key={id} data-testid={`contact-field-${id}`}>
-                  <label
-                    htmlFor={id}
-                    data-testid={`contact-${id}-label`}
-                    className="mb-2 block text-sm font-bold text-slate-700"
-                  >
-                    {label}
-                  </label>
-                  <input
-                    type={type}
-                    id={id}
-                    name={id}
-                    data-testid={`contact-${id}-input`}
-                    value={formData[id as keyof typeof formData]}
-                    onChange={handleChange}
-                    required
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 transition focus:border-cyan-400 focus:bg-white focus:outline-none focus:ring-4 focus:ring-cyan-100"
-                  />
-                </div>
-              ))}
-            </div>
-
-            {[
-              { id: 'subject', label: 'Subject' },
-              { id: 'message', label: 'Message', textarea: true },
-            ].map(({ id, label, textarea }) => (
-              <div key={id} data-testid={`contact-field-${id}`}>
-                <label
-                  htmlFor={id}
-                  data-testid={`contact-${id}-label`}
-                  className="mb-2 block text-sm font-bold text-slate-700"
-                >
-                  {label}
-                </label>
-                {textarea ? (
-                  <textarea
-                    id={id}
-                    name={id}
-                    rows={6}
-                    data-testid={`contact-${id}-textarea`}
-                    value={formData[id as keyof typeof formData]}
-                    onChange={handleChange}
-                    required
-                    className="w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 transition focus:border-cyan-400 focus:bg-white focus:outline-none focus:ring-4 focus:ring-cyan-100"
-                  />
-                ) : (
-                  <input
-                    type="text"
-                    id={id}
-                    name={id}
-                    data-testid={`contact-${id}-input`}
-                    value={formData[id as keyof typeof formData]}
-                    onChange={handleChange}
-                    required
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-900 transition focus:border-cyan-400 focus:bg-white focus:outline-none focus:ring-4 focus:ring-cyan-100"
-                  />
-                )}
-              </div>
-            ))}
-
-            <button
-              type="submit"
-              aria-label="Send contact message"
-              data-testid="contact-submit-button"
-              className="flex w-full items-center justify-center space-x-2 rounded-2xl bg-slate-950 px-6 py-4 font-black text-white shadow-xl shadow-slate-950/15 transition hover:-translate-y-0.5 hover:bg-cyan-700"
-            >
-              <SendHorizonal size={18} />
-              <span>Send Message</span>
-            </button>
-          </form>
-        </div>
+            {c.label}
+          </a>
+        ))}
       </div>
+
+      <form
+        onSubmit={handleSubmit}
+        className="reveal"
+        data-d="2"
+        data-testid="contact-form"
+        style={{
+          marginTop: 'clamp(48px, 7vw, 80px)',
+          maxWidth: 720,
+          display: 'grid',
+          gap: 20,
+        }}
+      >
+        <input
+          type="text"
+          name="robotField"
+          value={formData.robotField}
+          onChange={handleChange}
+          autoComplete="off"
+          tabIndex={-1}
+          aria-hidden="true"
+          style={{ display: 'none' }}
+          data-testid="contact-honeypot-field"
+        />
+
+        <div
+          style={{ display: 'grid', gap: 20, gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}
+        >
+          {(
+            [
+              { id: 'name', label: 'Name', type: 'text' },
+              { id: 'email', label: 'Email', type: 'email' },
+            ] as const
+          ).map(({ id, label, type }) => (
+            <div key={id} data-testid={`contact-field-${id}`}>
+              <label htmlFor={id} className="field-label">
+                {label}
+              </label>
+              <input
+                className="field-input"
+                type={type}
+                id={id}
+                name={id}
+                value={formData[id]}
+                onChange={handleChange}
+                required
+                data-testid={`contact-${id}-input`}
+              />
+            </div>
+          ))}
+        </div>
+
+        <div data-testid="contact-field-subject">
+          <label htmlFor="subject" className="field-label">
+            Subject
+          </label>
+          <input
+            className="field-input"
+            type="text"
+            id="subject"
+            name="subject"
+            value={formData.subject}
+            onChange={handleChange}
+            required
+            data-testid="contact-subject-input"
+          />
+        </div>
+
+        <div data-testid="contact-field-message">
+          <label htmlFor="message" className="field-label">
+            Message
+          </label>
+          <textarea
+            className="field-input"
+            id="message"
+            name="message"
+            rows={6}
+            value={formData.message}
+            onChange={handleChange}
+            required
+            data-testid="contact-message-textarea"
+            style={{ resize: 'vertical' }}
+          />
+        </div>
+
+        <button type="submit" className="btn btn-primary" data-testid="contact-submit-button" data-mag>
+          Send message <span className="arr">→</span>
+        </button>
+      </form>
     </section>
   );
 };

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Award, ExternalLink, GraduationCap, ShieldCheck } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 const toTestId = (value: string) =>
   value
@@ -10,14 +10,13 @@ const toTestId = (value: string) =>
 type Achievement = {
   type: 'Certification' | 'Training & Course';
   title: string;
-  subtitle?: string;
   link: string;
 };
 
 const combinedAchievements: Achievement[] = [
   {
     type: 'Certification',
-    title: 'ISTQB® Certified Tester - Foundation Level 4.0',
+    title: 'ISTQB® Certified Tester — Foundation Level 4.0',
     link: 'https://zertdb.isqi.org/en/download/index/token/jAPq8%24J2y%24X%21Xy_39p84',
   },
   {
@@ -32,7 +31,7 @@ const combinedAchievements: Achievement[] = [
   },
   {
     type: 'Training & Course',
-    title: 'Selenium WebDriver: Selenium Automation Testing with Java',
+    title: 'Selenium WebDriver: Automation Testing with Java',
     link: 'https://www.udemy.com/certificate/UC-39d384a5-7977-4307-aca7-a3b164253ab1/',
   },
   {
@@ -51,84 +50,56 @@ const Achievements = () => {
   const [filter, setFilter] = useState<'All' | Achievement['type']>('All');
   const filters: Array<'All' | Achievement['type']> = ['All', 'Certification', 'Training & Course'];
 
-  const filteredAchievements =
+  const filtered =
     filter === 'All' ? combinedAchievements : combinedAchievements.filter((item) => item.type === filter);
 
   return (
-    <section id="achievements" className="bg-white py-24">
-      <div className="section-shell">
-        <div
-          className="overflow-hidden rounded-[2rem] border border-slate-200 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-6 text-center shadow-2xl shadow-slate-950/15 md:p-12"
-          data-testid="learning-milestones"
-        >
-          <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-cyan-300/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-cyan-200">
-            <ShieldCheck size={16} />
-            Verified Growth
-          </span>
-          <h2 className="mt-5 text-4xl font-black tracking-tight text-white md:text-5xl">
-            Learning Milestones
-          </h2>
-          <p className="mx-auto mt-5 mb-10 max-w-3xl text-lg leading-8 text-slate-300">
-            A showcase of my professional certifications and commitment to continuous learning in the SQA
-            field.
-          </p>
+    <section className="section wrap" id="achievements" data-testid="section-achievements">
+      <div className="section-head">
+        <span className="eyebrow reveal">Verified growth</span>
+        <h2 className="section-title reveal" data-d="1">
+          Learning
+          <br />
+          milestones.
+        </h2>
+      </div>
 
-          <div className="mb-10 flex flex-wrap justify-center gap-3">
-            {filters.map((option) => (
-              <button
-                key={option}
-                data-testid={`achievement-filter-${toTestId(option)}`}
-                className={`rounded-full px-5 py-2.5 text-sm font-bold transition-all duration-300 ${
-                  filter === option
-                    ? 'bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-500/25'
-                    : 'border border-white/10 bg-white/10 text-slate-200 hover:bg-white/20'
-                }`}
-                onClick={() => setFilter(option)}
-              >
-                {option}
-              </button>
-            ))}
-          </div>
+      <div className="reveal" style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginBottom: 40 }}>
+        {filters.map((option) => (
+          <button
+            key={option}
+            className={`pill${filter === option ? ' active' : ''}`}
+            data-testid={`achievement-filter-${toTestId(option)}`}
+            onClick={() => setFilter(option)}
+          >
+            {option}
+          </button>
+        ))}
+      </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredAchievements.map(({ type, title, subtitle, link }) => (
-              <div
-                key={title}
-                data-testid={`achievement-card-${toTestId(title)}`}
-                className="group rounded-3xl border border-white/10 bg-white/[0.06] p-6 text-left shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/50 hover:bg-white/[0.09]"
-              >
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-300/10 text-cyan-200 ring-1 ring-cyan-300/20">
-                  {type === 'Certification' ? <Award size={24} /> : <GraduationCap size={24} />}
-                </div>
-                <span
-                  className="text-xs uppercase font-bold tracking-wider text-cyan-200 mb-2 block"
-                  data-testid={`achievement-type-${toTestId(title)}`}
-                >
-                  {type}
-                </span>
-                <h4
-                  className="font-black text-white text-lg leading-tight transition-colors group-hover:text-cyan-100"
-                  data-testid={`achievement-title-${toTestId(title)}`}
-                >
-                  {title}
-                </h4>
-                {subtitle && <p className="text-sm text-slate-300 mt-2">{subtitle}</p>}
-                {link && (
-                  <a
-                    href={link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-testid={`achievement-link-${toTestId(title)}`}
-                    className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-black text-slate-950 transition hover:bg-cyan-100"
-                  >
-                    View Certificate
-                    <ExternalLink size={15} />
-                  </a>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
+      <div className="card-grid reveal" data-d="1">
+        {filtered.map(({ type, title, link }) => (
+          <article className="edu-card" key={title} data-testid={`achievement-card-${toTestId(title)}`}>
+            <span className="tick" data-testid={`achievement-type-${toTestId(title)}`}>
+              {type}
+            </span>
+            <h3
+              style={{ fontSize: 'clamp(18px, 2vw, 22px)' }}
+              data-testid={`achievement-title-${toTestId(title)}`}
+            >
+              {title}
+            </h3>
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="edu-link"
+              data-testid={`achievement-link-${toTestId(title)}`}
+            >
+              View certificate <ExternalLink size={13} />
+            </a>
+          </article>
+        ))}
       </div>
     </section>
   );
