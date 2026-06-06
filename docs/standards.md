@@ -17,10 +17,11 @@ Standardizing the environment ensures that all team members and AI agents produc
 
 ### Critical Scripts
 
-Every project should have a `quality` command that combines all checks:
+This repository has a `quality` command that combines app typechecking, QA engine typechecking, QA rule validation,
+unit/component tests, linting, and format verification:
 
 ```json
-"quality": "npm run typecheck && npm run lint && npm run format:check"
+"quality": "npm run typecheck && npm run typecheck:qa && npm run qa:rules && npm run test:unit && npm run lint && npm run format:check"
 ```
 
 ---
@@ -49,7 +50,7 @@ Page objects should model real user behavior. Use normal Playwright actions such
 
 ### Environment-Aware Configuration
 
-Use a central `src/config.ts` to resolve settings from:
+Use `qa-engine/playwright/config/config.ts` to resolve settings from:
 
 1. `.env` default local settings
 2. `qa-engine/environments/*.env` stage/prod profiles
@@ -171,11 +172,11 @@ When many UI tests fail together, investigate shared causes before changing indi
 
 ## Roadmap for New Project Setup
 
-1. **Initialize:** Run `npm init`, `npx playwright install`, and set up TypeScript.
-2. **Clone Infrastructure:** Copy `tsconfig.json`, `eslint.config.mjs`, `.prettierrc.json`, and `.husky/`.
-3. **Port Base Layers:** Copy `src/config.ts`, `src/exceptions.ts`, and `src/pages/basePage.ts`.
-4. **Define Fixtures:** Set up `tests-ts/fixtures/baseTest.ts` to provide page objects and data agents.
-5. **Configure CI:** Copy `.github/workflows/` and set up repository secrets.
+1. **Initialize:** Run `npm install`, `npx playwright install`, and verify TypeScript configs.
+2. **Clone Infrastructure:** Reuse `tsconfig*.json`, `eslint.config.js`, Prettier, Husky, and lint-staged setup.
+3. **Port Base Layers:** Reuse `qa-engine/playwright/config/config.ts`, `BasePage.ts`, exceptions, and fixtures.
+4. **Define Inputs:** Add business cases under `qa-engine/ai/definitions/` and keep generated artifacts reviewable.
+5. **Configure CI:** Keep `.github/workflows/` aligned with `npm run ci:verify` and Playwright artifact upload.
 
 ---
 

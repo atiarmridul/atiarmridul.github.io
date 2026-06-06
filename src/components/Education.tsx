@@ -28,7 +28,7 @@ const Education = () => (
       </h2>
     </div>
 
-    <div className="card-grid reveal" data-d="1" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+    <div className="card-grid education-grid reveal" data-d="1">
       {educationData.map((edu, i) => (
         <article className="edu-card" key={i} data-testid={`education-card-${i + 1}`}>
           <span className="tick">{edu.duration}</span>

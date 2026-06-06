@@ -12,7 +12,7 @@
       "homepage"
     ],
     "preconditions": [],
-    "generatedAt": "2026-05-26T12:10:14.432Z",
+    "generatedAt": "2026-06-05T17:03:11.057Z",
     "confidenceScore": 0.82,
     "testData": {},
     "aiValidation": [],
@@ -35,10 +35,10 @@
       },
       {
         "id": "step-3",
-        "businessText": "Verify Contact is visible",
+        "businessText": "Verify Work is visible",
         "action": "assertVisible",
-        "targetHint": "Contact",
-        "expectedResult": "Contact entry point is available"
+        "targetHint": "Work",
+        "expectedResult": "Work entry point is available"
       }
     ]
   },
@@ -55,7 +55,7 @@
       "contact"
     ],
     "preconditions": [],
-    "generatedAt": "2026-05-26T12:10:14.432Z",
+    "generatedAt": "2026-06-05T17:03:11.057Z",
     "confidenceScore": 0.82,
     "testData": {},
     "aiValidation": [],
@@ -71,17 +71,498 @@
       },
       {
         "id": "step-2",
-        "businessText": "Click Contact",
+        "businessText": "Click nav-link-contact",
         "action": "click",
-        "targetHint": "Contact",
+        "targetHint": "nav-link-contact",
         "expectedResult": "The page scrolls to the contact area"
       },
       {
         "id": "step-3",
-        "businessText": "Verify Get In Touch is visible",
+        "businessText": "Verify Let's ship quality together is visible",
         "action": "assertVisible",
-        "targetHint": "Get In Touch",
+        "targetHint": "Let's ship quality together",
         "expectedResult": "The contact section heading is visible"
+      }
+    ]
+  },
+  {
+    "id": "AI_TC_NAVIGATION_001",
+    "sourceTestCaseId": "AI_TC_NAVIGATION_001",
+    "module": "Navigation",
+    "scenario": "click home menu",
+    "title": "Click Home menu",
+    "priority": "Medium",
+    "riskLevel": "Low",
+    "tags": [
+      "navigation",
+      "expanded"
+    ],
+    "preconditions": [
+      "Homepage is loaded"
+    ],
+    "generatedAt": "2026-06-05T17:03:11.057Z",
+    "confidenceScore": 0.82,
+    "testData": {},
+    "aiValidation": [],
+    "testType": "Functional",
+    "automationMode": "automated",
+    "steps": [
+      {
+        "id": "step-1",
+        "businessText": "Open homepage",
+        "action": "navigate",
+        "targetHint": "homepage",
+        "expectedResult": "Redirects to Home section"
+      },
+      {
+        "id": "step-2",
+        "businessText": "Click Back to top",
+        "action": "click",
+        "targetHint": "Back to top"
+      }
+    ]
+  },
+  {
+    "id": "AI_TC_NAVIGATION_004",
+    "sourceTestCaseId": "AI_TC_NAVIGATION_004",
+    "module": "Navigation",
+    "scenario": "click projects menu",
+    "title": "Click Projects menu",
+    "priority": "Medium",
+    "riskLevel": "Low",
+    "tags": [
+      "navigation",
+      "expanded"
+    ],
+    "preconditions": [
+      "Homepage is loaded"
+    ],
+    "generatedAt": "2026-06-05T17:03:11.057Z",
+    "confidenceScore": 0.82,
+    "testData": {},
+    "aiValidation": [],
+    "testType": "Functional",
+    "automationMode": "automated",
+    "steps": [
+      {
+        "id": "step-1",
+        "businessText": "Open homepage",
+        "action": "navigate",
+        "targetHint": "homepage",
+        "expectedResult": "Scrolls to Projects section"
+      },
+      {
+        "id": "step-2",
+        "businessText": "Click 01Work",
+        "action": "click",
+        "targetHint": "01Work"
+      }
+    ]
+  },
+  {
+    "id": "AI_TC_NAVIGATION_005",
+    "sourceTestCaseId": "AI_TC_NAVIGATION_005",
+    "module": "Navigation",
+    "scenario": "click contact menu",
+    "title": "Click Contact menu",
+    "priority": "Medium",
+    "riskLevel": "Low",
+    "tags": [
+      "navigation",
+      "expanded"
+    ],
+    "preconditions": [
+      "Homepage is loaded"
+    ],
+    "generatedAt": "2026-06-05T17:03:11.057Z",
+    "confidenceScore": 0.82,
+    "testData": {},
+    "aiValidation": [],
+    "testType": "Functional",
+    "automationMode": "automated",
+    "steps": [
+      {
+        "id": "step-1",
+        "businessText": "Open homepage",
+        "action": "navigate",
+        "targetHint": "homepage",
+        "expectedResult": "Scrolls to Contact section"
+      },
+      {
+        "id": "step-2",
+        "businessText": "Click 05Contact",
+        "action": "click",
+        "targetHint": "05Contact"
+      }
+    ]
+  },
+  {
+    "id": "AI_TC_SKILLS_001",
+    "sourceTestCaseId": "AI_TC_SKILLS_001",
+    "module": "Skills",
+    "scenario": "verify all skill cards displayed",
+    "title": "Verify all skill cards displayed",
+    "priority": "Medium",
+    "riskLevel": "Low",
+    "tags": [
+      "skills",
+      "expanded"
+    ],
+    "preconditions": [
+      "Homepage is loaded"
+    ],
+    "generatedAt": "2026-06-05T17:03:11.057Z",
+    "confidenceScore": 0.82,
+    "testData": {},
+    "aiValidation": [],
+    "testType": "Functional",
+    "automationMode": "automated",
+    "steps": [
+      {
+        "id": "step-1",
+        "businessText": "Open homepage",
+        "action": "navigate",
+        "targetHint": "homepage",
+        "expectedResult": "Skills appear correctly"
+      },
+      {
+        "id": "step-2",
+        "businessText": "Verify Toolkit is visible",
+        "action": "assertVisible",
+        "targetHint": "Toolkit"
+      }
+    ]
+  },
+  {
+    "id": "AI_TC_SKILLS_002",
+    "sourceTestCaseId": "AI_TC_SKILLS_002",
+    "module": "Skills",
+    "scenario": "verify playwright skill",
+    "title": "Verify Playwright skill",
+    "priority": "Medium",
+    "riskLevel": "Low",
+    "tags": [
+      "skills",
+      "expanded"
+    ],
+    "preconditions": [
+      "Homepage is loaded"
+    ],
+    "generatedAt": "2026-06-05T17:03:11.057Z",
+    "confidenceScore": 0.82,
+    "testData": {},
+    "aiValidation": [],
+    "testType": "Functional",
+    "automationMode": "automated",
+    "steps": [
+      {
+        "id": "step-1",
+        "businessText": "Open homepage",
+        "action": "navigate",
+        "targetHint": "homepage",
+        "expectedResult": "Skill visible"
+      },
+      {
+        "id": "step-2",
+        "businessText": "Verify Playwright is visible",
+        "action": "assertVisible",
+        "targetHint": "Playwright"
+      }
+    ]
+  },
+  {
+    "id": "AI_TC_SKILLS_003",
+    "sourceTestCaseId": "AI_TC_SKILLS_003",
+    "module": "Skills",
+    "scenario": "verify selenium skill",
+    "title": "Verify Selenium skill",
+    "priority": "Medium",
+    "riskLevel": "Low",
+    "tags": [
+      "skills",
+      "expanded"
+    ],
+    "preconditions": [
+      "Homepage is loaded"
+    ],
+    "generatedAt": "2026-06-05T17:03:11.057Z",
+    "confidenceScore": 0.82,
+    "testData": {},
+    "aiValidation": [],
+    "testType": "Functional",
+    "automationMode": "automated",
+    "steps": [
+      {
+        "id": "step-1",
+        "businessText": "Open homepage",
+        "action": "navigate",
+        "targetHint": "homepage",
+        "expectedResult": "Skill visible"
+      },
+      {
+        "id": "step-2",
+        "businessText": "Verify Selenium is visible",
+        "action": "assertVisible",
+        "targetHint": "Selenium"
+      }
+    ]
+  },
+  {
+    "id": "AI_TC_SKILLS_004",
+    "sourceTestCaseId": "AI_TC_SKILLS_004",
+    "module": "Skills",
+    "scenario": "verify api testing skill",
+    "title": "Verify API Testing skill",
+    "priority": "Medium",
+    "riskLevel": "Low",
+    "tags": [
+      "skills",
+      "expanded"
+    ],
+    "preconditions": [
+      "Homepage is loaded"
+    ],
+    "generatedAt": "2026-06-05T17:03:11.057Z",
+    "confidenceScore": 0.82,
+    "testData": {},
+    "aiValidation": [],
+    "testType": "Functional",
+    "automationMode": "automated",
+    "steps": [
+      {
+        "id": "step-1",
+        "businessText": "Open homepage",
+        "action": "navigate",
+        "targetHint": "homepage",
+        "expectedResult": "Skill visible"
+      },
+      {
+        "id": "step-2",
+        "businessText": "Verify API is visible",
+        "action": "assertVisible",
+        "targetHint": "API"
+      }
+    ]
+  },
+  {
+    "id": "AI_TC_PROJECTS_001",
+    "sourceTestCaseId": "AI_TC_PROJECTS_001",
+    "module": "Projects",
+    "scenario": "verify project cards display",
+    "title": "Verify project cards display",
+    "priority": "Medium",
+    "riskLevel": "Low",
+    "tags": [
+      "projects",
+      "expanded"
+    ],
+    "preconditions": [
+      "Homepage is loaded"
+    ],
+    "generatedAt": "2026-06-05T17:03:11.057Z",
+    "confidenceScore": 0.82,
+    "testData": {},
+    "aiValidation": [],
+    "testType": "Functional",
+    "automationMode": "automated",
+    "steps": [
+      {
+        "id": "step-1",
+        "businessText": "Open homepage",
+        "action": "navigate",
+        "targetHint": "homepage",
+        "expectedResult": "All projects visible"
+      },
+      {
+        "id": "step-2",
+        "businessText": "Verify Frameworks & tools is visible",
+        "action": "assertVisible",
+        "targetHint": "Frameworks & tools"
+      }
+    ]
+  },
+  {
+    "id": "AI_TC_PROJECTS_002",
+    "sourceTestCaseId": "AI_TC_PROJECTS_002",
+    "module": "Projects",
+    "scenario": "verify project title",
+    "title": "Verify project title",
+    "priority": "Medium",
+    "riskLevel": "Low",
+    "tags": [
+      "projects",
+      "expanded"
+    ],
+    "preconditions": [
+      "Homepage is loaded"
+    ],
+    "generatedAt": "2026-06-05T17:03:11.057Z",
+    "confidenceScore": 0.82,
+    "testData": {},
+    "aiValidation": [],
+    "testType": "Functional",
+    "automationMode": "automated",
+    "steps": [
+      {
+        "id": "step-1",
+        "businessText": "Open homepage",
+        "action": "navigate",
+        "targetHint": "homepage",
+        "expectedResult": "Correct title displayed"
+      },
+      {
+        "id": "step-2",
+        "businessText": "Verify Singer BD Automation Framework is visible",
+        "action": "assertVisible",
+        "targetHint": "Singer BD Automation Framework"
+      }
+    ]
+  },
+  {
+    "id": "AI_TC_PROJECTS_003",
+    "sourceTestCaseId": "AI_TC_PROJECTS_003",
+    "module": "Projects",
+    "scenario": "verify project description",
+    "title": "Verify project description",
+    "priority": "Medium",
+    "riskLevel": "Low",
+    "tags": [
+      "projects",
+      "expanded"
+    ],
+    "preconditions": [
+      "Homepage is loaded"
+    ],
+    "generatedAt": "2026-06-05T17:03:11.057Z",
+    "confidenceScore": 0.82,
+    "testData": {},
+    "aiValidation": [],
+    "testType": "Functional",
+    "automationMode": "automated",
+    "steps": [
+      {
+        "id": "step-1",
+        "businessText": "Open homepage",
+        "action": "navigate",
+        "targetHint": "homepage",
+        "expectedResult": "Description visible"
+      },
+      {
+        "id": "step-2",
+        "businessText": "Verify Production-grade Playwright is visible",
+        "action": "assertVisible",
+        "targetHint": "Production-grade Playwright"
+      }
+    ]
+  },
+  {
+    "id": "AI_TC_PROJECTS_004",
+    "sourceTestCaseId": "AI_TC_PROJECTS_004",
+    "module": "Projects",
+    "scenario": "verify github button",
+    "title": "Verify GitHub button",
+    "priority": "Medium",
+    "riskLevel": "Low",
+    "tags": [
+      "projects",
+      "expanded"
+    ],
+    "preconditions": [
+      "Homepage is loaded"
+    ],
+    "generatedAt": "2026-06-05T17:03:11.057Z",
+    "confidenceScore": 0.82,
+    "testData": {},
+    "aiValidation": [],
+    "testType": "Functional",
+    "automationMode": "automated",
+    "steps": [
+      {
+        "id": "step-1",
+        "businessText": "Open homepage",
+        "action": "navigate",
+        "targetHint": "homepage",
+        "expectedResult": "Button visible"
+      },
+      {
+        "id": "step-2",
+        "businessText": "Verify project-card-1 is visible",
+        "action": "assertVisible",
+        "targetHint": "project-card-1"
+      }
+    ]
+  },
+  {
+    "id": "AI_TC_PROJECTS_005",
+    "sourceTestCaseId": "AI_TC_PROJECTS_005",
+    "module": "Projects",
+    "scenario": "click github repository link",
+    "title": "Click GitHub repository link",
+    "priority": "Medium",
+    "riskLevel": "Low",
+    "tags": [
+      "projects",
+      "expanded"
+    ],
+    "preconditions": [
+      "Homepage is loaded"
+    ],
+    "generatedAt": "2026-06-05T17:03:11.057Z",
+    "confidenceScore": 0.82,
+    "testData": {},
+    "aiValidation": [],
+    "testType": "Functional",
+    "automationMode": "automated",
+    "steps": [
+      {
+        "id": "step-1",
+        "businessText": "Open homepage",
+        "action": "navigate",
+        "targetHint": "homepage",
+        "expectedResult": "Opens correct repository"
+      },
+      {
+        "id": "step-2",
+        "businessText": "Click project-card-1",
+        "action": "click",
+        "targetHint": "project-card-1"
+      }
+    ]
+  },
+  {
+    "id": "AI_TC_SOCIAL_004",
+    "sourceTestCaseId": "AI_TC_SOCIAL_004",
+    "module": "Social",
+    "scenario": "verify links open in new tab",
+    "title": "Verify links open in new tab",
+    "priority": "Medium",
+    "riskLevel": "Low",
+    "tags": [
+      "social",
+      "expanded"
+    ],
+    "preconditions": [
+      "Homepage is loaded"
+    ],
+    "generatedAt": "2026-06-05T17:03:11.057Z",
+    "confidenceScore": 0.82,
+    "testData": {},
+    "aiValidation": [],
+    "testType": "Functional",
+    "automationMode": "automated",
+    "steps": [
+      {
+        "id": "step-1",
+        "businessText": "Navigate to the Contact section",
+        "action": "navigate",
+        "targetHint": "the Contact section",
+        "expectedResult": "New tab opens"
+      },
+      {
+        "id": "step-2",
+        "businessText": "Verify contact-links is visible",
+        "action": "assertVisible",
+        "targetHint": "contact-links"
       }
     ]
   }

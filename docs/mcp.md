@@ -31,7 +31,7 @@ survive visual redesigns. The current high-value automation surfaces are:
 - project architecture preview modal
 - achievement filters
 - contact form fields and submit button
-- footer navigation
+- compact footer rendering
 
 ## Source-Assisted Mapping
 

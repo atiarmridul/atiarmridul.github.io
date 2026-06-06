@@ -1,10 +1,11 @@
-import { generatePlaywrightSpecs } from './core/generator/generate-test';
+import { generatePlaywrightSpecs } from '../core/generator/generate-test';
 
 interface CliOptions {
   inputPath: string;
   baseUrl: string;
   outputDir: string;
   catalogPath: string;
+  testDataPath: string;
   scanLiveSite: boolean;
   automationMode: 'automated' | 'all';
 }
@@ -28,6 +29,9 @@ function parseArgs(argv: string[]): CliOptions {
     baseUrl: String(args.get('--base-url') || 'http://127.0.0.1:5173'),
     outputDir: String(args.get('--out-dir') || 'qa-engine/playwright/tests/generated'),
     catalogPath: String(args.get('--catalog') || 'qa-engine/ai/locator-catalog/locators.json'),
+    testDataPath: String(
+      args.get('--test-data') || 'qa-engine/playwright/test-data/generated-test-data.json',
+    ),
     scanLiveSite: args.get('--scan') !== false,
     automationMode: args.get('--mode') === 'all' ? 'all' : 'automated',
   };

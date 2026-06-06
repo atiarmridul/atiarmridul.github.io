@@ -1,5 +1,7 @@
 # Senior QA Engineer Portfolio
 
+![Senior QA Engineer Portfolio Infographic](public/assets/readme-infographic.png)
+
 ![React](https://img.shields.io/badge/React-18-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
 ![Vite](https://img.shields.io/badge/Vite-5-purple)
@@ -40,9 +42,10 @@ This repository showcases:
 
 ## Features
 
-- Premium SaaS-inspired QA engineer portfolio design
-- Theme-aware sticky navigation with active section indicators
-- Dashboard-style hero section with QA pipeline and metrics
+- Editorial-tech QA engineer portfolio design with custom cursor and reveal interactions
+- Theme-aware sticky navigation with desktop/mobile menus and persisted light/dark mode
+- Cinematic hero section with QA positioning, primary CTAs, and scroll affordance
+- Horizontal marquee section for QA focus areas
 - Categorized skills with applied proficiency indicators
 - Project showcase cards with architecture preview modal
 - Filterable certification and learning milestone cards
@@ -77,10 +80,12 @@ Project documentation is available inside the `docs/` folder.
 ```txt
 atiarmridul.github.io/
 ├── public/                     # Static public assets
+│   └── assets/readme-infographic.png
 ├── src/
 │   ├── components/             # Reusable UI components
 │   │   ├── Header.tsx          # Theme-aware sticky navigation
-│   │   ├── Hero.tsx            # Dashboard-inspired QA hero
+│   │   ├── Hero.tsx            # Editorial QA hero
+│   │   ├── Marquee.tsx         # Horizontal QA focus strip
 │   │   ├── About.tsx           # Professional summary and QA values
 │   │   ├── Skills.tsx          # Capability matrix and tools
 │   │   ├── Projects.tsx        # Automation projects and modal previews
@@ -89,11 +94,12 @@ atiarmridul.github.io/
 │   │   ├── Experience.tsx      # Professional timeline
 │   │   ├── Education.tsx       # Academic background
 │   │   ├── Contact.tsx         # Contact form and social links
-│   │   └── Footer.tsx          # Footer navigation and specializations
+│   │   └── Footer.tsx          # Compact site credit footer
 │   ├── constants.ts            # Navigation data
 │   ├── App.tsx                 # Main application structure
 │   ├── main.tsx                # React application entry point
-│   └── index.css               # Global design utilities and Tailwind layers
+│   ├── index.css               # Global tokens, Tailwind layers, and interaction utilities
+│   └── utils/                  # Scroll, theme, and DOM interaction helpers
 │
 ├── qa-engine/                  # AI-assisted QA automation framework
 ├── docs/                       # Portfolio and QA framework documentation
@@ -140,6 +146,36 @@ npm run quality
 npm run build
 ```
 
+## Contact Form Setup
+
+The contact form uses EmailJS from the browser. Copy the example env file into a local Vite env file:
+
+```bash
+cp .env.example .env.local
+```
+
+Then set the frontend-safe values:
+
+```env
+VITE_EMAILJS_SERVICE_ID=service_btdlks9
+VITE_EMAILJS_TEMPLATE_ID=template_6g4f9jq
+VITE_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
+```
+
+Use the EmailJS **Public Key** only. Do not put the EmailJS private key in this React app, `.env.local`, or any
+committed file. Vite reads env variables when the dev server starts, so restart `npm run dev` after changing
+`.env.local`.
+
+The EmailJS template should expose these variables:
+
+```text
+{{name}}
+{{email}}
+{{subject}}
+{{message}}
+{{time}}
+```
+
 ## AI QA Automation Framework
 
 This repository includes a modular AI-assisted QA layer that converts business test cases into executable Playwright + TypeScript specs.
@@ -149,13 +185,11 @@ This repository includes a modular AI-assisted QA layer that converts business t
 ```ini
 qa-engine/
 ├── ai/                       # Definitions, generated definitions, locator catalog, prompts
+├── bin/                      # CLI entry points
 ├── core/                     # Parser, generator, locator engine, assertions, reporting
-├── playwright/               # Fixtures, page objects, generated specs, runtime config
+├── playwright/               # Fixtures, page objects, generated specs, runtime config, test data
 ├── input/                    # Raw JSON/XLSX imports
-├── output/                   # Reports, screenshots, traces, generated artifacts
-├── generate-test.ts
-├── repair-selectors.ts
-└── test-case-parser.ts
+└── output/                   # Reports, screenshots, traces, and local artifacts
 ```
 
 ### Workflow
@@ -196,11 +230,16 @@ npm run qa:generate
 npm run test:e2e
 ```
 
+After UI markup changes, review and regenerate the locator catalog and generated specs before treating
+Playwright failures as product regressions. The generated files are intentionally reviewable, but they may lag
+behind the latest React components until `qa:scan` and `qa:generate` are run.
+
 ### Output
 
 - Structured AI-readable definitions in `qa-engine/ai/generated-tests/structured-test-definitions.json`
 - Centralized locators in `qa-engine/ai/locator-catalog/locators.json`
 - Human-readable Playwright specs in `qa-engine/playwright/tests/generated/`
+- Reusable generated test data in `qa-engine/playwright/test-data/generated-test-data.json`
 - Test metadata comments including priority, module, tags, risk level, timestamp, and confidence score
 - Runtime self-healing selectors with fallback order: `data-testid`, `aria-label`, role, placeholder/text, CSS, XPath
 - `data-testid` is also retained as a fallback candidate so repaired locators can still recover through the stable test ID.

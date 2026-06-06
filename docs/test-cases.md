@@ -23,14 +23,14 @@ Do not keep a second business-case JSON under `docs/`; documentation should link
     "Enter valid email",
     "Enter valid password",
     "Click login button",
-    "Verify dashboard is visible"
+    "Verify portfolio content is visible"
   ],
   "expectedResults": [
     "Login page loads",
     "Email is accepted",
     "Password is accepted",
     "Login action is submitted",
-    "Dashboard is visible"
+    "Portfolio content is visible"
   ]
 }
 ```
@@ -77,10 +77,16 @@ Generated specs include metadata comments so humans can review business intent a
 
 ## Current Portfolio Smoke Coverage
 
-The current generated examples cover:
+The current generated examples are reviewable output and should be regenerated after UI changes before being treated
+as authoritative. The intended generated smoke and functional coverage includes:
 
 - portfolio landing page load
+- header navigation to home, projects, and contact
 - navigation to the contact section
+- project card rendering and project detail validation
+- project GitHub link behavior
+- skills card rendering for Playwright, Selenium, API testing, and all skill cards
+- social links opening in a new tab
 
 Recommended next business cases:
 

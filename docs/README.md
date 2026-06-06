@@ -3,6 +3,8 @@
 This folder documents the portfolio application, design system, deployment workflow, and AI-assisted
 Playwright QA framework.
 
+The root README includes a generated portfolio infographic at `public/assets/readme-infographic.png`.
+
 ## Start Here
 
 - [Architecture](architecture.md): portfolio app structure, QA framework structure, and data flow.

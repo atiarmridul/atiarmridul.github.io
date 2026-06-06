@@ -17,13 +17,14 @@ fixed order and each section exposes stable IDs for smooth scrolling and automat
 App
   -> Header
   -> Hero
+  -> Marquee
+  -> Projects
   -> About
   -> Skills
-  -> Projects
-  -> Achievements
   -> Domains
   -> Experience
   -> Education
+  -> Achievements
   -> Contact
   -> Footer
 ```
@@ -32,13 +33,15 @@ App
 
 Global styling lives in `src/index.css`:
 
-- `section-shell`: consistent section width and responsive horizontal padding.
-- `section-kicker`, `section-title`, `section-copy`: shared section heading system.
-- `premium-card`, `premium-card-hover`: card surfaces, borders, shadows, and hover behavior.
-- `dark-band`: dark engineering-focused background used for hero and footer areas.
+- `wrap`: constrained page width and responsive horizontal padding.
+- `section`, `section-head`, `section-title`, `eyebrow`: shared section rhythm and headings.
+- `btn`, `btn-primary`, `btn-ghost`, `icon-btn`: command and icon button styles.
+- `work-*`, `stack-*`, `edu-card`, `contact-*`, `footer`: section-specific reusable surfaces.
+- `reveal`, `cursor-dot`, `cursor-ring`: DOM-driven interaction classes initialized after React mount.
 
-The design direction is a modern SaaS/QA dashboard aesthetic with Inter typography, cyan/blue/emerald accents,
-subtle glass surfaces, restrained shadows, and responsive card layouts.
+The design direction is editorial-tech: warm charcoal and cream tokens, one orange accent, display serif
+headings, mono labels, restrained surfaces, large typography, custom cursor feedback, scroll reveal, and magnetic
+buttons on pointer devices.
 
 ### Navigation Behavior
 
@@ -48,11 +51,11 @@ subtle glass surfaces, restrained shadows, and responsive card layouts.
 - smooth section scrolling
 - resume link opening in a new tab
 - mobile menu state
-- active section tracking via `IntersectionObserver`
-- theme-aware header contrast
+- light/dark theme toggle persisted in `localStorage`
+- compact desktop and mobile navigation controls
 
-The header keeps a dark glass appearance on the hero section and switches to a light frosted surface with
-dark text over light sections.
+`siteInteractions.ts` adds a `scrolled` class to the fixed nav after the page moves down, while
+`useTheme.ts` applies the `data-theme` attribute that powers the CSS token swap.
 
 ### Business Logic Boundaries
 
@@ -63,6 +66,8 @@ The redesign keeps existing behavior in place:
 - certification filters still run client-side
 - the contact form remains a controlled EmailJS form with honeypot, sanitization, validation, success reset,
   and failure alerts
+- the footer remains a compact site credit surface
+- reduced-motion preferences are respected by the shared scroll helper
 
 ## QA Framework
 
@@ -76,6 +81,7 @@ Business JSON/XLSX
   -> locator catalog
   -> generate-test
   -> Playwright generated specs
+  -> reusable test data
   -> self-healing runtime
 ```
 
@@ -89,6 +95,7 @@ The `qa-engine/core/` directory owns the implementation that transforms business
 - `qa-engine/core/generator/generate-test.ts`: combines structured steps and locator catalog entries into Playwright specs.
 - `qa-engine/core/self-healing/repair-selectors.ts`: persists locator repairs back into the catalog.
 - `qa-engine/core/shared/types.ts`: shared contracts for definitions, locators, mappings, and repair results.
+- `qa-engine/bin/validate-rules.ts`: verifies selector, generated spec, coverage, folder, and project-matrix rules.
 
 ## Runtime Layer
 
@@ -98,6 +105,7 @@ The `qa-engine/playwright/` directory owns executable automation.
 - `qa-engine/playwright/pages/BasePage.ts`: shared page-object helpers for navigation, readiness, waits, and overlay dismissal.
 - `qa-engine/playwright/config/config.ts`: environment-aware runtime configuration.
 - `qa-engine/playwright/utils/exceptions.ts`: domain-specific errors.
+- `qa-engine/playwright/test-data/generated-test-data.json`: reusable data values consumed by generated specs.
 - `qa-engine/playwright/tests/generated/`: generated specs from business definitions.
 
 ## Locator Priority

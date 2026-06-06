@@ -61,7 +61,7 @@ When the portfolio design changes, specifically review generated selectors for:
 - project architecture modal controls
 - achievement filter buttons
 - contact form inputs and submit button
-- footer navigation buttons
+- compact footer rendering
 
 ## Step 6: Execute Tests
 

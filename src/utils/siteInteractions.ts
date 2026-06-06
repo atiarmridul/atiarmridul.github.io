@@ -51,7 +51,7 @@ function initReveal(): () => void {
 /* ---------- Nav scrolled state ---------- */
 function initNav(): () => void {
   const nav = document.getElementById('nav');
-  if (!nav) return () => {};
+  if (nav === null) return () => {};
   const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 24);
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -63,7 +63,7 @@ function initCursor(): () => void {
   if (coarsePointer()) return () => {};
   const dot = document.querySelector<HTMLElement>('.cursor-dot');
   const ring = document.querySelector<HTMLElement>('.cursor-ring');
-  if (!dot || !ring) return () => {};
+  if (dot === null || ring === null) return () => {};
 
   let mx = innerWidth / 2;
   let my = innerHeight / 2;

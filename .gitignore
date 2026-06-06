@@ -15,6 +15,7 @@ dist/
 # Playwright artifacts
 playwright-report/
 test-results/
+.playwright-mcp/
 qa-engine/output/reports/*
 !qa-engine/output/reports/.gitkeep
 qa-engine/output/screenshots/*

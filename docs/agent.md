@@ -13,11 +13,13 @@ generates executable Playwright tests.
 
 - Prefer existing framework patterns before adding new abstractions.
 - Preserve portfolio business logic, external links, section IDs, and `data-testid` contracts during UI changes.
-- Keep the header readable on both dark and light sections.
+- Keep the header readable at the top of the page, after scroll, and in light/dark themes.
 - Keep the contact form controlled, validated, sanitized, spam-protected, and EmailJS-backed.
+- Keep EmailJS private keys out of frontend code, docs, and committed env files.
 - Keep generated test output readable and reviewable.
 - Update generator templates instead of hand-editing generated specs.
 - Run quality gates after framework changes.
+- Run `npm run qa:rules` after selector, generated-spec, QA folder, or Playwright project changes.
 - Do not hide real UI failures with DOM mutation or forced clicks.
 - Keep selector healing bounded and observable.
 
@@ -52,6 +54,7 @@ npm run test:e2e -- --project=chromium
 ## Files Agents Commonly Edit
 
 - `qa-engine/core/parser/test-case-parser.ts`
+- `qa-engine/bin/*.ts`
 - `qa-engine/core/locator-engine/locator-extractor.ts`
 - `qa-engine/core/locator-engine/source-code-mapper.ts`
 - `qa-engine/core/generator/generate-test.ts`

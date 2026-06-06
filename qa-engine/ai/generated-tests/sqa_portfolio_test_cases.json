@@ -1,0 +1,365 @@
+{
+  "project": "SQA Engineer Portfolio Website",
+  "testCases": [
+    {
+      "id": "TC-001",
+      "module": "Homepage",
+      "title": "Verify homepage loads successfully",
+      "expected": "Homepage loads without errors"
+    },
+    {
+      "id": "TC-002",
+      "module": "Homepage",
+      "title": "Verify page title",
+      "expected": "Correct title displayed in browser tab"
+    },
+    {
+      "id": "TC-003",
+      "module": "Homepage",
+      "title": "Verify profile image is displayed",
+      "expected": "Image loads properly"
+    },
+    {
+      "id": "TC-004",
+      "module": "Homepage",
+      "title": "Verify introduction section content",
+      "expected": "Name, designation, and summary displayed correctly"
+    },
+    {
+      "id": "TC-005",
+      "module": "Homepage",
+      "title": "Verify navigation menu visibility",
+      "expected": "All menu items visible"
+    },
+    {
+      "id": "TC-006",
+      "module": "Navigation",
+      "title": "Click Home menu",
+      "expected": "Redirects to Home section"
+    },
+    {
+      "id": "TC-007",
+      "module": "Navigation",
+      "title": "Click About menu",
+      "expected": "Scrolls to About section"
+    },
+    {
+      "id": "TC-008",
+      "module": "Navigation",
+      "title": "Click Skills menu",
+      "expected": "Scrolls to Skills section"
+    },
+    {
+      "id": "TC-009",
+      "module": "Navigation",
+      "title": "Click Projects menu",
+      "expected": "Scrolls to Projects section"
+    },
+    {
+      "id": "TC-010",
+      "module": "Navigation",
+      "title": "Click Contact menu",
+      "expected": "Scrolls to Contact section"
+    },
+    {
+      "id": "TC-011",
+      "module": "Navigation",
+      "title": "Verify active menu highlighting",
+      "expected": "Current section highlighted"
+    },
+    {
+      "id": "TC-012",
+      "module": "About",
+      "title": "Verify About section visibility",
+      "expected": "Section displayed correctly"
+    },
+    {
+      "id": "TC-013",
+      "module": "About",
+      "title": "Verify professional summary",
+      "expected": "Correct information shown"
+    },
+    {
+      "id": "TC-014",
+      "module": "About",
+      "title": "Verify downloadable resume button",
+      "expected": "Button visible and clickable"
+    },
+    {
+      "id": "TC-015",
+      "module": "About",
+      "title": "Click resume download",
+      "expected": "Resume downloads successfully"
+    },
+    {
+      "id": "TC-016",
+      "module": "Skills",
+      "title": "Verify all skill cards displayed",
+      "expected": "Skills appear correctly"
+    },
+    {
+      "id": "TC-017",
+      "module": "Skills",
+      "title": "Verify Playwright skill",
+      "expected": "Skill visible"
+    },
+    {
+      "id": "TC-018",
+      "module": "Skills",
+      "title": "Verify Selenium skill",
+      "expected": "Skill visible"
+    },
+    {
+      "id": "TC-019",
+      "module": "Skills",
+      "title": "Verify API Testing skill",
+      "expected": "Skill visible"
+    },
+    {
+      "id": "TC-020",
+      "module": "Skills",
+      "title": "Verify hover effect on skill cards",
+      "expected": "Animation works correctly"
+    },
+    {
+      "id": "TC-021",
+      "module": "Projects",
+      "title": "Verify project cards display",
+      "expected": "All projects visible"
+    },
+    {
+      "id": "TC-022",
+      "module": "Projects",
+      "title": "Verify project title",
+      "expected": "Correct title displayed"
+    },
+    {
+      "id": "TC-023",
+      "module": "Projects",
+      "title": "Verify project description",
+      "expected": "Description visible"
+    },
+    {
+      "id": "TC-024",
+      "module": "Projects",
+      "title": "Verify GitHub button",
+      "expected": "Button visible"
+    },
+    {
+      "id": "TC-025",
+      "module": "Projects",
+      "title": "Click GitHub repository link",
+      "expected": "Opens correct repository"
+    },
+    {
+      "id": "TC-026",
+      "module": "Projects",
+      "title": "Verify project screenshots",
+      "expected": "Images load successfully"
+    },
+    {
+      "id": "TC-027",
+      "module": "GitHub",
+      "title": "Verify GitHub profile link",
+      "expected": "Correct profile opens"
+    },
+    {
+      "id": "TC-028",
+      "module": "GitHub",
+      "title": "Verify repository count displayed",
+      "expected": "Matches GitHub data"
+    },
+    {
+      "id": "TC-029",
+      "module": "GitHub",
+      "title": "Verify contribution graph loads",
+      "expected": "Graph displayed"
+    },
+    {
+      "id": "TC-030",
+      "module": "GitHub",
+      "title": "Verify GitHub cards responsiveness",
+      "expected": "Cards render correctly"
+    },
+    {
+      "id": "TC-031",
+      "module": "Contact",
+      "title": "Submit with valid data",
+      "expected": "Message sent successfully"
+    },
+    {
+      "id": "TC-032",
+      "module": "Contact",
+      "title": "Submit empty form",
+      "expected": "Validation message displayed"
+    },
+    {
+      "id": "TC-033",
+      "module": "Contact",
+      "title": "Enter invalid email",
+      "expected": "Error shown"
+    },
+    {
+      "id": "TC-034",
+      "module": "Contact",
+      "title": "Verify character limits",
+      "expected": "Limits enforced"
+    },
+    {
+      "id": "TC-035",
+      "module": "Contact",
+      "title": "Verify success message",
+      "expected": "Confirmation displayed"
+    },
+    {
+      "id": "TC-036",
+      "module": "Contact",
+      "title": "Verify reset functionality",
+      "expected": "Fields cleared"
+    },
+    {
+      "id": "TC-037",
+      "module": "Social",
+      "title": "LinkedIn icon click",
+      "expected": "Opens LinkedIn profile"
+    },
+    {
+      "id": "TC-038",
+      "module": "Social",
+      "title": "GitHub icon click",
+      "expected": "Opens GitHub profile"
+    },
+    {
+      "id": "TC-039",
+      "module": "Social",
+      "title": "Email icon click",
+      "expected": "Opens mail client"
+    },
+    {
+      "id": "TC-040",
+      "module": "Social",
+      "title": "Verify links open in new tab",
+      "expected": "New tab opens"
+    },
+    {
+      "id": "TC-041",
+      "module": "Responsive",
+      "title": "View on Mobile (375px)",
+      "expected": "Layout responsive"
+    },
+    {
+      "id": "TC-042",
+      "module": "Responsive",
+      "title": "View on Tablet (768px)",
+      "expected": "Layout responsive"
+    },
+    {
+      "id": "TC-043",
+      "module": "Responsive",
+      "title": "View on Desktop (1920px)",
+      "expected": "Layout responsive"
+    },
+    {
+      "id": "TC-044",
+      "module": "Responsive",
+      "title": "Verify hamburger menu",
+      "expected": "Works correctly"
+    },
+    {
+      "id": "TC-045",
+      "module": "Responsive",
+      "title": "Verify images scale properly",
+      "expected": "No distortion"
+    },
+    {
+      "id": "TC-046",
+      "module": "Performance",
+      "title": "Homepage load time",
+      "expected": "Less than 3 seconds"
+    },
+    {
+      "id": "TC-047",
+      "module": "Performance",
+      "title": "Image loading speed",
+      "expected": "No broken images"
+    },
+    {
+      "id": "TC-048",
+      "module": "Performance",
+      "title": "Lighthouse Performance Score",
+      "expected": "90 or above"
+    },
+    {
+      "id": "TC-049",
+      "module": "Performance",
+      "title": "Verify lazy loading",
+      "expected": "Images load on scroll"
+    },
+    {
+      "id": "TC-050",
+      "module": "Performance",
+      "title": "Verify no console errors",
+      "expected": "Browser console clean"
+    },
+    {
+      "id": "TC-051",
+      "module": "Security",
+      "title": "Enter XSS payload in contact form",
+      "expected": "Payload sanitized"
+    },
+    {
+      "id": "TC-052",
+      "module": "Security",
+      "title": "Enter SQL injection payload",
+      "expected": "Input rejected"
+    },
+    {
+      "id": "TC-053",
+      "module": "Security",
+      "title": "Verify HTTPS usage",
+      "expected": "Secure connection"
+    },
+    {
+      "id": "TC-054",
+      "module": "Security",
+      "title": "Verify sensitive information hidden",
+      "expected": "No secrets exposed"
+    },
+    {
+      "id": "TC-055",
+      "module": "Security",
+      "title": "Verify rate limiting",
+      "expected": "Spam prevented"
+    },
+    {
+      "id": "TC-056",
+      "module": "Accessibility",
+      "title": "Verify keyboard navigation",
+      "expected": "All elements accessible"
+    },
+    {
+      "id": "TC-057",
+      "module": "Accessibility",
+      "title": "Verify image alt text",
+      "expected": "Alt text present"
+    },
+    {
+      "id": "TC-058",
+      "module": "Accessibility",
+      "title": "Verify color contrast",
+      "expected": "WCAG compliant"
+    },
+    {
+      "id": "TC-059",
+      "module": "Accessibility",
+      "title": "Verify screen reader support",
+      "expected": "Reads content correctly"
+    },
+    {
+      "id": "TC-060",
+      "module": "Accessibility",
+      "title": "Verify focus indicators",
+      "expected": "Visible during navigation"
+    }
+  ]
+}

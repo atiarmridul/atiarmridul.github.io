@@ -23,10 +23,23 @@ For portfolio UI changes, the most important non-browser CI signal is `npm run c
 
 - app TypeScript
 - QA engine TypeScript
+- QA implementation rules
+- unit/component tests
 - ESLint
 - Prettier formatting
 - production build
 - root file policy
+
+If CI builds or deploys the contact form, provide the EmailJS public configuration as build-time environment
+variables:
+
+```text
+VITE_EMAILJS_SERVICE_ID
+VITE_EMAILJS_TEMPLATE_ID
+VITE_EMAILJS_PUBLIC_KEY
+```
+
+Do not add the EmailJS private key to CI for this frontend build.
 
 ## Playwright CI Behavior
 
@@ -51,8 +64,8 @@ On failure, the workflow uploads Playwright reports and test artifacts.
 
 CI should protect behavior, but visual polish still requires browser review for major design changes. Prioritize:
 
-- dark hero header state
-- light section header state
+- top-of-page header state
+- scrolled header state in light and dark themes
 - mobile menu
 - project modal
 - contact form

@@ -24,10 +24,20 @@ const Hero = () => (
         workflows.
       </p>
       <div className="hero-cta reveal" data-d="4">
-        <button className="btn btn-primary" data-mag onClick={() => scrollToSection('projects')}>
+        <button
+          className="btn btn-primary"
+          data-testid="hero-view-work-button"
+          data-mag
+          onClick={() => scrollToSection('projects')}
+        >
           View work <span className="arr">→</span>
         </button>
-        <button className="btn btn-ghost" data-mag onClick={() => scrollToSection('contact')}>
+        <button
+          className="btn btn-ghost"
+          data-testid="hero-contact-button"
+          data-mag
+          onClick={() => scrollToSection('contact')}
+        >
           Get in touch
         </button>
       </div>
@@ -41,7 +51,7 @@ const Hero = () => (
         Focus<b>QA · Test Automation</b>
       </span>
       <span>
-        Open to<b>Remote · Contract</b>
+        Open to<b>Full Time · Contractor · Hybrid · Remote</b>
       </span>
     </div>
   </header>

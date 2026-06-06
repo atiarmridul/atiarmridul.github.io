@@ -5,13 +5,16 @@ This file tracks major automation framework and portfolio milestones.
 ## Portfolio UI & Content Updates (Completed)
 
 - **Premium QA Portfolio Redesign:**
-  - Rebuilt the visual system around a modern SaaS/QA engineering aesthetic.
-  - Added shared Tailwind utilities for section shells, section headings, premium cards, hover states, and dark engineering bands.
-  - Updated the hero with senior QA positioning, stack badges, QA pipeline visuals, release readiness metrics, and terminal-style quality gate snippet.
-  - Added theme-aware sticky navigation with active section indicators and distinct dark/light header states.
-  - Modernized About, Skills, Domains, Experience, Education, Contact, and Footer layouts while preserving current content and behavior.
+  - Rebuilt the visual system around an editorial-tech QA engineering aesthetic.
+  - Added shared CSS utilities for `wrap`, `section`, section headings, portfolio surfaces, hover states, reveal animation, custom cursor, and magnetic pointer feedback.
+  - Updated the hero with senior QA positioning, a large editorial headline, primary CTAs, and a scroll-down control.
+  - Added theme-aware sticky navigation with persisted light/dark mode, a resume CTA, and desktop/mobile menus.
+  - Added the `Marquee` focus strip after the hero.
+  - Modernized About, Skills, Domains, Experience, Education, Contact, and the compact Footer layout while preserving current behavior.
+  - Removed the redundant resume-backed Impact section so About and portfolio metrics carry the QA outcome story.
   - Improved project cards and architecture preview modal, including an accessible close button and `Escape` support.
   - Added SEO metadata for the senior QA engineer portfolio.
+  - Added a README infographic asset at `public/assets/readme-infographic.png`.
 - **Project List Refactor:**
   - Added **AI Playwright Test Generator** (JavaScript/OpenAI).
   - Added **Chaldal Android Automation** (JavaScript/Appium/WebdriverIO).
@@ -40,11 +43,13 @@ This file tracks major automation framework and portfolio milestones.
 - Added environment-aware runtime configuration.
 - Added documentation set under `docs/`.
 - Added GitHub Actions workflow for quality, build, root policy, and Playwright tests.
+- Added QA rule validation and Vitest component tests to the local quality gate.
 
 ## Current Generated Tests
 
 - `Homepage - Portfolio landing page loads`
 - `Navigation - Navigate to contact section`
+- Generated navigation, projects, skills, and social-link coverage under `qa-engine/playwright/tests/generated/`
 
 ## Verified Commands
 
@@ -54,6 +59,8 @@ npm run lint
 npm run format:check
 npm run build
 npm run quality
+npm run qa:rules
+npm run test:unit
 npm run test:e2e -- --project=chromium
 ```
 

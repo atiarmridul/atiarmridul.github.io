@@ -115,6 +115,7 @@ const ArchitecturePreview = ({ project, onClose }: { project: Project; onClose: 
     exit={{ opacity: 0 }}
     transition={{ duration: 0.2 }}
     onClick={onClose}
+    data-testid="project-preview-backdrop"
     style={{
       position: 'fixed',
       inset: 0,
@@ -133,6 +134,10 @@ const ArchitecturePreview = ({ project, onClose }: { project: Project; onClose: 
       exit={{ scale: 0.96, y: 12 }}
       transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
       onClick={(e) => e.stopPropagation()}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="project-preview-title"
+      data-testid="project-preview-dialog"
       style={{
         width: '100%',
         maxWidth: 880,
@@ -159,6 +164,7 @@ const ArchitecturePreview = ({ project, onClose }: { project: Project; onClose: 
         <div>
           <span style={sectionLabel}>{project.type}</span>
           <h3
+            id="project-preview-title"
             style={{
               fontFamily: 'var(--font-display)',
               fontSize: 'clamp(24px, 4vw, 34px)',
@@ -168,7 +174,12 @@ const ArchitecturePreview = ({ project, onClose }: { project: Project; onClose: 
             {project.title}
           </h3>
         </div>
-        <button className="icon-btn" onClick={onClose} aria-label="Close preview">
+        <button
+          className="icon-btn"
+          onClick={onClose}
+          aria-label="Close preview"
+          data-testid="project-preview-close-button"
+        >
           <X size={17} />
         </button>
       </div>
@@ -234,6 +245,7 @@ const ArchitecturePreview = ({ project, onClose }: { project: Project; onClose: 
           rel="noopener noreferrer"
           className="btn btn-primary"
           style={{ alignSelf: 'flex-start' }}
+          data-testid="project-preview-github-link"
         >
           <Github size={16} /> GitHub Repository
         </a>
@@ -273,6 +285,7 @@ const Projects = () => {
             key={p.title}
             className="work-item reveal"
             data-testid={`project-card-${i + 1}`}
+            aria-label={`Open project preview for ${p.title}`}
             onClick={() => setSelected(p)}
           >
             <span className="work-idx">{String(i + 1).padStart(2, '0')}</span>
@@ -298,6 +311,7 @@ const Projects = () => {
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-ghost"
+          data-testid="projects-github-link"
           data-mag
         >
           <Github size={16} /> Explore more on GitHub

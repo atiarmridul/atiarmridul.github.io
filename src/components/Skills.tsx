@@ -34,7 +34,9 @@ const skillCategories: Array<{ title: string; skills: string[] }> = [
 const Skills = () => (
   <section className="section wrap" id="skills" data-testid="section-skills">
     <div className="section-head">
-      <span className="eyebrow reveal">Toolkit</span>
+      <span className="eyebrow reveal" data-testid="skills-eyebrow">
+        Toolkit
+      </span>
       <h2 className="section-title reveal" data-d="1">
         The stack I<br />
         reach for.

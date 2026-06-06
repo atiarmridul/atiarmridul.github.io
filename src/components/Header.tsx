@@ -17,9 +17,15 @@ const Header = () => {
 
   return (
     <nav className="nav" id="nav" data-testid="site-header">
-      <button className="nav-brand" data-mag onClick={() => go('top')} aria-label="Back to top">
+      <button
+        className="nav-brand"
+        data-testid="nav-brand-button"
+        data-mag
+        onClick={() => go('top')}
+        aria-label="Back to top"
+      >
         <span className="nav-mono">A</span>
-        <span style={{ whiteSpace: 'nowrap' }}>Atiar R. Chowdhury</span>
+        <span className="nav-brand-name">Atiar R. Chowdhury</span>
       </button>
 
       <div className="nav-links">
@@ -59,10 +65,10 @@ const Header = () => {
 
         <button
           className="icon-btn nav-menu-btn"
+          data-testid="mobile-menu-toggle"
           onClick={() => setIsMenuOpen((v) => !v)}
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isMenuOpen}
-          data-testid="mobile-menu-toggle"
         >
           {isMenuOpen ? <X size={17} /> : <Menu size={17} />}
         </button>

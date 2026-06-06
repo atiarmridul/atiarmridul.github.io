@@ -72,7 +72,7 @@ For visual or responsive failures, capture:
 
 - desktop hero screenshot
 - mobile hero screenshot
-- header over a light section
+- header in top, scrolled, light-theme, and dark-theme states
 - mobile menu open state
 - project modal open state
 - contact form viewport

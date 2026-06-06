@@ -3,6 +3,8 @@
 ```ini
 .
 ├── public/
+│   ├── assets/
+│   │   └── readme-infographic.png
 │   ├── favicon.ico
 │   └── favicon.svg
 ├── src/
@@ -16,8 +18,13 @@
 │   │   ├── Footer.tsx
 │   │   ├── Header.tsx
 │   │   ├── Hero.tsx
+│   │   ├── Marquee.tsx
 │   │   ├── Projects.tsx
 │   │   └── Skills.tsx
+│   ├── utils/
+│   │   ├── scrollToSection.ts
+│   │   ├── siteInteractions.ts
+│   │   └── useTheme.ts
 │   ├── App.tsx
 │   ├── constants.ts
 │   ├── index.css
@@ -42,6 +49,7 @@
 │   │   ├── config/
 │   │   ├── fixtures/
 │   │   ├── pages/
+│   │   ├── test-data/
 │   │   ├── tests/
 │   │   └── utils/
 │   ├── input/
@@ -50,11 +58,14 @@
 │   ├── output/
 │   │   ├── reports/
 │   │   ├── screenshots/
-│   │   ├── traces/
-│   │   └── generated-specs/
-│   ├── generate-test.ts
-│   ├── repair-selectors.ts
-│   └── test-case-parser.ts
+│   │   ├── test-artifacts/
+│   │   └── traces/
+│   └── bin/
+│       ├── create-sample-excel.ts
+│       ├── generate-test.ts
+│       ├── repair-selectors.ts
+│       ├── test-case-parser.ts
+│       └── validate-rules.ts
 ├── docs/
 │   ├── AGENT_PROGRESS.md
 │   ├── agent.md
@@ -85,18 +96,23 @@
 ## Ownership Boundaries
 
 - `src/`: portfolio website application code and UI components.
-- `src/index.css`: global Tailwind layers, typography import, reusable section/card utilities, and dark-band styling.
-- `src/constants.ts`: section navigation metadata used by the header and footer.
+- `src/index.css`: global Tailwind layers, design tokens, editorial-tech utilities, reveal/cursor styles, and responsive section styling.
+- `src/constants.ts`: section navigation metadata used by the header.
+- `src/utils/scrollToSection.ts`: shared offset-aware section scrolling with reduced-motion support.
+- `src/utils/siteInteractions.ts`: scroll reveal, nav scrolled state, custom cursor, and magnetic pointer behavior.
+- `src/utils/useTheme.ts`: persisted light/dark theme state applied through `html[data-theme]`.
 - `qa-engine/`: isolated QA automation ecosystem.
+- `qa-engine/bin/`: command entry points invoked by npm scripts.
 - `qa-engine/core/`: reusable QA engine implementation.
 - `qa-engine/playwright/`: executable browser automation.
 - `docs/`: portfolio, workflow, and framework documentation.
-- `public/`: static browser assets.
+- `public/`: static browser assets, including the README infographic.
 
 ## Component Responsibilities
 
-- `Header.tsx`: sticky navigation, active section indicator, theme-aware light/dark header contrast, resume CTA, and mobile menu.
-- `Hero.tsx`: first-viewport QA branding, dashboard-inspired release readiness panel, stack badges, and primary CTAs.
+- `Header.tsx`: fixed navigation, theme toggle, resume CTA, and mobile menu.
+- `Hero.tsx`: first-viewport QA positioning, large editorial headline, primary CTAs, and scroll-down control.
+- `Marquee.tsx`: horizontal focus strip for QA disciplines.
 - `About.tsx`: QA journey, ISTQB highlight, values, and portfolio metrics.
 - `Skills.tsx`: categorized capability matrix with applied proficiency indicators.
 - `Projects.tsx`: automation showcase cards, GitHub links, and architecture preview modal.
@@ -105,4 +121,4 @@
 - `Experience.tsx`: professional timeline and achievement-focused responsibilities.
 - `Education.tsx`: academic background cards.
 - `Contact.tsx`: controlled EmailJS contact form, honeypot spam field, validation, and social links.
-- `Footer.tsx`: footer navigation and specialization summary.
+- `Footer.tsx`: compact copyright and build-credit footer.

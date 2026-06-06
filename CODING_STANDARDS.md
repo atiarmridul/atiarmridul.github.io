@@ -59,6 +59,22 @@ scrollIntoView();
 7. JSX Return
 8. Export
 
+## Production Feature Definition
+
+A feature is not complete until the implementation and the automated coverage are both present. This applies to
+new pages, sections, components, modals, forms, cards, buttons, and API integrations.
+
+Every feature must include:
+
+- React component implementation.
+- TypeScript types for props, data models, and API responses.
+- Stable selectors for automation.
+- Automated functional, negative, boundary, accessibility, responsive, performance, and security coverage where
+  the behavior is relevant.
+- Playwright E2E coverage using the QA engine structure.
+- Business test cases in JSON format when the feature is part of generated QA coverage.
+- A short QA checklist for manual review risks that are not fully automatable.
+
 ---
 
 # 4. Naming Conventions
@@ -103,6 +119,9 @@ Accessibility is treated as a core engineering requirement.
 - Maintain heading hierarchy
 - Ensure keyboard accessibility
 - Use sufficient color contrast
+- Verify focus management for menus, modals, forms, and interactive cards
+- Provide alt text or accessible names for meaningful images and icon-only controls
+- Keep screen reader output understandable through labels, landmarks, and heading order
 
 ### Example
 
@@ -117,8 +136,12 @@ Accessibility is treated as a core engineering requirement.
 - Follow mobile-first design
 - Use responsive Tailwind breakpoints
 - Avoid fixed-width layouts
-- Test on mobile, tablet, and desktop
-- Verify sticky header contrast on dark and light sections
+- Test on mobile, tablet, and desktop:
+  - mobile: 375x667
+  - tablet: 768x1024
+  - desktop: 1920x1080
+- Verify sticky header contrast at the top of the page, after scroll, and in light/dark themes
+- Validate layout, overflow, navigation, typography, and images at each breakpoint
 
 ---
 
@@ -135,20 +158,21 @@ Accessibility is treated as a core engineering requirement.
 
 ## Portfolio Design System
 
-- `section-shell`: standard page width and responsive padding.
-- `section-kicker`: small uppercase section label.
-- `section-title`: high-contrast section heading.
-- `section-copy`: readable section intro text.
-- `premium-card`: default card surface.
-- `premium-card-hover`: card hover elevation and border behavior.
-- `dark-band`: dark engineering background for high-impact sections.
+- `wrap`: standard page width and responsive padding.
+- `section`, `section-head`, `section-title`: shared section rhythm and heading scale.
+- `eyebrow`: small uppercase section label with accent rule.
+- `btn`, `btn-primary`, `btn-ghost`, `icon-btn`: consistent command surfaces.
+- `work-item`, `stack-col`, `edu-card`: repeated portfolio content surfaces.
+- `reveal`: scroll-reveal animation class initialized by `siteInteractions.ts`.
+- `cursor-dot`, `cursor-ring`, `[data-mag]`: pointer-only cursor and magnetic feedback.
 
 ## Header Contrast
 
-The sticky header must support two visual states:
+The sticky header must support the current token-driven visual states:
 
-- dark glass state over the hero and dark sections
-- light frosted state over white/light sections
+- default transparent/fixed state at the top of the page
+- `nav.scrolled` frosted state after the page moves down
+- light and dark theme variants through the `html[data-theme]` tokens
 
 Text, active nav pills, borders, and menu buttons must remain readable in both states.
 
@@ -192,12 +216,75 @@ This portfolio follows QA-oriented engineering practices.
 - Predictable component structure
 - Reusable UI patterns
 - Maintainable architecture
+- Automated tests for every new feature
+- Page Object Model structure for Playwright coverage
+- Reusable locators, helper methods, fixtures, and test data
+- No hardcoded test data unless explicitly required by the scenario
+
+## Stable Selector Rules
+
+Every interactive element must expose a unique `data-testid`.
+
+Examples:
+
+```tsx
+data-testid="nav-home"
+data-testid="nav-projects"
+data-testid="resume-download-btn"
+data-testid="contact-submit-btn"
+data-testid="github-link"
+```
+
+Do not use generated tests that depend on:
+
+- `nth-child` or position-only selectors.
+- Random CSS selectors.
+- Text-only selectors when a stable test ID is available.
 
 ### Example
 
 ```tsx
 data-testid="contact-form"
 ```
+
+## Required Test Coverage
+
+Every feature must include:
+
+- Happy path test.
+- Negative test.
+- Edge or boundary test.
+- Accessibility test.
+- Responsive test.
+
+Coverage targets:
+
+- 90% functional coverage.
+- 80% component coverage.
+
+## Portfolio Coverage Matrix
+
+- Navigation: menu items, active state, mobile menu, smooth scrolling.
+- Hero: name, title, CTA buttons, social links.
+- About: content rendering, resume download.
+- Skills: skill cards, categories, animations.
+- Projects: cards, GitHub links, live demo links, filtering, search.
+- Experience: timeline rendering, expand/collapse behavior when present.
+- Certifications: certificate links and external navigation.
+- Contact form: valid submission, invalid email, empty fields, character limits, success state, failure handling.
+- GitHub integration: API success, failure, loading state, empty state when present.
+- Dark mode: toggle behavior, persistence after refresh, theme consistency.
+
+## Test Categories
+
+- Functional: visibility, rendering, interactions, navigation, business logic.
+- Negative: empty states, invalid inputs, missing data, broken API responses, network failures.
+- Boundary: minimum values, maximum values, character limits, edge conditions.
+- Accessibility: keyboard navigation, focus management, alt text, ARIA labels, contrast, screen reader compatibility.
+- Responsive: mobile 375x667, tablet 768x1024, desktop 1920x1080.
+- Cross browser: Chrome, Firefox, Edge, Safari where the local or CI environment supports them.
+- Performance: page load speed, lazy loading, image optimization, bundle size impact.
+- Security: XSS protection, URL validation, form sanitization, secure external links.
 
 ---
 

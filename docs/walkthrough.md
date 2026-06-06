@@ -87,11 +87,14 @@ When visual design changes are made, also verify:
 
 ```sh
 npm run typecheck
+npm run typecheck:qa
+npm run qa:rules
+npm run test:unit
 npm run lint
 npm run format:check
 npm run build
 ```
 
-Then browser-check the hero, light-section header, mobile menu, project modal, and contact form. Preserve
-section IDs and `data-testid` values unless the locator catalog and generated tests are updated in the same
-change.
+Then browser-check the hero, header at top and scrolled positions, light/dark theme toggle, mobile menu, project
+modal, custom cursor/reveal interactions, and contact form. Preserve section IDs and `data-testid` values unless
+the locator catalog and generated tests are updated in the same change.

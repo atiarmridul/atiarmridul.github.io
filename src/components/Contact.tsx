@@ -8,12 +8,17 @@ const emailJsConfig = {
 };
 
 const isEmailJsConfigured = Object.values(emailJsConfig).every(Boolean);
+const CONTACT_LIMITS = {
+  name: 80,
+  subject: 120,
+  message: 1000,
+} as const;
 
 const contactLinks = [
-  { label: '✉ atiarmridul@gmail.com', href: 'mailto:atiarmridul@gmail.com' },
-  { label: '↗ GitHub', href: 'https://github.com/atiarmridul' },
-  { label: '↗ LinkedIn', href: 'https://www.linkedin.com/in/atiarmridul/' },
-  { label: '↗ WhatsApp', href: 'https://wa.me/8801916204614' },
+  { id: 'email', label: '✉ atiarmridul@gmail.com', href: 'mailto:atiarmridul@gmail.com' },
+  { id: 'github', label: '↗ GitHub', href: 'https://github.com/atiarmridul' },
+  { id: 'linkedin', label: '↗ LinkedIn', href: 'https://www.linkedin.com/in/atiarmridul/' },
+  { id: 'whatsapp', label: '↗ WhatsApp', href: 'https://wa.me/8801916204614' },
 ];
 
 const Contact = () => {
@@ -85,7 +90,12 @@ const Contact = () => {
         Let&apos;s ship
         <br />
         quality{' '}
-        <a href="mailto:atiarmridul@gmail.com" data-mag>
+        <a
+          href="mailto:atiarmridul@gmail.com"
+          data-testid="contact-heading-email-link"
+          aria-label="Email Atiar Rahman Chowdhury"
+          data-mag
+        >
           <span className="underline">together</span> →
         </a>
       </h2>
@@ -93,11 +103,12 @@ const Contact = () => {
       <div className="contact-links reveal" data-d="2">
         {contactLinks.map((c) => (
           <a
-            key={c.label}
+            key={c.id}
             className="contact-link"
             href={c.href}
             target={c.href.startsWith('mailto:') ? undefined : '_blank'}
             rel="noopener noreferrer"
+            data-testid={`contact-${c.id}-link`}
             data-mag
           >
             {c.label}
@@ -150,6 +161,7 @@ const Contact = () => {
                 value={formData[id]}
                 onChange={handleChange}
                 required
+                maxLength={id === 'name' ? CONTACT_LIMITS.name : undefined}
                 data-testid={`contact-${id}-input`}
               />
             </div>
@@ -168,6 +180,7 @@ const Contact = () => {
             value={formData.subject}
             onChange={handleChange}
             required
+            maxLength={CONTACT_LIMITS.subject}
             data-testid="contact-subject-input"
           />
         </div>
@@ -184,6 +197,7 @@ const Contact = () => {
             value={formData.message}
             onChange={handleChange}
             required
+            maxLength={CONTACT_LIMITS.message}
             data-testid="contact-message-textarea"
             style={{ resize: 'vertical' }}
           />
