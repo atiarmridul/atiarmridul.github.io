@@ -1,5 +1,5 @@
 import { useState, type ChangeEvent, type FormEvent } from 'react';
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 
 const emailJsConfig = {
   serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -49,7 +49,18 @@ const Contact = () => {
       return;
     }
 
-    const sanitize = (text: string) => text.replace(/</g, '&lt;').replace(/>/g, '&gt;').trim();
+    const sanitize = (text: string) => {
+      const map: Record<string, string> = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#x27;',
+        '/': '&#x2F;',
+      };
+      const reg = /[&<>"'/]/gi;
+      return text.replace(reg, (match) => map[match]).trim();
+    };
 
     const name = sanitize(formData.name);
     const email = formData.email.trim();
