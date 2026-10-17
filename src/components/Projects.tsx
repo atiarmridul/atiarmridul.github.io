@@ -22,7 +22,7 @@ const projects: Project[] = [
   {
     title: 'Singer BD Automation Framework',
     description:
-      'Production-grade Playwright & TypeScript framework for Singer Bangladesh. POM architecture, API-driven data factories, and automated A11y/Visual regression layers.',
+      'Playwright and TypeScript automation for Singer Bangladesh, using Page Object Model, API-assisted test data, visual and accessibility checks, CI workflows, and reporting.',
     tech: ['Playwright', 'TypeScript', 'Allure', 'GitHub Actions'],
     github: 'https://github.com/atiarmridul/Singer-Bangladesh-Website-Automation',
     demo: 'https://www.singerbd.com/',
@@ -38,13 +38,78 @@ const projects: Project[] = [
       ],
       workflow: 'API Data → POM Interaction → Multi-Layer Assert → Allure Report',
       execution: '$ npm run test:sanity && npm run test:visual',
-      report: '100% Type Safe | Self-Healing Active | Allure Integrated',
+      report: 'TypeScript Strict Mode | Allure Reporting | CI Workflows',
+    },
+  },
+  {
+    title: 'Telco OTP Relay',
+    description:
+      'Android QA utility that detects incoming SMS on a dedicated test device, filters OTP messages, and relays selected messages to Google Chat. Includes privacy-aware delivery history, retry handling, automated tests, and GitHub Actions verification.',
+    tech: ['Android', 'Kotlin', 'SMS', 'Google Chat Webhook', 'JUnit', 'GitHub Actions'],
+    github: 'https://github.com/atiarmridul/TelcoOtpRelay',
+    demo: 'https://github.com/atiarmridul/TelcoOtpRelay',
+    type: 'Telecom QA Utility',
+    language: 'Kotlin',
+    preview: {
+      structure: [
+        'TelcoOtpRelay/',
+        '  ├── SmsReceiver & SmsBroadcastParser',
+        '  ├── RelayProcessor & OtpParser',
+        '  ├── ChatSender & RelayHistoryStore',
+        '  └── JVM and Android instrumentation tests',
+      ],
+      workflow: 'Test Trigger → SMS Received → OTP Filter → Google Chat Relay',
+      execution: '$ ./gradlew check',
+      report: 'Privacy-Aware History | Bounded Retries | CI Verification',
+    },
+  },
+  {
+    title: 'PortRobi-Work-Life',
+    description:
+      'Private MCP-enabled QA workspace for organizing project knowledge, requirements, test coverage, and repeatable QA workflows. Internal project details are not shown on this public portfolio.',
+    tech: ['MCP', 'QA Knowledge Base', 'AI-Assisted Workflows', 'Test Coverage'],
+    github: '',
+    demo: '',
+    type: 'Private QA Workspace',
+    language: 'Documentation & Tooling',
+    preview: {
+      structure: [
+        'Private QA Workspace',
+        '  ├── Project requirements and QA guidance',
+        '  ├── Test knowledge and coverage references',
+        '  └── MCP-connected workflow support',
+      ],
+      workflow: 'Project Knowledge → QA Rules → Test Design → Review',
+      execution: 'Internal workflow — repository is private',
+      report: 'Private Project | Internal Details Omitted',
+    },
+  },
+  {
+    title: 'AI-Assisted Playwright Automation',
+    description:
+      'Playwright and TypeScript end-to-end test suite for Swag Labs. Demonstrates reusable test structure and browser-based validation of key e-commerce user journeys.',
+    tech: ['Playwright', 'TypeScript', 'E2E Testing', 'GitHub Actions'],
+    github: 'https://github.com/atiarmridul/Swag-Labs-E2E-Test-Suite-Playwright',
+    demo: 'https://github.com/atiarmridul/Swag-Labs-E2E-Test-Suite-Playwright',
+    type: 'AI-Assisted QA & Automation',
+    language: 'TypeScript',
+    preview: {
+      structure: [
+        'Swag-Labs-E2E-Test-Suite-Playwright/',
+        '  ├── tests/ (End-to-end scenarios)',
+        '  ├── pages/ (Page objects)',
+        '  ├── playwright.config.js',
+        '  └── GitHub Actions workflow',
+      ],
+      workflow: 'Test Setup → Page Object → User Journey → Assertions',
+      execution: 'See repository README for setup and test commands',
+      report: 'Playwright | TypeScript | End-to-End Coverage',
     },
   },
   {
     title: 'AI Playwright Test Generator',
     description:
-      'Automated crawling and DOM extraction engine that uses OpenAI to generate functional Playwright test scripts from live webpages.',
+      'Proof of concept that crawls a live webpage, extracts rendered UI elements, and uses an OpenAI model to draft Playwright tests for human review.',
     tech: ['OpenAI', 'Playwright', 'Cheerio', 'Node.js'],
     github: 'https://github.com/atiarmridul/AI-PLAYWRIGHT-TEST-GENERATOR',
     demo: 'https://github.com/atiarmridul/AI-PLAYWRIGHT-TEST-GENERATOR',
@@ -59,7 +124,7 @@ const projects: Project[] = [
       ],
       workflow: 'URL → Crawl → DOM Extraction → OpenAI → Playwright Spec',
       execution: '$ node runGenerator.js --url "https://example.com"',
-      report: 'Confidence Score 0.95 | Valid Scaffolding | Ready to Run',
+      report: 'Generated Test Draft | Validation Checks | Human Review Needed',
     },
   },
   {
@@ -239,16 +304,22 @@ const ArchitecturePreview = ({ project, onClose }: { project: Project; onClose: 
           </div>
         </div>
 
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-primary"
-          style={{ alignSelf: 'flex-start' }}
-          data-testid="project-preview-github-link"
-        >
-          <Github size={16} /> GitHub Repository
-        </a>
+        {project.github ? (
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary"
+            style={{ alignSelf: 'flex-start' }}
+            data-testid="project-preview-github-link"
+          >
+            <Github size={16} /> GitHub Repository
+          </a>
+        ) : (
+          <p style={{ color: 'var(--text-dim)', fontSize: 13 }}>
+            Private repository — internal details are not published.
+          </p>
+        )}
       </div>
     </motion.div>
   </motion.div>
