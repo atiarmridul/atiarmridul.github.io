@@ -35,6 +35,9 @@ jobs:
         run: |
           npx playwright install --with-deps chromium
 
+      - name: Format Hero component
+        run: npx prettier --write src/components/Hero.tsx
+
       - name: Run quality checks
         run: npm run quality
 
