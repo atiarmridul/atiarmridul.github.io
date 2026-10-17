@@ -6,28 +6,28 @@ const toTestId = (value: string) =>
 
 const skillCategories: Array<{ title: string; skills: string[] }> = [
   {
-    title: 'Frameworks',
-    skills: ['WebdriverIO', 'Playwright', 'Appium', 'Selenium', 'TestNG', 'Mocha'],
+    title: 'Test Automation',
+    skills: ['Playwright', 'WebdriverIO', 'Appium', 'Selenium WebDriver', 'Page Object Model'],
   },
   {
-    title: 'Languages',
-    skills: ['Java', 'JavaScript', 'TypeScript', 'MySQL'],
+    title: 'Programming & Data',
+    skills: ['TypeScript', 'JavaScript', 'Java', 'MySQL', 'TablePlus'],
   },
   {
-    title: 'Testing Types',
-    skills: ['Automation', 'Manual', 'API', 'Performance', 'Documentation'],
+    title: 'Testing',
+    skills: ['Functional', 'Integration', 'Regression', 'API', 'Mobile', 'UI/UX', 'UAT', 'Performance'],
   },
   {
-    title: 'Tools',
-    skills: ['JIRA', 'TestRail', 'Postman', 'Newman', 'RestAssured', 'JMeter', 'OWASP ZAP', 'Kibana'],
+    title: 'API & QA Tools',
+    skills: ['Postman', 'REST Assured', 'Newman', 'JMeter', 'Jira', 'TestRail', 'BrowserStack'],
   },
   {
-    title: 'Methodologies',
-    skills: ['Agile', 'Scrum', 'CI/CD', 'TDD'],
+    title: 'AI-Assisted QA & CI/CD',
+    skills: ['MCP', 'AI-Assisted Test Generation', 'Playwright Test Generation', 'Git', 'GitHub Actions'],
   },
   {
-    title: 'Platforms',
-    skills: ['Web Apps', 'Mobile Apps', 'REST APIs', 'Cross-browser', 'Database'],
+    title: 'Monitoring & Methods',
+    skills: ['Kibana', 'OWASP ZAP', 'Agile', 'Scrum', 'CI/CD', 'Cross-browser Testing'],
   },
 ];
 
