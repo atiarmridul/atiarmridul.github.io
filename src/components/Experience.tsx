@@ -9,13 +9,13 @@ const experiences = [
     title: 'Software QA Engineer (Automation)',
     company: 'Portonics Limited',
     companyUrl: 'https://portonics.com',
-    when: '2024 — Now',
+    when: 'Dec 2024 — Present',
     points: [
-      'Requirement analysis and story reviews to define scope and ensure comprehensive test coverage.',
-      'API testing to validate backend services and seamless integration.',
-      'Functional, Integration, Regression, UI/UX and UAT testing across multiple releases.',
-      'Diagnosed issues via Kibana log analysis with developers and DevOps.',
-      'Mentored teammates and contributed QA insights across Agile ceremonies.',
+      'Analyze requirements, user stories, and acceptance criteria for My Robi and My Airtel, products serving 22.5M+ active users.',
+      'Design, review, and refine test cases with Product Owners across 30+ Agile sprints; use project-grounded AI to identify scenarios and coverage gaps.',
+      'Apply AI-DLC practices by checking AI-generated analysis and test cases against confirmed requirements before use.',
+      'Use MCP-connected AI workflows to check duplicate Jira/Karmo items, create or update tasks and bugs, and verify saved fields.',
+      'Validate backend APIs, investigate application issues in Kibana, and maintain QA knowledge for requirements, API journeys, and test coverage.',
     ],
   },
   {
@@ -24,10 +24,10 @@ const experiences = [
     companyUrl: 'https://audacityit.com',
     when: '2021 — 2024',
     points: [
-      'UI automation for web and mobile with Playwright, WebdriverIO and Appium.',
-      'API testing and automation with Postman, Newman and RestAssured.',
-      'Performance testing with JMeter; security testing with OWASP ZAP.',
-      'Version control and CI with Git, GitHub and GitHub Actions.',
+      'Built and maintained web and mobile automation using Playwright, WebdriverIO, and Appium with Page Object Model patterns.',
+      'Validated APIs with Postman, Newman, and REST Assured; used JMeter for performance checks.',
+      'Integrated automated tests into GitHub Actions and used OWASP ZAP for security testing where required.',
+      'Prepared test cases, defect reports, and QA documentation for Agile projects.',
     ],
   },
   {
@@ -36,8 +36,9 @@ const experiences = [
     companyUrl: 'https://audacityit.com',
     when: '2020 — 2021',
     points: [
-      'Clarified requirements with stakeholders and authored SRS documentation.',
-      'Validated client expectations during design using Figma and Adobe XD.',
+      'Clarified requirements with stakeholders and prepared SRS documentation, test cases, and defect reports.',
+      'Reviewed designs in Figma and Adobe XD to identify UI/UX gaps before implementation.',
+      'Supported functional, regression, integration, and acceptance testing across assigned projects.',
     ],
   },
   {
@@ -46,8 +47,9 @@ const experiences = [
     companyUrl: 'https://audacityit.com',
     when: '2019 — 2020',
     points: [
-      'Functional, Integration, Regression, Exploratory, UI/UX, Cross-Browser and UAT testing.',
-      'Logged and tracked bugs using JIRA.',
+      'Executed functional, integration, regression, exploratory, UI/UX, cross-browser, and UAT testing.',
+      'Recorded clear defect steps and tracked issues in Jira.',
+      'Supported test documentation and learned the team’s QA process across project work.',
     ],
   },
 ];
