@@ -1,0 +1,45 @@
+name: Portfolio quality checks
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: |
+          npx playwright install --with-deps
+          npx playwright install msedge
+
+      - name: Run quality checks
+        run: npm run quality
+
+      - name: Build production site
+        run: npm run build
+
+      - name: Check repository root
+        run: npm run root:check
+
+      - name: Run end-to-end tests
+        run: npm run test:e2e
