@@ -19,9 +19,9 @@ const Hero = () => (
 
     <div className="hero-meta">
       <p className="hero-intro reveal" data-d="3">
-        <strong>Senior Software QA Engineer</strong> — ISTQB-certified, 6+ years building release confidence
-        through manual testing, automation frameworks, API validation, performance checks and CI/CD quality
-        workflows.
+        <strong>Software QA Engineer</strong> — ISTQB® certified, with 7 years of experience in manual, web, mobile,
+        and API testing. I build automation with Playwright, WebdriverIO, and Appium, and use MCP-connected
+        AI workflows to support test design and QA task management.
       </p>
       <div className="hero-cta reveal" data-d="4">
         <button
