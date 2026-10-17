@@ -7,7 +7,7 @@ const toTestId = (value: string) =>
 const skillCategories: Array<{ title: string; skills: string[] }> = [
   {
     title: 'Test Automation',
-    skills: ['Playwright', 'WebdriverIO', 'Appium', 'Selenium WebDriver', 'Page Object Model'],
+    skills: ['Playwright', 'WebdriverIO', 'Appium', 'Selenium', 'Page Object Model'],
   },
   {
     title: 'Programming & Data',
