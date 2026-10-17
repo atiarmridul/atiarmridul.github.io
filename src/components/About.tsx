@@ -1,8 +1,8 @@
 const stats = [
-  { n: '6+', l: 'Years in QA' },
-  { n: '20+', l: 'Products tested' },
-  { n: '2K+', l: 'Defects tracked' },
-  { n: '4', l: 'Automation stacks' },
+  { n: '7+', l: 'Years in QA' },
+  { n: '22.5M+', l: 'Active users on product' },
+  { n: '30+', l: 'Agile sprints' },
+  { n: '3', l: 'Core automation tools' },
 ];
 
 const principles = [
@@ -16,7 +16,7 @@ const profileFacts = [
   ['Certification', 'ISTQB® CTFL 4.0'],
   ['Current role', 'QA Engineer · Portonics'],
   ['Core stack', 'Playwright · WebdriverIO · Appium'],
-  ['Strength', 'Manual + automation QA'],
+  ['Focus', 'AI-assisted QA workflows'],
 ];
 
 const About = () => (
@@ -39,9 +39,9 @@ const About = () => (
           ))}
         </div>
         <p className="about-note reveal" data-d="3">
-          Over 6+ years I&apos;ve tested web and mobile products end-to-end across Agile teams, building
-          Playwright, WebdriverIO and Appium frameworks, validating APIs, and investigating defects through
-          Kibana logs.
+          With 7 years in QA, I work across manual, web, mobile, and API testing. I build automation with
+          Playwright, WebdriverIO, and Appium, and use MCP-connected AI workflows to support test design,
+          requirements review, and QA task management.
         </p>
         <div className="about-stats reveal" data-d="3" data-testid="about-stats">
           {stats.map((s) => (
