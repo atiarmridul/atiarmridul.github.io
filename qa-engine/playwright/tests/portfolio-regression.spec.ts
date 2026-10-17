@@ -14,6 +14,7 @@ test.describe('Portfolio regression', () => {
   });
 
   test('opens and closes a project preview', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 });
     await page.goto('/', { waitUntil: 'networkidle' });
     await page.getByTestId('project-card-2').click();
 
